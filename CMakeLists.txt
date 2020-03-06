@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(RayData)
 
+message( ${CMAKE_SYSTEM_NAME} )
+
 set(CMAKE_CXX_STANDARD 14)
 # Find includes in the build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -19,12 +21,28 @@ endif()
 
 # Tell cmake where Qt is located
 
-# aules
-set (Qt5_DIR /opt/Qt/5.9.1/gcc_64/lib/cmake/Qt5/)
-# mac:
-#set(QT5_DIR "/Users/anna/qt/5.10.0/clang_64/lib/cmake/Qt5")
-# ubuntu:
-#set(Qt5_DIR "/opt/Qt/5.12.3/gcc_64/lib/cmake/Qt5/")
+#mac
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    if(EXISTS "/usr/local/Cellar/qt/5.14.1/lib/cmake/Qt5")
+        set(QT5_DIR "/usr/local/Cellar/qt/5.14.1/lib/cmake/Qt5")
+    else() #default anna computer
+        set(QT5_DIR "/Users/anna/qt/5.10.0/clang_64/lib/cmake/Qt5")
+    endif()
+else()
+    #linux
+    #aules
+    if(EXISTS "/opt/Qt/5.9.1/gcc_64/lib/cmake/Qt5/")
+        #este es para el mataules
+        set (Qt5_DIR /opt/Qt/5.9.1/gcc_64/lib/cmake/Qt5/)
+        #ubuntu
+        #En caso de que tuvieramos otro
+        #elseif(EXISTS "el que corresponda")
+        #set(del que corresponde)
+    else()
+        set(Qt5_DIR "/opt/Qt/5.12.3/gcc_64/lib/cmake/Qt5/")
+    endif()
+endif()
+
 
 # Find the QtWidgets library
 find_package(Qt5 REQUIRED COMPONENTS Widgets)
@@ -43,16 +61,20 @@ include_directories(include)
 # find_package(GL REQUIRED)
 # find_package(GLUT REQUIRED)
 
-# Find gl and glut library: ubuntu
-set (OPENGL_INCLUDE_DIRS /usr/include)
-set (GLUT_INCLUDE_DIRS /usr/include)
+#mac
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    # settings de GL en el MAC
+    set (OPENGL_INCLUDE_DIRS /opt/X11/include)
+    set (GLUT_INCLUDE_DIRS /opt/X11/include)
+else()
+    #linux
+    # Find gl and glut library: ubuntu
+    set (OPENGL_INCLUDE_DIRS /usr/include)
+    set (GLUT_INCLUDE_DIRS /usr/include)
+endif()
 
-# settings de GL en el MAC
-#set (OPENGL_INCLUDE_DIRS /opt/X11/include)
-#set (GLUT_INCLUDE_DIRS /opt/X11/include)
 
 include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
-
 
 
 add_executable(RayData
@@ -340,17 +362,23 @@ add_executable(RayData
         src/TG.cpp
         src/Texture.cpp
         src/Translate.cpp
-        ${Res_SRC} )
+        ${Res_SRC})
 
 
 # Set the GL and GLUT libraries
 #mac
-#set (OPENGL_LIBRARIES /opt/X11/lib/libGL.dylib)
-#set (GLUT_LIBRARY /opt/X11/lib/libGLUT.dylib)
-
-
-set (OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so)
-set (GLUT_LIBRARY /usr/lib/x86_64-linux-gnu/libglut.so)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set (OPENGL_LIBRARIES /opt/X11/lib/libGL.dylib)
+    set (GLUT_LIBRARY /opt/X11/lib/libGLUT.dylib)
+elseif(EXISTS "/usr/lib/libGL.so")
+    # Manjaro
+    set (OPENGL_LIBRARIES /usr/lib/libGL.so)
+    set (GLUT_LIBRARY /usr/lib/libglut.so)
+else()
+    #default linux
+    set (OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so)
+    set (GLUT_LIBRARY /usr/lib/x86_64-linux-gnu/libglut.so)
+endif()
 
 # Add the Qt5 Widgets, GL and GLUT  for linking
 target_link_libraries(RayData Qt5::Widgets ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})

@@ -27,15 +27,29 @@ Scene::~Scene()
 ** El metode retorna true si algun objecte es intersecat o false en cas contrari.
 **
 */
-bool Scene::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const {
+bool Scene::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const
+{
+    /* IntersectionInfo temporal per a cada objecte */
+    IntersectionInfo info_temp;
+    info.t = t_max;
 
-    return true;
+    for(auto object : objects)
+    {
+        if (object->intersection(raig, t_min, t_max, info_temp))
+        {
+            if (info_temp.t < info.t)
+            {
+                /* Si arribem a un minim, ho copiem al intersection info del raig */
+                info = info_temp;
+            }
+        }
+    }
+    return info.t < t_max;
     // TODO FASE 0 i FASE 1: Heu de codificar la vostra solucio per aquest metode substituint el 'return true'
     // Una possible solucio es cridar el mètode intersection per a tots els objectes i quedar-se amb la interseccio
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el IntersectionInfo del raig,
     // pero no en aquesta funcio.
-
 }
 
 
@@ -52,7 +66,12 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
 
     ray2 = normalize(ray.direction);
     // TODO: A canviar el càlcul del color en les diferents fases
-    color = 0.5f*vec3(ray2.x+1, ray2.y+1, ray2.z+1);
+    IntersectionInfo info;
+
+    if (this->intersection(ray, 0, 100, info))
+        color = info.mat_ptr->diffuse;
+    else
+        color = vec3(-0.5 * ray2.y + 0.75, -0.3 * ray2.y + 0.85, 1);
 
     return color;
 }
@@ -70,6 +89,14 @@ void Scene::setMaterials(ColorMap *cm) {
     Material *m;
     // TODO: Fase 0
     // Cal canviar el codi per a afegir més materials.
+    srand (static_cast <unsigned> (time(0)));
+    for (auto object: this->objects)
+    {
+        /* Per cada objecte afegim un material de manera random */
+        object->setMaterial(new Lambertian(
+                vec3((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX))
+                );
+    }
     // TODO: Fase 2
     // Cal canviar el tipus de material Lambertian, Specular, Transparent, Tipus Textura
     if (cm == nullptr)

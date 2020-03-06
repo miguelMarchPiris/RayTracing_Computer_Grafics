@@ -13,7 +13,7 @@ Camera *SceneFactoryData::createCamera() {
 
     float dist_to_focus = 2;
 
-    float aperture = 0.2;
+    float aperture = 0.5;
     int pixelsX = 600;
     int pixelsY = 400;
 

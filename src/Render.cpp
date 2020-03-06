@@ -16,6 +16,7 @@
 
 void Render::rendering() {
     // Recorregut de cada pixel de la imatge final
+#pragma omp parallel for
     for (int y = cam->viewportY-1; y >= 0; y--) {
          for (int x = 0; x < cam->viewportX; x++) {
 
