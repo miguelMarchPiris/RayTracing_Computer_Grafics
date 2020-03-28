@@ -52,6 +52,8 @@ protected:
     void baseFound(QStringList list);
 
     void BrObjectFound(QStringList fields);
+
+    void triangleFound();
 };
 
 #endif // SCENEREADER_H

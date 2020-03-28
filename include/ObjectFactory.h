@@ -13,7 +13,8 @@ class ObjectFactory
 public:
     typedef enum {
         SPHERE,
-        PLANE
+        PLANE,
+        TRIANGLE
     } OBJECT_TYPES;
 
     static ObjectFactory *getInstance() {

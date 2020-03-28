@@ -69,9 +69,14 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
     IntersectionInfo info;
 
     if (this->intersection(ray, 0, 100, info))
-        color = info.mat_ptr->diffuse;
-    else
-        color = vec3(-0.5 * ray2.y + 0.75, -0.3 * ray2.y + 0.85, 1);
+        color = info.normal;
+    else{
+        //color = vec3(-0.5 * ray2.y + 0.75, -0.3 * ray2.y + 0.85, 1);
+        vec3 white = vec3(1.0,1.0,1.0);
+        vec3 blue = vec3(0.5,0.7,1.0);
+        float t = 0.5f*(ray2.y+1);
+        color = vec3(t*blue+(1-t)*white);
+    }
 
     return color;
 }

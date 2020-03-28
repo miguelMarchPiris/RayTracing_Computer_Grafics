@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
-  "RayData_autogen"
   "CMakeFiles/RayData_autogen.dir/AutogenOldSettings.txt"
-  "qrc_resources.cpp"
+  "CMakeFiles/RayData_autogen.dir/ParseCache.txt"
+  "RayData_autogen"
   "CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/RayData.dir/qrc_resources.cpp.o"
   "CMakeFiles/RayData.dir/src/Animation.cpp.o"
   "CMakeFiles/RayData.dir/src/BoundaryObject.cpp.o"
   "CMakeFiles/RayData.dir/src/Camera.cpp.o"
@@ -32,9 +33,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/RayData.dir/src/TG.cpp.o"
   "CMakeFiles/RayData.dir/src/Texture.cpp.o"
   "CMakeFiles/RayData.dir/src/Translate.cpp.o"
-  "CMakeFiles/RayData.dir/qrc_resources.cpp.o"
-  "RayData.pdb"
+  "CMakeFiles/RayData.dir/src/Triangle.cpp.o"
   "RayData"
+  "RayData.pdb"
+  "qrc_resources.cpp"
 )
 
 # Per-language clean rules from dependency scanning.

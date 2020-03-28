@@ -34,10 +34,13 @@ void SceneReader::readFile(QString fileName) {
 // TODO: Fase 1: Cal afegir més tipus d'objectes
 void SceneReader::fileLineRead (QString lineReaded) {
     QStringList fields = lineReaded.split(",");
+
     if (QString::compare("Sphere", fields[0], Qt::CaseInsensitive) == 0)
         sphereFound(fields);
     else if (QString::compare("Base", fields[0], Qt::CaseInsensitive) == 0)
         baseFound(fields);
+    else if (QString::compare("triangle", fields[0], Qt::CaseInsensitive)==0)
+        triangleFound();
     else
         std::cerr << "Element unknown" << std::endl;
 }
@@ -65,17 +68,23 @@ void SceneReader::baseFound(QStringList fields) {
         std::cerr << "Wrong base format" << std::endl;
         return;
     }
-
+    
     if (QString::compare("plane", fields[1], Qt::CaseInsensitive) == 0) {
         Object *o;
         // TODO Fase 1: Cal fer un pla acotat i no un pla infinit. Les dimensions del pla acotat seran les dimensions de l'escena en x i z
-        o = ObjectFactory::getInstance()->createObject(fields[1].toDouble(), fields[2].toDouble(), fields[3].toDouble(), fields[4].toDouble(), 1.0f,
-                                                       ObjectFactory::OBJECT_TYPES::PLANE);
+        o = ObjectFactory::getInstance()->createObject(fields[2].toDouble(), fields[3].toDouble(), fields[4].toDouble(), fields[5].toDouble(), 1.0f, ObjectFactory::OBJECT_TYPES::PLANE);
+
         scene->objects.push_back(o);
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
+    }else if (QString::compare("triangle", fields[1], Qt::CaseInsensitive) == 0){
+        Object *tri = ObjectFactory::getInstance()->createObject(0.0, 0.0, 0.0, 0.0, 1.0f,
+                                                             ObjectFactory::OBJECT_TYPES::TRIANGLE);
+        scene->objects.push_back(tri);
     }
+    
     // TODO: Fase 3: Si cal instanciar una esfera com objecte base i no un pla, cal afegir aqui un switch
 }
+
 
 void SceneReader::BrObjectFound(QStringList fields) {
 
@@ -93,4 +102,13 @@ void SceneReader::BrObjectFound(QStringList fields) {
     //                                                ObjectFactory::OBJECT_TYPES::BROBJECT);
     //    scene->objects.push_back(o);
     //
+}
+
+void SceneReader::triangleFound() {
+    Object *o;
+
+    o = ObjectFactory::getInstance()->createObject(0.0, 0.0, 0.0,
+                                                   0.0,
+                                                   1.0f, ObjectFactory::OBJECT_TYPES::TRIANGLE);
+    scene->objects.push_back(o);
 }

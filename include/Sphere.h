@@ -18,7 +18,7 @@ public:
         virtual ~Sphere() {}
         virtual bool intersection(const Ray& r, float t_min, float t_max, IntersectionInfo& info) const;
 
-         virtual void aplicaTG(TG *t);
+        virtual void aplicaTG(TG *t);
 private:
         // Centre de l'esfera
         vec3 center;

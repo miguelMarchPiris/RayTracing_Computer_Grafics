@@ -24,6 +24,19 @@ Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, Render
 
     // TODO Fase 1: Cal posar les dimensions de l'escena virtual usant setDimensions de la classe Scene
 
+    float x_min, y_min, z_min;
+    float x_max, y_max, z_max;
+
+    //punt minim de lescena
+    x_min = y_min = z_min = 0;
+
+    //punt maxim de lescena
+    x_max = y_max = z_max = 5;
+
+    //definim les dimensions de l'escena
+    vec3 min_d (x_min, y_min, z_min), max_d (x_max, y_max, z_max);
+
+    scene->setDimensions(min_d, max_d);
 
     // ETAPA 2: Inicialitzacio del Rendering
     // usa un Factory Template per a construir el tipus de render
