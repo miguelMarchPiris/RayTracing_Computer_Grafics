@@ -52,7 +52,6 @@ bool Plane::intersection(const Ray &raig, float t_min, float t_max, Intersection
     }
 
     // Omplim el camp de info:
-
     info.t = temp;
     info.p = raig.pointAtParameter(info.t);
 
@@ -64,7 +63,6 @@ bool Plane::intersection(const Ray &raig, float t_min, float t_max, Intersection
 
 void Plane::aplicaTG(TG *t){
     if (dynamic_cast<Translate *>(t)) {
-
         // Nomes movem el punt de pas
         vec4 newp(this->point, 1.0);
         newp = t->getTG() * newp;

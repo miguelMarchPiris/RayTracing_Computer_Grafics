@@ -401,12 +401,18 @@ stdlib.h
 -
 cstring
 -
+Scale.h
+../include/Scale.h
+Rotate.h
+../include/Rotate.h
 Object.h
 ../include/Object.h
 Cara.h
 ../include/Cara.h
 ReadFile.h
 ../include/ReadFile.h
+Triangle.h
+../include/Triangle.h
 
 ../include/Cara.h
 vector
@@ -453,6 +459,10 @@ Sphere.h
 ../include/Sphere.h
 Plane.h
 ../include/Plane.h
+Triangle.h
+../include/Triangle.h
+BoundaryObject.h
+../include/BoundaryObject.h
 
 ../include/Plane.h
 Object.h
@@ -475,6 +485,14 @@ stdlib.h
 -
 string
 -
+
+../include/Rotate.h
+TG.h
+../include/TG.h
+
+../include/Scale.h
+TG.h
+../include/TG.h
 
 ../include/Scene.h
 vector
@@ -528,9 +546,19 @@ glm/gtc/matrix_transform.hpp
 TG.h
 ../include/TG.h
 
-/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/src/SceneReader.cpp
+../include/Triangle.h
+iostream
+-
+Plane.h
+../include/Plane.h
+Scale.h
+../include/Scale.h
+Rotate.h
+../include/Rotate.h
+
+/Users/marcos/CLionProjects/dataray-givd02/src/SceneReader.cpp
 SceneReader.h
-/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/src/SceneReader.h
+/Users/marcos/CLionProjects/dataray-givd02/src/SceneReader.h
 QFile
 -
 QTextStream
@@ -542,59 +570,59 @@ sstream
 include/ObjectFactory.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QFile
+/Users/marcos/anaconda3/include/qt/QtCore/QFile
 qfile.h
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
+/Users/marcos/anaconda3/include/qt/QtCore/qfile.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QObject
+/Users/marcos/anaconda3/include/qt/QtCore/QObject
 qobject.h
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h
+/Users/marcos/anaconda3/include/qt/QtCore/qobject.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QString
+/Users/marcos/anaconda3/include/qt/QtCore/QString
 qstring.h
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
+/Users/marcos/anaconda3/include/qt/QtCore/qstring.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QStringList
+/Users/marcos/anaconda3/include/qt/QtCore/QStringList
 qstringlist.h
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringlist.h
+/Users/marcos/anaconda3/include/qt/QtCore/qstringlist.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/QTextStream
+/Users/marcos/anaconda3/include/qt/QtCore/QTextStream
 qtextstream.h
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h
+/Users/marcos/anaconda3/include/qt/QtCore/qtextstream.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
+/Users/marcos/anaconda3/include/qt/QtCore/qalgorithms.h
 QtCore/qglobal.h
 -
 intrin.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
+/Users/marcos/anaconda3/include/qt/QtCore/qarraydata.h
 QtCore/qrefcount.h
 -
 string.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
+/Users/marcos/anaconda3/include/qt/QtCore/qatomic.h
 QtCore/qglobal.h
 -
 QtCore/qbasicatomic.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_bootstrap.h
+/Users/marcos/anaconda3/include/qt/QtCore/qatomic_bootstrap.h
 QtCore/qgenericatomic.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_cxx11.h
+/Users/marcos/anaconda3/include/qt/QtCore/qatomic_cxx11.h
 QtCore/qgenericatomic.h
 -
 atomic
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_msvc.h
+/Users/marcos/anaconda3/include/qt/QtCore/qatomic_msvc.h
 QtCore/qgenericatomic.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qbasicatomic.h
+/Users/marcos/anaconda3/include/qt/QtCore/qbasicatomic.h
 QtCore/qatomic.h
 -
 QtCore/qatomic_bootstrap.h
@@ -604,7 +632,7 @@ QtCore/qatomic_cxx11.h
 QtCore/qatomic_msvc.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h
+/Users/marcos/anaconda3/include/qt/QtCore/qbytearray.h
 QtCore/qrefcount.h
 -
 QtCore/qnamespace.h
@@ -624,31 +652,31 @@ iterator
 QtCore/qstring.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearraylist.h
+/Users/marcos/anaconda3/include/qt/QtCore/qbytearraylist.h
 QtCore/qlist.h
 -
 QtCore/qbytearray.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h
+/Users/marcos/anaconda3/include/qt/QtCore/qchar.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcompilerdetection.h
+/Users/marcos/anaconda3/include/qt/QtCore/qcompilerdetection.h
 QtCore/qglobal.h
 -
 utility
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h
+/Users/marcos/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h
+/Users/marcos/anaconda3/include/qt/QtCore/qconfig.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainerfwd.h
+/Users/marcos/anaconda3/include/qt/QtCore/qcontainerfwd.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h
+/Users/marcos/anaconda3/include/qt/QtCore/qcontiguouscache.h
 QtCore/qatomic.h
 -
 limits.h
@@ -656,7 +684,7 @@ limits.h
 new
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h
+/Users/marcos/anaconda3/include/qt/QtCore/qcoreevent.h
 QtCore/qnamespace.h
 -
 QtCore/qbytearray.h
@@ -664,7 +692,7 @@ QtCore/qbytearray.h
 QtCore/qobjectdefs.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h
+/Users/marcos/anaconda3/include/qt/QtCore/qdebug.h
 QtCore/qalgorithms.h
 -
 QtCore/qhash.h
@@ -696,7 +724,7 @@ map
 utility
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
+/Users/marcos/anaconda3/include/qt/QtCore/qfile.h
 QtCore/qfiledevice.h
 -
 QtCore/qstring.h
@@ -704,25 +732,25 @@ QtCore/qstring.h
 stdio.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h
+/Users/marcos/anaconda3/include/qt/QtCore/qfiledevice.h
 QtCore/qiodevice.h
 -
 QtCore/qstring.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h
+/Users/marcos/anaconda3/include/qt/QtCore/qflags.h
 QtCore/qglobal.h
 -
 initializer_list
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qgenericatomic.h
+/Users/marcos/anaconda3/include/qt/QtCore/qgenericatomic.h
 QtCore/qglobal.h
 -
 QtCore/qtypeinfo.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h
+/Users/marcos/anaconda3/include/qt/QtCore/qglobal.h
 type_traits
 -
 cstddef
@@ -762,7 +790,7 @@ QtCore/qnumeric.h
 QtCore/qversiontagging.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobalstatic.h
+/Users/marcos/anaconda3/include/qt/QtCore/qglobalstatic.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -770,7 +798,7 @@ QtCore/qatomic.h
 QtCore/qmutex.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h
+/Users/marcos/anaconda3/include/qt/QtCore/qhash.h
 QtCore/qchar.h
 -
 QtCore/qiterator.h
@@ -786,7 +814,7 @@ initializer_list
 algorithm
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qhashfunctions.h
+/Users/marcos/anaconda3/include/qt/QtCore/qhashfunctions.h
 QtCore/qchar.h
 -
 QtCore/qpair.h
@@ -794,7 +822,7 @@ QtCore/qpair.h
 numeric
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h
+/Users/marcos/anaconda3/include/qt/QtCore/qiodevice.h
 QtCore/qglobal.h
 -
 QtCore/qobject.h
@@ -806,11 +834,11 @@ QtCore/qscopedpointer.h
 QtCore/qstring.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h
+/Users/marcos/anaconda3/include/qt/QtCore/qiterator.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h
+/Users/marcos/anaconda3/include/qt/QtCore/qlist.h
 QtCore/qalgorithms.h
 -
 QtCore/qiterator.h
@@ -842,7 +870,7 @@ QtCore/qbytearraylist.h
 QtCore/qstringlist.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h
+/Users/marcos/anaconda3/include/qt/QtCore/qlocale.h
 QtCore/qvariant.h
 -
 QtCore/qstring.h
@@ -852,11 +880,11 @@ QtCore/qobjectdefs.h
 QtCore/qshareddata.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qlogging.h
+/Users/marcos/anaconda3/include/qt/QtCore/qlogging.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h
+/Users/marcos/anaconda3/include/qt/QtCore/qmap.h
 QtCore/qiterator.h
 -
 QtCore/qlist.h
@@ -876,7 +904,7 @@ functional
 initializer_list
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qmetatype.h
+/Users/marcos/anaconda3/include/qt/QtCore/qmetatype.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -896,7 +924,7 @@ list
 map
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h
+/Users/marcos/anaconda3/include/qt/QtCore/qmutex.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -908,15 +936,15 @@ chrono
 limits
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h
+/Users/marcos/anaconda3/include/qt/QtCore/qnamespace.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h
+/Users/marcos/anaconda3/include/qt/QtCore/qnumeric.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h
+/Users/marcos/anaconda3/include/qt/QtCore/qobject.h
 QtCore/qobjectdefs.h
 -
 QtCore/qstring.h
@@ -936,47 +964,47 @@ QtCore/qobject_impl.h
 chrono
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject_impl.h
+/Users/marcos/anaconda3/include/qt/QtCore/qobject_impl.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h
+/Users/marcos/anaconda3/include/qt/QtCore/qobjectdefs.h
 QtCore/qnamespace.h
 -
 QtCore/qobjectdefs_impl.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h
+/Users/marcos/anaconda3/include/qt/QtCore/qobjectdefs_impl.h
 QtCore/qnamespace.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qpair.h
+/Users/marcos/anaconda3/include/qt/QtCore/qpair.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
+/Users/marcos/anaconda3/include/qt/QtCore/qpoint.h
 QtCore/qnamespace.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h
+/Users/marcos/anaconda3/include/qt/QtCore/qprocessordetection.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h
+/Users/marcos/anaconda3/include/qt/QtCore/qrefcount.h
 QtCore/qatomic.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h
+/Users/marcos/anaconda3/include/qt/QtCore/qregexp.h
 QtCore/qglobal.h
 -
 QtCore/qstring.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qscopedpointer.h
+/Users/marcos/anaconda3/include/qt/QtCore/qscopedpointer.h
 QtCore/qglobal.h
 -
 stdlib.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h
+/Users/marcos/anaconda3/include/qt/QtCore/qset.h
 QtCore/qhash.h
 -
 initializer_list
@@ -984,7 +1012,7 @@ initializer_list
 iterator
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h
+/Users/marcos/anaconda3/include/qt/QtCore/qshareddata.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -994,7 +1022,7 @@ QtCore/qhash.h
 QtCore/qhashfunctions.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h
+/Users/marcos/anaconda3/include/qt/QtCore/qsharedpointer.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -1004,7 +1032,7 @@ QtCore/qshareddata.h
 QtCore/qsharedpointer_impl.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h
+/Users/marcos/anaconda3/include/qt/QtCore/qsharedpointer_impl.h
 new
 -
 QtCore/qatomic.h
@@ -1016,7 +1044,7 @@ QtCore/qhash.h
 QtCore/qhashfunctions.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
+/Users/marcos/anaconda3/include/qt/QtCore/qstring.h
 QtCore/qchar.h
 -
 QtCore/qbytearray.h
@@ -1034,7 +1062,7 @@ stdarg.h
 QtCore/qstringbuilder.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h
+/Users/marcos/anaconda3/include/qt/QtCore/qstringbuilder.h
 QtCore/qstring.h
 -
 QtCore/qbytearray.h
@@ -1042,7 +1070,7 @@ QtCore/qbytearray.h
 string.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringlist.h
+/Users/marcos/anaconda3/include/qt/QtCore/qstringlist.h
 QtCore/qlist.h
 -
 QtCore/qalgorithms.h
@@ -1054,15 +1082,15 @@ QtCore/qstring.h
 QtCore/qstringmatcher.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringmatcher.h
+/Users/marcos/anaconda3/include/qt/QtCore/qstringmatcher.h
 QtCore/qstring.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qsysinfo.h
+/Users/marcos/anaconda3/include/qt/QtCore/qsysinfo.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qsystemdetection.h
+/Users/marcos/anaconda3/include/qt/QtCore/qsystemdetection.h
 QtCore/qglobal.h
 -
 TargetConditionals.h
@@ -1072,9 +1100,9 @@ Availability.h
 AvailabilityMacros.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qtcore-config.h
+/Users/marcos/anaconda3/include/qt/QtCore/qtcore-config.h
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h
+/Users/marcos/anaconda3/include/qt/QtCore/qtextstream.h
 QtCore/qiodevice.h
 -
 QtCore/qstring.h
@@ -1088,11 +1116,11 @@ QtCore/qscopedpointer.h
 stdio.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h
+/Users/marcos/anaconda3/include/qt/QtCore/qtypeinfo.h
 QtCore/qglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h
+/Users/marcos/anaconda3/include/qt/QtCore/qvariant.h
 QtCore/qatomic.h
 -
 QtCore/qbytearray.h
@@ -1114,7 +1142,7 @@ QtCore/qobject.h
 QtCore/qbytearraylist.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h
+/Users/marcos/anaconda3/include/qt/QtCore/qvarlengtharray.h
 QtCore/qcontainerfwd.h
 -
 QtCore/qglobal.h
@@ -1134,7 +1162,7 @@ initializer_list
 iterator
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h
+/Users/marcos/anaconda3/include/qt/QtCore/qvector.h
 QtCore/qalgorithms.h
 -
 QtCore/qiterator.h
@@ -1162,7 +1190,7 @@ algorithm
 QtCore/qpoint.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h
+/Users/marcos/anaconda3/include/qt/QtCore/qversiontagging.h
 QtCore/qglobal.h
 -
 

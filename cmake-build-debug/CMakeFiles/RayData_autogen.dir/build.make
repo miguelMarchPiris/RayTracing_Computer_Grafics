@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/107/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/107/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02
+CMAKE_SOURCE_DIR = /Users/marcos/CLionProjects/dataray-givd02
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug
 
 # Utility rule file for RayData_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/c
 include CMakeFiles/RayData_autogen.dir/progress.make
 
 CMakeFiles/RayData_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target RayData"
-	/snap/clion/107/bin/cmake/linux/bin/cmake -E cmake_autogen /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/AutogenInfo.cmake Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target RayData"
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_autogen /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/AutogenInfo.cmake Debug
 
 RayData_autogen: CMakeFiles/RayData_autogen
 RayData_autogen: CMakeFiles/RayData_autogen.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/RayData_autogen.dir/clean:
 .PHONY : CMakeFiles/RayData_autogen.dir/clean
 
 CMakeFiles/RayData_autogen.dir/depend:
-	cd /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02 /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02 /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/marcos/CLionProjects/dataray-givd02 /Users/marcos/CLionProjects/dataray-givd02 /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/RayData_autogen.dir/depend
 

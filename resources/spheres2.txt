@@ -1,7 +1,6 @@
-sphere, -5.0, 0.0, 0.0, 0.10
-sphere, 0.0, -5.0, 0.0, 0.10
-sphere, 0.0, 0.0, -5.0, 0.10
-sphere, 5.0, 0.0, 0.0, 0.10
-sphere, 0.0, 5.0, 0.0, 0.10
-sphere, 0.0, 0.0, 5.0, 0.10
-triangle,  0.0,  1.0,  0.0,  -0.5, ://resources/map.png
+sphere, 5, 0.0, 0.0, 0.75
+sphere, 0.0, 5, 0.0, 0.75
+sphere, -5, 0.0, 0.0, 0.75
+sphere, 0.0, -5, 0.0, 0.75
+sphere, 0.0, 0.0, -5, 0.75
+brObject,../resources/cube.obj,0.0,0.0,0.0,1.0

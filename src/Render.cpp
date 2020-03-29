@@ -1,7 +1,5 @@
 #include "Render.h"
 
-
-
 // Metode Render
 
 // Aquesta funcio transforma cada pixel a coordenades de mon i

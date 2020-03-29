@@ -2,8 +2,6 @@
 
 Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, RenderFactory::RENDER_TYPES rt)
 {
-
-
     // ETAPA 1: Coonstrucció de l'escena
     // Pot ser una escena virtual (no provinent de dades)
     // O pot ser una escena que prové de dades geolocalitzades (Visualization Mapping)
@@ -23,7 +21,6 @@ Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, Render
     scene->setMaterials(colorMap);
 
     // TODO Fase 1: Cal posar les dimensions de l'escena virtual usant setDimensions de la classe Scene
-
     float x_min, y_min, z_min;
     float x_max, y_max, z_max;
 

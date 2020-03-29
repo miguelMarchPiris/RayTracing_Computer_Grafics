@@ -15,6 +15,7 @@ class Scene: public Hitable
 {
 public:
     Scene();
+    Scene(vec3, vec3); //Nou constructor que permet donar una dimensio a l'escena virtual
     virtual ~Scene();
 
     // Funcio que calcula la interseccio del raig r amb l'escena. Guarda la informacio
@@ -30,7 +31,11 @@ public:
 
     void setMaterials(ColorMap *cm);
 
+    //Serveix per settejar els limits...
     void setDimensions(vec3 p1, vec3 p2);
+
+    //Per poder calcular els limits de l'escena virtual?
+    //[Insert method here]
 
     // dimensions de l'escena virtual
     vec3 pmin, pmax;

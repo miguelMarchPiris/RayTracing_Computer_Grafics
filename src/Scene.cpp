@@ -6,6 +6,11 @@ Scene::Scene()
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
 }
 
+Scene::Scene(vec3 _pmin, vec3 _pmax){
+    pmin.x = _pmin.x; pmin.y = _pmin.y; pmin.z = _pmin.z;
+    pmax.x = _pmax.x; pmin.y = _pmax.y; pmin.z = _pmax.z;
+}
+
 Scene::~Scene()
 {
 // TODO Fase 1: Quan s'incloguin nous objectes, cal retocar aquest destructor
@@ -16,8 +21,6 @@ Scene::~Scene()
         }
     }
 }
-
-
 
 /*
 ** TODO: FASE 1: Metode que testeja la interseccio contra tots els objectes de l'escena

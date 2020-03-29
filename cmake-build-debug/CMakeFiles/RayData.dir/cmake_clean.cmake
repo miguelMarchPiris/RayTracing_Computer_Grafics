@@ -24,6 +24,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/RayData.dir/src/ReadFile.cpp.o"
   "CMakeFiles/RayData.dir/src/Render.cpp.o"
   "CMakeFiles/RayData.dir/src/RenderFactory.cpp.o"
+  "CMakeFiles/RayData.dir/src/Rotate.cpp.o"
+  "CMakeFiles/RayData.dir/src/Scale.cpp.o"
   "CMakeFiles/RayData.dir/src/Scene.cpp.o"
   "CMakeFiles/RayData.dir/src/SceneFactory.cpp.o"
   "CMakeFiles/RayData.dir/src/SceneFactoryData.cpp.o"

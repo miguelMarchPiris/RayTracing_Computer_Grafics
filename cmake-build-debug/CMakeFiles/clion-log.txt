@@ -1,5 +1,5 @@
-/snap/clion/107/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02
-Linux
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/marcos/CLionProjects/dataray-givd02
+Darwin
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug
+-- Build files have been written to: /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug

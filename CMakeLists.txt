@@ -12,7 +12,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 # Add a compiler flag
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Ofast")
 
 # Make this a GUI application on Windows
 if(WIN32)
@@ -362,7 +362,7 @@ add_executable(RayData
         src/TG.cpp
         src/Texture.cpp
         src/Translate.cpp
-        ${Res_SRC} src/Triangle.cpp include/Triangle.h)
+        ${Res_SRC} src/Triangle.cpp include/Triangle.h src/Scale.cpp include/Scale.h src/Rotate.cpp include/Rotate.h)
 
 
 # Set the GL and GLUT libraries

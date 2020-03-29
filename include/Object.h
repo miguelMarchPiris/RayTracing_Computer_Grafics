@@ -8,7 +8,6 @@
 
 // Es la classe pare de tots els objectes que s'han de visualitzar.
 // Es fa una classe Objectes que hereda de Hitable i ha d'implementar el metode intersection
-
 class Object: public Hitable, public Animable {
   public:
     Object();
