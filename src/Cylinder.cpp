@@ -18,7 +18,7 @@ bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, Intersect
     rx=raig.dirVector().x;
     //ry=raig.dirVector().y;
     rz=raig.dirVector().z;
-
+Cilinder
     float [4] t_arr={HUGE_VALF,HUGE_VALF,HUGE_VALF,HUGE_VALF};
 
 
