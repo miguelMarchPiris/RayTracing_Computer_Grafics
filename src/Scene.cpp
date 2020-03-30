@@ -1,9 +1,11 @@
 #include "Scene.h"
+#include "glm/gtx/string_cast.hpp"
 
 Scene::Scene()
 {
     pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
 }
 
 Scene::~Scene()
@@ -62,6 +64,7 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 */
 vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
     vec3 color = vec3(0, 0, 0), ray2;
+    Ray rL;
 
     // Vectors pel model de Phong:
     // Del punt a la superficie de la llum - L
@@ -70,10 +73,10 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
     vec3 v;
     // Normal al punt - N
     vec3 n;
-    // Vector reflectit - R
+    // Vector H
     vec3 h;
 
-    float dist;
+    float dist, factorOmbra, epsilon = 0.01f;
 
     // Per algun motiu no normalitza be (dona valors negatius), per aixo s'afegeix el segon vector
     ray2 = normalize(ray.direction) + vec3(0, 0.5f, 0);
@@ -86,11 +89,11 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
         n = glm::normalize(info.normal);
 
         // Component ambient global
-        //color += globalAmbientLighting * info.mat_ptr->ambient;
+        color += globalAmbientLighting * info.mat_ptr->ambient;
         for(auto light:lights){
 
             l = glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t));
-            h = glm::normalize((l + v)/(length(l + v)));
+            h = (l + v)/(length(l + v));
 
             // Component difusa
             color += info.mat_ptr->diffuse * light->difuse * glm::max(dot(l, n), 0.0f);
@@ -104,6 +107,16 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
 
             // Component ambient
             color += light->ambient * info.mat_ptr->ambient;
+
+            // Càlcul de l'ombra
+            rL = Ray(ray.initialPoint() + ray.dirVector()*info.t + epsilon*glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)), glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)));
+            if(this->intersection(rL, 0, 100, info)){
+                factorOmbra = 0.0f;
+            }else{
+                factorOmbra = 1.0f;
+            }
+
+            color *= factorOmbra;
         }
     }else {
         color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);
@@ -121,14 +134,13 @@ void Scene::update(int nframe) {
 }
 
 void Scene::setMaterials(ColorMap *cm) {
-
     Material *m;
     // TODO: Fase 0
     // Cal canviar el codi per a afegir més materials.
     srand (static_cast <unsigned> (time(0)));
     for (auto object: this->objects)
     {
-        /* Per cada objecte afegim un material de manera random */
+        // Per cada objecte afegim un material de manera random
         object->setMaterial(new Lambertian(
                 vec3((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX))
                 );
@@ -143,11 +155,10 @@ void Scene::setMaterials(ColorMap *cm) {
         m = new Lambertian(cm->getColor(0));
     }
     for (auto o:objects)
-        if (o->getMaterial()== nullptr) o->setMaterial(m);
+        if (o->getMaterial() == nullptr) o->setMaterial(m);
 }
 
 void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmin = p1;
     pmax = p2;
 }
-

@@ -16,7 +16,15 @@ public:
     ~Material();
 
     virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const = 0;
+
+    // Ka
+    vec3 ambient;
+    // Kd
     vec3 diffuse;
+    // Ks
+    vec3 especular;
+    float alpha;
+    int shininess;
 
 protected:
     vec3 RandomInSphere() const;
