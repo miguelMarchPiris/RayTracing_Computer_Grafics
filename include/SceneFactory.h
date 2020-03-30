@@ -24,6 +24,7 @@ public:
 
 
     virtual Scene    *createScene(QString nomFitxer) = 0;
+    virtual Scene    *createScene() = 0;
     virtual ColorMap *createColorMap(ColorMapStatic::ColorMapType t) {return nullptr;};
     virtual Camera   *createCamera() = 0;
 

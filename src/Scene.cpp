@@ -1,9 +1,11 @@
 #include "Scene.h"
+#include "glm/gtx/string_cast.hpp"
 
 Scene::Scene()
 {
     pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
 }
 
 Scene::~Scene()
@@ -61,17 +63,64 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 **
 */
 vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
-    vec3 color;
-    vec3 ray2;
+    vec3 color = vec3(0, 0, 0), ray2;
+    Ray rL;
 
-    ray2 = normalize(ray.direction);
+    // Vectors pel model de Phong:
+    // Del punt a la superficie de la llum - L
+    vec3 l;
+    // Del punt a l'observador - V
+    vec3 v;
+    // Normal al punt - N
+    vec3 n;
+    // Vector H
+    vec3 h;
+
+    float dist, factorOmbra, epsilon = 0.01f;
+
+    // Per algun motiu no normalitza be (dona valors negatius), per aixo s'afegeix el segon vector
+    ray2 = normalize(ray.direction) + vec3(0, 0.5f, 0);
     // TODO: A canviar el càlcul del color en les diferents fases
     IntersectionInfo info;
 
-    if (this->intersection(ray, 0, 100, info))
-        color = info.mat_ptr->diffuse;
-    else
-        color = vec3(-0.5 * ray2.y + 0.75, -0.3 * ray2.y + 0.85, 1);
+    // Blinn-Phong
+    if (this->intersection(ray, 0, 100, info)) {
+        v = glm::normalize(ray.initialPoint() - (ray.initialPoint() + ray.dirVector()*info.t));
+        n = glm::normalize(info.normal);
+
+        // Component ambient global
+        color += globalAmbientLighting * info.mat_ptr->ambient;
+        for(auto light:lights){
+
+            l = glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t));
+            h = (l + v)/(length(l + v));
+
+            // Component difusa
+            color += info.mat_ptr->diffuse * light->difuse * glm::max(dot(l, n), 0.0f);
+
+            // Component especular
+            color += info.mat_ptr->especular * light->especular *  pow(glm::max(dot(h, n), 0.0f), info.mat_ptr->alpha*info.mat_ptr->shininess);
+
+            // Dividim per la distància
+            dist = glm::length(light->punt - (ray.initialPoint() + ray.dirVector()*info.t));
+            color /= (dist*dist*light->attenuation[0] + dist*light->attenuation[1] + light->attenuation[2]);
+
+            // Component ambient
+            color += light->ambient * info.mat_ptr->ambient;
+
+            // Càlcul de l'ombra
+            rL = Ray(ray.initialPoint() + ray.dirVector()*info.t + epsilon*glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)), glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)));
+            if(this->intersection(rL, 0, 100, info)){
+                factorOmbra = 0.0f;
+            }else{
+                factorOmbra = 1.0f;
+            }
+
+            color *= factorOmbra;
+        }
+    }else {
+        color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);
+    }
 
     return color;
 }
@@ -85,14 +134,13 @@ void Scene::update(int nframe) {
 }
 
 void Scene::setMaterials(ColorMap *cm) {
-
     Material *m;
     // TODO: Fase 0
     // Cal canviar el codi per a afegir més materials.
     srand (static_cast <unsigned> (time(0)));
     for (auto object: this->objects)
     {
-        /* Per cada objecte afegim un material de manera random */
+        // Per cada objecte afegim un material de manera random
         object->setMaterial(new Lambertian(
                 vec3((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX))
                 );
@@ -107,11 +155,10 @@ void Scene::setMaterials(ColorMap *cm) {
         m = new Lambertian(cm->getColor(0));
     }
     for (auto o:objects)
-        if (o->getMaterial()== nullptr) o->setMaterial(m);
+        if (o->getMaterial() == nullptr) o->setMaterial(m);
 }
 
 void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmin = p1;
     pmax = p2;
 }
-

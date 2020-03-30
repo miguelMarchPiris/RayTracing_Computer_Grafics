@@ -30,6 +30,21 @@ Scene *SceneFactoryData::createScene(QString filename) {
     return s;
 }
 
+Scene *SceneFactoryData::createScene(){
+    Scene *s = new Scene();
+    Sphere * sphere = new Sphere(vec3(0, 0, -1), 0.5, 1.0);
+    sphere->setMaterial(new Lambertian(vec3(0.5, 0.2, 0.7)));
+    Light *light = new Light(vec3(0, 1, 0));
+
+    //    Animation *anim = new Animation();
+    //    anim->transf = new Translate(vec3(0.2));
+    //    sphere->addAnimation(anim);
+
+    s->objects.push_back(sphere);
+    s->lights.push_back(light);
+    return s;
+}
+
 ColorMap *SceneFactoryData::createColorMap(ColorMapStatic::ColorMapType t) {
     ColorMap *cm = new ColorMapStatic(t);
     return cm;
