@@ -26,24 +26,36 @@ Scene *SceneFactoryVirtual::createScene() {
 }
 
 void SceneFactoryVirtual::OneSphere(Scene *s) {
-    Sphere * sphere = new Sphere(vec3(0, 0, -1), 0.5, 1.0);
-    sphere->setMaterial(new Lambertian(vec3(0.5, 0.2, 0.7)));
+    Sphere * sphere0 = new Sphere(vec3(0, 0, -1), 0.5, 1.0);
+    sphere0->setMaterial(new Lambertian(vec3(0.5, 0.5, 0.5)));
+    Sphere * sphere1 = new Sphere(vec3(0, -100.5, -1), 100, 1.0);
+    sphere1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
+    Sphere * sphere2 = new Sphere(vec3(2, 0, -1), 0.5, 1.0);
+    sphere2->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
+    Light *light = new Light(vec3(2, 8, 10));
 
-//    Animation *anim = new Animation();
-//    anim->transf = new Translate(vec3(0.2));
-//    sphere->addAnimation(anim);
+    sphere0->getMaterial()->especular = vec3(1, 1, 1);
+    sphere1->getMaterial()->especular = vec3(1, 1, 1);
+    sphere2->getMaterial()->especular = vec3(1, 1, 1);
 
-    s->objects.push_back(sphere);
+    // Animation *anim = new Animation();
+    // anim->transf = new Translate(vec3(0.2));
+    // sphere->addAnimation(anim);
+
+    s->objects.push_back(sphere0);
+    s->objects.push_back(sphere1);
+    s->objects.push_back(sphere2);
+    s->lights.push_back(light);
 
 }
 
 Camera *SceneFactoryVirtual::createCamera() {
     // creacio de la camera
-    vec3 lookfrom(-1.25, -10.5, -5);
+    vec3 lookfrom(13, 2, 3);
     vec3 lookat(0,0,0);
-    float dist_to_focus = 1.0;
-    float aperture = 0.9;
+    float dist_to_focus = length(lookfrom-lookat);
+    float aperture = 0.1;
     int pixelsX = 600;
     int pixelsY = 400;
-    return( new Camera(lookfrom, lookat, vec3(0,1,0), 90, pixelsX, pixelsY, aperture, dist_to_focus));
+    return( new Camera(lookfrom, lookat, vec3(0,1,0), 20, pixelsX, pixelsY, aperture, dist_to_focus));
 }
