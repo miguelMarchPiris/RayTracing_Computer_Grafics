@@ -829,6 +829,9 @@
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Controller.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Cylinder.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/DataReader.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -923,6 +926,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Controller.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Cylinder.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/DataReader.cpp">

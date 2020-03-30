@@ -14,6 +14,8 @@ public:
     virtual ~Cylinder(){}
     virtual bool intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const;
 
+    virtual void aplicaTG(TG *t);
+
 private:
     vec3 center;
     float radius;

@@ -309,6 +309,7 @@ add_executable(RayData
         include/ColorMap.h
         include/ColorMapStatic.h
         include/Controller.h
+        include/Cylinder.h
         include/DataReader.h
         include/Hitable.h
         include/Lambertian.h
@@ -339,6 +340,7 @@ add_executable(RayData
         src/Cara.cpp
         src/ColorMapStatic.cpp
         src/Controller.cpp
+        src/Cylinder.cpp
         src/DataReader.cpp
         src/Hitable.cpp
         src/Lambertian.cpp

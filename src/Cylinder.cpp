@@ -3,49 +3,43 @@
 //
 
 #include "Cylinder.h"
-Cylinder::Cylinder(vec3 center, float radius,float h,float data): Object(data){
+Cylinder::Cylinder(vec3 center, float radius, float h, float data): Object(data){
     this->center=center;
     this->radius=radius;
     this->height=h;
 }
 
-
 bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const{
     bool intersecciona=false;
-    float a,b,c;
-    float rx,rz,ry;
-    rx=raig.dirVector().x;
-    //ry=raig.dirVector().y;
-    rz=raig.dirVector().z;
+    float a, b, c;
 
-    a = rx*rx + rz*rz;
-    b = 2*(raig.initialPoint().x + raig.initialPoint().z);
-    c = pow(raig.initialPoint().x, 2) + pow(raig.initialPoint().z, 2);
-    float discriminante=4*a*c - b*b;
-    if(discriminante>=0){
-        float t1,t2;
-        t1=(-b+sqrtf(discriminante))/(2*a);
-        t2=(-b-sqrtf(discriminante))/(2*a);
-        if(t1<t_min || t1>t_max){
-            t1=HUGE_VALF;
-        }
-        if(t2<t_min && t2>t_max){
-            t2=HUGE_VALF;
-        }
-        //Si están dentro de los límites empezamos a meter la información.
-        if((t1<t_max || t2<t_max)){
-            t1=fmin(t1,t2);
+    a = pow(raig.dirVector().x, 2) + pow(raig.dirVector().z, 2);
+    b = 2*(raig.dirVector().x*raig.initialPoint().x + raig.dirVector().z*raig.initialPoint().z);
+    c = pow(raig.initialPoint().x, 2) + pow(raig.initialPoint().z, 2) - 1;
 
-            info.t = t1;
-            info.p = raig.pointAtParameter(info.t);
-            /*
-             * Calculamos la normal como si el punto de intersección estuviera a la altura de la misma
-             * base del cilindro.
-             */
-            //info.normal = (info.p - (center+vec3(0,info.p.y,0))) / radius;
-            info.normal = (vec3(info.p.x,center.y,info.p.z)-center)/radius;
-            info.mat_ptr = material;
-        }
+    if(2*a == 0)
+        return false;
+
+    float t1, t2;
+
+    t1 = -b + sqrt(pow(b, 2) - 4*a*c);
+    t2 = -b - sqrt(pow(b, 2) - 4*a*c);
+
+    if(t1 < t2){
+        intersecciona = true;
+        info.t = t1;
+        info.p = raig.pointAtParameter(info.t);
+        info.mat_ptr = material;
+        info.normal =
+    }else if(t2 < t1){
+        intersecciona = true;
+        info.t = t1;
+        info.p = raig.pointAtParameter(info.t);
+
     }
     return intersecciona;
+}
+
+void Cylinder::aplicaTG(TG *tg) {
+
 }
