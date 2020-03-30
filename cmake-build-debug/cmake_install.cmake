@@ -1,4 +1,4 @@
-# Install script for directory: /home/annapuig/CLionProjects/RayData
+# Install script for directory: /home/yuan/CLionProjects/dataray-givd02
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,7 +29,7 @@ endif()
 
 # Install shared libraries without execute permission?
 if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
+  set(CMAKE_INSTALL_SO_NO_EXE "0")
 endif()
 
 # Is this installation the result of a crosscompile?
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/annapuig/CLionProjects/RayData/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yuan/CLionProjects/dataray-givd02/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
