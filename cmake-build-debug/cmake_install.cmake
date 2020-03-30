@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02
+# Install script for directory: /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
