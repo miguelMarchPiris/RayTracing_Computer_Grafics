@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/107/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/107/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02
+CMAKE_SOURCE_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug
+CMAKE_BINARY_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/c
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/107/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/107/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -351,6 +351,33 @@ src/Controller.s: src/Controller.cpp.s
 src/Controller.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Controller.cpp.s
 .PHONY : src/Controller.cpp.s
+
+src/Cylinder.o: src/Cylinder.cpp.o
+
+.PHONY : src/Cylinder.o
+
+# target to build an object file
+src/Cylinder.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Cylinder.cpp.o
+.PHONY : src/Cylinder.cpp.o
+
+src/Cylinder.i: src/Cylinder.cpp.i
+
+.PHONY : src/Cylinder.i
+
+# target to preprocess a source file
+src/Cylinder.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Cylinder.cpp.i
+.PHONY : src/Cylinder.cpp.i
+
+src/Cylinder.s: src/Cylinder.cpp.s
+
+.PHONY : src/Cylinder.s
+
+# target to generate assembly for a file
+src/Cylinder.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Cylinder.cpp.s
+.PHONY : src/Cylinder.cpp.s
 
 src/DataReader.o: src/DataReader.cpp.o
 
@@ -757,60 +784,6 @@ src/RenderFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/RenderFactory.cpp.s
 .PHONY : src/RenderFactory.cpp.s
 
-src/Rotate.o: src/Rotate.cpp.o
-
-.PHONY : src/Rotate.o
-
-# target to build an object file
-src/Rotate.cpp.o:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.o
-.PHONY : src/Rotate.cpp.o
-
-src/Rotate.i: src/Rotate.cpp.i
-
-.PHONY : src/Rotate.i
-
-# target to preprocess a source file
-src/Rotate.cpp.i:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.i
-.PHONY : src/Rotate.cpp.i
-
-src/Rotate.s: src/Rotate.cpp.s
-
-.PHONY : src/Rotate.s
-
-# target to generate assembly for a file
-src/Rotate.cpp.s:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.s
-.PHONY : src/Rotate.cpp.s
-
-src/Scale.o: src/Scale.cpp.o
-
-.PHONY : src/Scale.o
-
-# target to build an object file
-src/Scale.cpp.o:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.o
-.PHONY : src/Scale.cpp.o
-
-src/Scale.i: src/Scale.cpp.i
-
-.PHONY : src/Scale.i
-
-# target to preprocess a source file
-src/Scale.cpp.i:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.i
-.PHONY : src/Scale.cpp.i
-
-src/Scale.s: src/Scale.cpp.s
-
-.PHONY : src/Scale.s
-
-# target to generate assembly for a file
-src/Scale.cpp.s:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.s
-.PHONY : src/Scale.cpp.s
-
 src/Scene.o: src/Scene.cpp.o
 
 .PHONY : src/Scene.o
@@ -1054,33 +1027,6 @@ src/Translate.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Translate.cpp.s
 .PHONY : src/Translate.cpp.s
 
-src/Triangle.o: src/Triangle.cpp.o
-
-.PHONY : src/Triangle.o
-
-# target to build an object file
-src/Triangle.cpp.o:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.o
-.PHONY : src/Triangle.cpp.o
-
-src/Triangle.i: src/Triangle.cpp.i
-
-.PHONY : src/Triangle.i
-
-# target to preprocess a source file
-src/Triangle.cpp.i:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.i
-.PHONY : src/Triangle.cpp.i
-
-src/Triangle.s: src/Triangle.cpp.s
-
-.PHONY : src/Triangle.s
-
-# target to generate assembly for a file
-src/Triangle.cpp.s:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.s
-.PHONY : src/Triangle.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1115,6 +1061,9 @@ help:
 	@echo "... src/Controller.o"
 	@echo "... src/Controller.i"
 	@echo "... src/Controller.s"
+	@echo "... src/Cylinder.o"
+	@echo "... src/Cylinder.i"
+	@echo "... src/Cylinder.s"
 	@echo "... src/DataReader.o"
 	@echo "... src/DataReader.i"
 	@echo "... src/DataReader.s"
@@ -1160,12 +1109,6 @@ help:
 	@echo "... src/RenderFactory.o"
 	@echo "... src/RenderFactory.i"
 	@echo "... src/RenderFactory.s"
-	@echo "... src/Rotate.o"
-	@echo "... src/Rotate.i"
-	@echo "... src/Rotate.s"
-	@echo "... src/Scale.o"
-	@echo "... src/Scale.i"
-	@echo "... src/Scale.s"
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
@@ -1193,9 +1136,6 @@ help:
 	@echo "... src/Translate.o"
 	@echo "... src/Translate.i"
 	@echo "... src/Translate.s"
-	@echo "... src/Triangle.o"
-	@echo "... src/Triangle.i"
-	@echo "... src/Triangle.s"
 .PHONY : help
 
 
