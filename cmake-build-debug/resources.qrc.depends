@@ -9,5 +9,6 @@
         <file>resources/data0.txt</file>
         <file>resources/dataBCN.txt</file>
         <file>resources/dataBCNZoom.txt</file>
+        <file>resources/spheres2.txt</file>
     </qresource>
 </RCC>
