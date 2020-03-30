@@ -107,7 +107,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
 
             // Component ambient
             color += light->ambient * info.mat_ptr->ambient;
-
+            /*
             // Càlcul de l'ombra
             rL = Ray(ray.initialPoint() + ray.dirVector()*info.t + epsilon*glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)), glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)));
             if(this->intersection(rL, 0, 100, info)){
@@ -117,6 +117,9 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
             }
 
             color *= factorOmbra;
+             */
+
+
         }
     }else {
         color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);

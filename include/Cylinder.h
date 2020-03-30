@@ -7,6 +7,8 @@
 
 
 #include "Object.h"
+#include "Animation.h"
+#include "Translate.h"
 
 class Cylinder : public Object {
 public:
@@ -15,7 +17,6 @@ public:
     virtual bool intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const;
 
     virtual void aplicaTG(TG *t);
-
 private:
     vec3 center;
     float radius;

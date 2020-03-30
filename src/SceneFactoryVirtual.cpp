@@ -2,7 +2,6 @@
 // Created by anna on 18/01/2020.
 //
 
-#include <include/Cylinder.h>
 #include "SceneFactoryVirtual.h"
 
 
@@ -27,25 +26,32 @@ Scene *SceneFactoryVirtual::createScene() {
 }
 
 void SceneFactoryVirtual::OneSphere(Scene *s) {
-    Cylinder * cil0 = new Cylinder(vec3(0, 0, 0), 0.5, 1, 1.0);
-    cil0->setMaterial(new Lambertian(vec3(0.5, 0.5, 0.5)));
+    Sphere * sphere0 = new Sphere(vec3(0, 0, -1), 0.5, 1.0);
+    sphere0->setMaterial(new Lambertian(vec3(0.5, 0.5, 0.5)));
+    Sphere * sphere1 = new Sphere(vec3(0, -100.5, -1), 100, 1.0);
+    sphere1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
+    Sphere * sphere2 = new Sphere(vec3(2, 0, -1), 0.5, 1.0);
+    sphere2->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
+    Light *light = new Light(vec3(2, 8, 10));
 
-    Light *light = new Light(vec3(0, 1, 5));
-
-    cil0->getMaterial()->especular = vec3(1, 1, 1);
+    sphere0->getMaterial()->especular = vec3(1, 1, 1);
+    sphere1->getMaterial()->especular = vec3(1, 1, 1);
+    sphere2->getMaterial()->especular = vec3(1, 1, 1);
 
     // Animation *anim = new Animation();
     // anim->transf = new Translate(vec3(0.2));
     // sphere->addAnimation(anim);
 
-    s->objects.push_back(cil0);
+    s->objects.push_back(sphere0);
+    s->objects.push_back(sphere1);
+    s->objects.push_back(sphere2);
     s->lights.push_back(light);
 
 }
 
 Camera *SceneFactoryVirtual::createCamera() {
     // creacio de la camera
-    vec3 lookfrom(0, 1, 20);
+    vec3 lookfrom(13, 2, 3);
     vec3 lookat(0,0,0);
     float dist_to_focus = length(lookfrom-lookat);
     float aperture = 0.1;
