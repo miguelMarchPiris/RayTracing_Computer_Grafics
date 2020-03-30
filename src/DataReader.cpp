@@ -84,6 +84,7 @@ void DataReader::propFound(QStringList fields) {
     //  gizmo de totes les propietats (SPHERE, BR_OBJ, CILINDRE...)
     cout<<fields[4].toStdString()<<endl;
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
+        std::cout << "Esfera" << std::endl;
         props.push_back(ObjectFactory::OBJECT_TYPES::SPHERE);
     }
 
