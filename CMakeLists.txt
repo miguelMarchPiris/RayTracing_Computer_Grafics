@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.10)
 project(RayData)
 
 message( ${CMAKE_SYSTEM_NAME} )
@@ -362,7 +362,7 @@ add_executable(RayData
         src/TG.cpp
         src/Texture.cpp
         src/Translate.cpp
-        ${Res_SRC})
+        ${Res_SRC} include/Light.h src/Light.cpp src/Cylinder.cpp include/Cylinder.h)
 
 
 # Set the GL and GLUT libraries

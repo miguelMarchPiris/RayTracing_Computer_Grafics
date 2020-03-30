@@ -352,6 +352,33 @@ src/Controller.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Controller.cpp.s
 .PHONY : src/Controller.cpp.s
 
+src/Cylinder.o: src/Cylinder.cpp.o
+
+.PHONY : src/Cylinder.o
+
+# target to build an object file
+src/Cylinder.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Cylinder.cpp.o
+.PHONY : src/Cylinder.cpp.o
+
+src/Cylinder.i: src/Cylinder.cpp.i
+
+.PHONY : src/Cylinder.i
+
+# target to preprocess a source file
+src/Cylinder.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Cylinder.cpp.i
+.PHONY : src/Cylinder.cpp.i
+
+src/Cylinder.s: src/Cylinder.cpp.s
+
+.PHONY : src/Cylinder.s
+
+# target to generate assembly for a file
+src/Cylinder.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Cylinder.cpp.s
+.PHONY : src/Cylinder.cpp.s
+
 src/DataReader.o: src/DataReader.cpp.o
 
 .PHONY : src/DataReader.o
@@ -432,6 +459,33 @@ src/Lambertian.s: src/Lambertian.cpp.s
 src/Lambertian.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Lambertian.cpp.s
 .PHONY : src/Lambertian.cpp.s
+
+src/Light.o: src/Light.cpp.o
+
+.PHONY : src/Light.o
+
+# target to build an object file
+src/Light.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Light.cpp.o
+.PHONY : src/Light.cpp.o
+
+src/Light.i: src/Light.cpp.i
+
+.PHONY : src/Light.i
+
+# target to preprocess a source file
+src/Light.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Light.cpp.i
+.PHONY : src/Light.cpp.i
+
+src/Light.s: src/Light.cpp.s
+
+.PHONY : src/Light.s
+
+# target to generate assembly for a file
+src/Light.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Light.cpp.s
+.PHONY : src/Light.cpp.s
 
 src/Main.o: src/Main.cpp.o
 
@@ -1007,6 +1061,9 @@ help:
 	@echo "... src/Controller.o"
 	@echo "... src/Controller.i"
 	@echo "... src/Controller.s"
+	@echo "... src/Cylinder.o"
+	@echo "... src/Cylinder.i"
+	@echo "... src/Cylinder.s"
 	@echo "... src/DataReader.o"
 	@echo "... src/DataReader.i"
 	@echo "... src/DataReader.s"
@@ -1016,6 +1073,9 @@ help:
 	@echo "... src/Lambertian.o"
 	@echo "... src/Lambertian.i"
 	@echo "... src/Lambertian.s"
+	@echo "... src/Light.o"
+	@echo "... src/Light.i"
+	@echo "... src/Light.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"

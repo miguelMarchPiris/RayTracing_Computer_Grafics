@@ -829,6 +829,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Controller.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Cylinder.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/DataReader.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -836,6 +839,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Lambertian.h">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Light.h">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Main.h">
@@ -923,6 +929,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Controller.cpp">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Cylinder.cpp">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/DataReader.cpp">
 			<Option target="RayData"/>
 		</Unit>
@@ -930,6 +939,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Lambertian.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Light.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Main.cpp">

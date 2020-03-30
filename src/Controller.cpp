@@ -11,7 +11,7 @@ Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, Render
     // TODO Fase 2: crear les llums i pasar-les a l'escena
     SceneFactory *scFac = createFactory(s);
     Scene *scene;
-    scene = scFac->createScene(fileName);
+    scene = scFac->createScene();
 
     Camera *camera;
     camera = scFac->createCamera();
@@ -27,10 +27,10 @@ Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, Render
 
     // ETAPA 2: Inicialitzacio del Rendering
     // usa un Factory Template per a construir el tipus de render
-     render = RenderFactory::getInstance()->getRender(rt);
-     render->setScene(scene);
-     render->setCamera(camera);
-
+    render = RenderFactory::getInstance()->getRender(rt);
+    render->setScene(scene);
+    render->setCamera(camera);
+    render->numSamples = 10;
 }
 
 void Controller::start(int argc, char **argv) {

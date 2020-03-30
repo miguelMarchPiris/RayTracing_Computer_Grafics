@@ -10,6 +10,7 @@
 #include "BoundaryObject.h"
 #include "Lambertian.h"
 #include "ColorMap.h"
+#include "Light.h"
 
 class Scene: public Hitable
 {
@@ -33,13 +34,13 @@ public:
     void setDimensions(vec3 p1, vec3 p2);
 
     // dimensions de l'escena virtual
-    vec3 pmin, pmax;
+    vec3 pmin, pmax, globalAmbientLighting;
 
     // Vector d'objectes continguts a l'escena
     std::vector<Object*> objects;
 
     // TODO FASE 2: Afegir llums a l'escena
-
+    std::vector<Light*> lights;
 };
 
 #endif // SCENE_H

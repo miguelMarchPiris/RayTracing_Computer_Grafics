@@ -32,6 +32,8 @@ public:
     virtual void renderingScene();
 
     void cleanup();
+
+    int numSamples;
 };
 
 
