@@ -27,7 +27,7 @@ Scene *SceneFactoryVirtual::createScene() {
 }
 
 void SceneFactoryVirtual::OneSphere(Scene *s) {
-    Sphere * sphere0 = new Sphere(vec3(0, 1, -1), 0.5, 1.0);
+    Sphere * sphere0 = new Sphere(vec3(3, 1, -1), 0.5, 1.0);
     sphere0->setMaterial(new Lambertian(vec3(0.5, 0.5, 0.5)));
     Sphere * sphere1 = new Sphere(vec3(0, -100.5, -1), 100, 1.0);
     sphere1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
@@ -35,7 +35,7 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
     sphere2->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
 
     //Cylinder
-    Cylinder *cil1 = new Cylinder(vec3(2, 0, -1), 1, 1, 1);
+    Cylinder *cil1 = new Cylinder(vec3(-2, 0, -4), 1, 2, 1);
     cil1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
 
     Light *light = new Light(vec3(2, 8, 10));
@@ -54,10 +54,10 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
     // anim->transf = new Translate(vec3(0.2));
     // sphere->addAnimation(anim);
 
-    s->objects.push_back(sphere0);
-    s->objects.push_back(sphere1);
-    s->objects.push_back(sphere2);
-    s->objects.push_back(cube);
+    //s->objects.push_back(sphere0);
+    //s->objects.push_back(sphere1);
+    //s->objects.push_back(sphere2);
+    //s->objects.push_back(cube);
 
     s->objects.push_back(cil1);
 
@@ -67,7 +67,7 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
 
 Camera *SceneFactoryVirtual::createCamera() {
     // creacio de la camera
-    vec3 lookfrom(13, 2, 3);
+    vec3 lookfrom(0, 4, 16);
     vec3 lookat(0,0,0);
     float dist_to_focus = length(lookfrom-lookat);
     float aperture = 0.1;
