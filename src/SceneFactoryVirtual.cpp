@@ -35,7 +35,7 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
     sphere2->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
 
     //Cylinder
-    Cylinder *cil1 = new Cylinder(vec3(0, 1, -1), 1, 10, 1);
+    Cylinder *cil1 = new Cylinder(vec3(2, 0, -1), 1, 1, 1);
     cil1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
 
     Light *light = new Light(vec3(2, 8, 10));

@@ -1027,6 +1027,33 @@ src/Translate.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Translate.cpp.s
 .PHONY : src/Translate.cpp.s
 
+src/Triangle.o: src/Triangle.cpp.o
+
+.PHONY : src/Triangle.o
+
+# target to build an object file
+src/Triangle.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.o
+.PHONY : src/Triangle.cpp.o
+
+src/Triangle.i: src/Triangle.cpp.i
+
+.PHONY : src/Triangle.i
+
+# target to preprocess a source file
+src/Triangle.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.i
+.PHONY : src/Triangle.cpp.i
+
+src/Triangle.s: src/Triangle.cpp.s
+
+.PHONY : src/Triangle.s
+
+# target to generate assembly for a file
+src/Triangle.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.s
+.PHONY : src/Triangle.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1136,6 +1163,9 @@ help:
 	@echo "... src/Translate.o"
 	@echo "... src/Translate.i"
 	@echo "... src/Translate.s"
+	@echo "... src/Triangle.o"
+	@echo "... src/Triangle.i"
+	@echo "... src/Triangle.s"
 .PHONY : help
 
 

@@ -1,5 +1,6 @@
 #include <include/Scale.h>
 #include "BoundaryObject.h"
+#include "Triangle.h"
 
 BoundaryObject::BoundaryObject(string s, float data) : Object(data) {
     readObj(s);

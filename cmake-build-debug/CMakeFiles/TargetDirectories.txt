@@ -1,4 +1,4 @@
-/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir
-/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir
+/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir
+/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir

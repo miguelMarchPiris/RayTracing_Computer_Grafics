@@ -34,30 +34,46 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/107/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/107/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02
+CMAKE_SOURCE_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug
+CMAKE_BINARY_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug
 
 # Utility rule file for RayData_autogen.
 
 # Include the progress variables for this target.
 include CMakeFiles/RayData_autogen.dir/progress.make
 
-CMakeFiles/RayData_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target RayData"
-	/snap/clion/107/bin/cmake/linux/bin/cmake -E cmake_autogen /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/AutogenInfo.cmake Debug
+CMakeFiles/RayData_autogen: qrc_resources.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target RayData"
+	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_autogen /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/AutogenInfo.cmake Debug
+
+qrc_resources.cpp: ../resources/earth1.png
+qrc_resources.cpp: ../resources/cube.obj
+qrc_resources.cpp: ../resources/teapot2.obj
+qrc_resources.cpp: ../resources/europa.png
+qrc_resources.cpp: ../resources/map.png
+qrc_resources.cpp: ../resources/mapZoom.png
+qrc_resources.cpp: ../resources/spheres.txt
+qrc_resources.cpp: ../resources/data0.txt
+qrc_resources.cpp: ../resources/dataBCN.txt
+qrc_resources.cpp: ../resources/dataBCNZoom.txt
+qrc_resources.cpp: ../resources/spheres2.txt
+qrc_resources.cpp: ../resources.qrc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating qrc_resources.cpp"
+	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc --name resources --output /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/qrc_resources.cpp /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/resources.qrc
 
 RayData_autogen: CMakeFiles/RayData_autogen
+RayData_autogen: qrc_resources.cpp
 RayData_autogen: CMakeFiles/RayData_autogen.dir/build.make
 
 .PHONY : RayData_autogen
@@ -72,6 +88,6 @@ CMakeFiles/RayData_autogen.dir/clean:
 .PHONY : CMakeFiles/RayData_autogen.dir/clean
 
 CMakeFiles/RayData_autogen.dir/depend:
-	cd /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02 /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02 /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug /home/marcos/Escritorio/UB/Semestre2/GiVD/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02 /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02 /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/RayData_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/RayData_autogen.dir/depend
 
