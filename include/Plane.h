@@ -17,7 +17,8 @@ public:
     virtual bool intersection(const Ray &r, float t_min, float t_max, IntersectionInfo &info) const;
     virtual void aplicaTG(TG *t);
 
-private:
+    virtual vec3 getPoint();
+
     vec3 normal;
     vec3 point;
 };

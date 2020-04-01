@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "glm/gtx/string_cast.hpp"
+#include "MaterialTextura.h"
 
 Scene::Scene()
 {
@@ -8,15 +9,57 @@ Scene::Scene()
     globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
 }
 
+// TODO cal modificar aquest metode en el moment que afegim mes materials (a part del Lambertian)
+//  o be quan afegim mes figures en el cas de que calgues
 Scene::~Scene()
 {
 // TODO Fase 1: Quan s'incloguin nous objectes, cal retocar aquest destructor
+
+    //Cal alliberar memoria reservada pels objectes, els seus respectius materials i...
     for(unsigned int i = 0; i < objects.size(); ++i){
         if(objects[i]){
-            if (dynamic_cast<Sphere*>(objects[i]))
-                    delete (Sphere *)(objects[i]);
+            if (dynamic_cast<Sphere*>(objects[i])){
+                if (objects[i]->getMaterial())
+                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
+                        delete (Lambertian *)(objects[i]->getMaterial());
+                delete (Sphere *)(objects[i]);
+            }
+            if (dynamic_cast<Plane*>(objects[i])){
+                if (objects[i]->getMaterial())
+                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
+                        delete (Lambertian *)(objects[i]->getMaterial());
+                delete (Plane *)(objects[i]);
+            }
+            if (dynamic_cast<Triangle*>(objects[i])){
+                if (objects[i]->getMaterial())
+                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
+                        delete (Lambertian *)(objects[i]->getMaterial());
+                delete (Triangle *)(objects[i]);
+            }
+            if (dynamic_cast<BoundaryObject*>(objects[i])){
+                if (objects[i]->getMaterial())
+                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
+                        delete (Lambertian *)(objects[i]->getMaterial());
+                delete (BoundaryObject *)(objects[i]);
+            }
+            if (dynamic_cast<FittedPlane*>(objects[i])){
+                if (objects[i]->getMaterial())
+                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
+                        delete (Lambertian *)(objects[i]->getMaterial());
+                delete (FittedPlane *)(objects[i]);
+            }
+            /* descomentar cuando esten los cilindros listos
+            if (dynamic_cast<Cylinder*>(objects[i])){
+                if (objects[i]->getMaterial())
+                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
+                        delete (Lambertian *)(objects[i]->getMaterial());
+                delete (Cylinder *)(objects[i]);
+            }*/
         }
     }
+
+    //per les llums
+    for(unsigned int i = 0; i < lights.size(); i++) delete lights[i];
 }
 
 
@@ -31,27 +74,20 @@ Scene::~Scene()
 */
 bool Scene::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const
 {
-    /* IntersectionInfo temporal per a cada objecte */
+    // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig,
+    // pero no en aquesta funcio.
+    //Considerem que no hem trobat col*lisionat amb ningun objecte
+    //Hem de crear un nou Hitinfo per poder actualitzar si hem trobat un objecte més próxim.
     IntersectionInfo info_temp;
     info.t = t_max;
 
     for(auto object : objects)
-    {
         if (object->intersection(raig, t_min, t_max, info_temp))
-        {
             if (info_temp.t < info.t)
-            {
                 /* Si arribem a un minim, ho copiem al intersection info del raig */
                 info = info_temp;
-            }
-        }
-    }
+
     return info.t < t_max;
-    // TODO FASE 0 i FASE 1: Heu de codificar la vostra solucio per aquest metode substituint el 'return true'
-    // Una possible solucio es cridar el mètode intersection per a tots els objectes i quedar-se amb la interseccio
-    // mes propera a l'observador, en el cas que n'hi hagi més d'una.
-    // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el IntersectionInfo del raig,
-    // pero no en aquesta funcio.
 }
 
 
@@ -62,7 +98,7 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 ** TODO: Fase 2 per a tractar reflexions i transparències
 **
 */
-vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
+vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
     vec3 color = vec3(0, 0, 0), ray2;
     Ray rL;
 
@@ -80,6 +116,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
 
     // Per algun motiu no normalitza be (dona valors negatius), per aixo s'afegeix el segon vector
     ray2 = normalize(ray.direction) + vec3(0, 0.5f, 0);
+
     // TODO: A canviar el càlcul del color en les diferents fases
     IntersectionInfo info;
 
@@ -96,7 +133,12 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
             h = (l + v)/(length(l + v));
 
             // Component difusa
-            color += info.mat_ptr->diffuse * light->difuse * glm::max(dot(l, n), 0.0f);
+            /////////// FASE 3 /////////////
+            vec2 uv = getUV(info.p); //debemos obtener el punto (u,v) a traves del punto con el que se intersecta
+
+            //en el caso de que el material sea MaterialTextura obtendremos los textels
+            color += info.mat_ptr->getDiffuse(uv) * light->difuse * glm::max(dot(l, n), 0.0f);
+            ////////////////////////////////
 
             // Component especular
             color += info.mat_ptr->especular * light->especular *  pow(glm::max(dot(h, n), 0.0f), info.mat_ptr->alpha*info.mat_ptr->shininess);
@@ -115,7 +157,6 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth ) {
             }else{
                 factorOmbra = 1.0f;
             }
-
             color *= factorOmbra;
         }
     }else {
@@ -161,4 +202,13 @@ void Scene::setMaterials(ColorMap *cm) {
 void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmin = p1;
     pmax = p2;
+}
+
+
+vec2 Scene::getUV(vec3 point){
+    //Aplicar Operació (extreta de Parcial Transpas)
+    //xUV = xDades * ( xmaxUV - xminUV) /(xmax - xmin) - xmin * ( xmaxUV - xminUV) /(xmax - xmin) + xminUV
+    float u = point.x /(pmax.x - pmin.x) - (pmin.x) / (pmax.x - pmin.x);
+    float v = point.z /(pmax.z - pmin.z) - (pmin.z) / (pmax.z - pmin.z);
+    return vec2(u,v);
 }

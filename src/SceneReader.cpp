@@ -2,8 +2,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <iostream>
-#include <sstream>
 #include <include/ObjectFactory.h>
+#include "MaterialTextura.h"
 
 SceneReader::SceneReader(Scene *s) {
     scene = s;
@@ -76,6 +76,7 @@ void SceneReader::baseFound(QStringList fields) {
         o = ObjectFactory::getInstance()->createObject(fields[2].toDouble(), fields[3].toDouble(), fields[4].toDouble(),
                                                        fields[5].toDouble(), 1.0f, ObjectFactory::OBJECT_TYPES::PLANE);
 
+
         scene->objects.push_back(o);
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
     } else if (QString::compare("triangle", fields[1], Qt::CaseInsensitive) == 0 ||
@@ -84,7 +85,22 @@ void SceneReader::baseFound(QStringList fields) {
                                                                  fields[4].toDouble(), fields[5].toDouble(),
                                                                  fields[6].toDouble(),
                                                                  ObjectFactory::OBJECT_TYPES::TRIANGLE);
+
         scene->objects.push_back(tri);
+    } else if (QString::compare("fitted", fields[1], Qt::CaseInsensitive) == 0 ||
+               QString::compare(" fitted", fields[1], Qt::CaseInsensitive) == 0){
+
+        // xmin xmax zmin zmax
+        double x_min = fields[2].toDouble();
+        double x_max = fields[4].toDouble();
+        double z_min = fields[3].toDouble();
+        double z_max = fields[5].toDouble();
+        double aux = fields[6].toDouble();
+
+        Object *o = ObjectFactory::getInstance()->createObject(x_min, x_max, z_min, z_max, aux, ObjectFactory::OBJECT_TYPES::FITTED_PLANE);
+        o->setMaterial(new MaterialTextura());
+        scene->objects.push_back(o);
+
     }
     // TODO: Fase 3: Si cal instanciar una esfera com objecte base i no un pla, cal afegir aqui un switch
 }

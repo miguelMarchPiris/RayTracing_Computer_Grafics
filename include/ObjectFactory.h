@@ -6,6 +6,7 @@
 #include "Plane.h"
 #include "Triangle.h"
 #include "BoundaryObject.h"
+#include "FittedPlane.h"
 
 class ObjectFactory
 {
@@ -18,7 +19,8 @@ public:
         PLANE,
         TRIANGLE,
         BROBJECT,
-        CYLINDER
+        CYLINDER,
+        FITTED_PLANE
     } OBJECT_TYPES;
 
     static ObjectFactory *getInstance() {

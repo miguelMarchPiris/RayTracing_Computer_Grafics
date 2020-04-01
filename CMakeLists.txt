@@ -362,7 +362,7 @@ add_executable(RayData
         src/TG.cpp
         src/Texture.cpp
         src/Translate.cpp
-        ${Res_SRC} include/Light.h src/Light.cpp src/Cylinder.cpp include/Cylinder.h include/Triangle.h src/Triangle.cpp)
+        ${Res_SRC} include/Light.h src/Light.cpp src/Scale.cpp include/Scale.h src/Rotate.cpp include/Rotate.h src/Triangle.cpp include/Triangle.h src/MaterialTextura.cpp include/MaterialTextura.h src/FittedPlane.cpp include/FittedPlane.h src/Cylinder.cpp include/Cylinder.h)
 
 
 # Set the GL and GLUT libraries

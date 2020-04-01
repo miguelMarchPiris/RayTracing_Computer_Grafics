@@ -11,6 +11,8 @@
 #include "Lambertian.h"
 #include "ColorMap.h"
 #include "Light.h"
+#include "Cylinder.h"
+#include "FittedPlane.h"
 
 class Scene: public Hitable
 {
@@ -41,6 +43,11 @@ public:
 
     // TODO FASE 2: Afegir llums a l'escena
     std::vector<Light*> lights;
+
+    //Terra de l'escena
+    FittedPlane *ground;
+
+    vec2 getUV(vec3);
 };
 
 #endif // SCENE_H

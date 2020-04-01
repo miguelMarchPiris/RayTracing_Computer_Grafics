@@ -27,12 +27,15 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             o = new Plane(vec3(x, y, z), aux, v);
             break;
         case TRIANGLE:
-            o = new Triangle(vec3(x, y, z), aux, v);
+            //o = new Triangle(vec3(x, y, z), aux, v);
             o = new Triangle(vec3(x,0,0),vec3(0,y,0),vec3(0,0,z), aux);
             break;
             //case CYLINDER:
             //  cout<< "Cilindro creado"<<endl;
             //break;
+        case FITTED_PLANE:
+            o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), -1);
+            break;
         default:
             break;
     }

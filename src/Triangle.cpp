@@ -97,6 +97,7 @@ void Triangle::aplicaTG(TG *t) {
     }
 
     if (dynamic_cast<Scale *>(t)) {
+        //coordenadas baricentricas
         vec3 centroid(((v1.x + v2.x + v3.x)/3), ((v1.y + v2.y + v3.y)/3), ((v1.z + v2.z + v3.z)/3));
         Translate *centre = new Translate(-centroid);
 

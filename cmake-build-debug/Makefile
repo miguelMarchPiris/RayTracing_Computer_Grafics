@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02
+CMAKE_SOURCE_DIR = /Users/marcos/CLionProjects/dataray-givd02
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -406,6 +406,33 @@ src/DataReader.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/DataReader.cpp.s
 .PHONY : src/DataReader.cpp.s
 
+src/FittedPlane.o: src/FittedPlane.cpp.o
+
+.PHONY : src/FittedPlane.o
+
+# target to build an object file
+src/FittedPlane.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/FittedPlane.cpp.o
+.PHONY : src/FittedPlane.cpp.o
+
+src/FittedPlane.i: src/FittedPlane.cpp.i
+
+.PHONY : src/FittedPlane.i
+
+# target to preprocess a source file
+src/FittedPlane.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/FittedPlane.cpp.i
+.PHONY : src/FittedPlane.cpp.i
+
+src/FittedPlane.s: src/FittedPlane.cpp.s
+
+.PHONY : src/FittedPlane.s
+
+# target to generate assembly for a file
+src/FittedPlane.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/FittedPlane.cpp.s
+.PHONY : src/FittedPlane.cpp.s
+
 src/Hitable.o: src/Hitable.cpp.o
 
 .PHONY : src/Hitable.o
@@ -540,6 +567,33 @@ src/Material.s: src/Material.cpp.s
 src/Material.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Material.cpp.s
 .PHONY : src/Material.cpp.s
+
+src/MaterialTextura.o: src/MaterialTextura.cpp.o
+
+.PHONY : src/MaterialTextura.o
+
+# target to build an object file
+src/MaterialTextura.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.o
+.PHONY : src/MaterialTextura.cpp.o
+
+src/MaterialTextura.i: src/MaterialTextura.cpp.i
+
+.PHONY : src/MaterialTextura.i
+
+# target to preprocess a source file
+src/MaterialTextura.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.i
+.PHONY : src/MaterialTextura.cpp.i
+
+src/MaterialTextura.s: src/MaterialTextura.cpp.s
+
+.PHONY : src/MaterialTextura.s
+
+# target to generate assembly for a file
+src/MaterialTextura.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.s
+.PHONY : src/MaterialTextura.cpp.s
 
 src/Object.o: src/Object.cpp.o
 
@@ -783,6 +837,60 @@ src/RenderFactory.s: src/RenderFactory.cpp.s
 src/RenderFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/RenderFactory.cpp.s
 .PHONY : src/RenderFactory.cpp.s
+
+src/Rotate.o: src/Rotate.cpp.o
+
+.PHONY : src/Rotate.o
+
+# target to build an object file
+src/Rotate.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.o
+.PHONY : src/Rotate.cpp.o
+
+src/Rotate.i: src/Rotate.cpp.i
+
+.PHONY : src/Rotate.i
+
+# target to preprocess a source file
+src/Rotate.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.i
+.PHONY : src/Rotate.cpp.i
+
+src/Rotate.s: src/Rotate.cpp.s
+
+.PHONY : src/Rotate.s
+
+# target to generate assembly for a file
+src/Rotate.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.s
+.PHONY : src/Rotate.cpp.s
+
+src/Scale.o: src/Scale.cpp.o
+
+.PHONY : src/Scale.o
+
+# target to build an object file
+src/Scale.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.o
+.PHONY : src/Scale.cpp.o
+
+src/Scale.i: src/Scale.cpp.i
+
+.PHONY : src/Scale.i
+
+# target to preprocess a source file
+src/Scale.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.i
+.PHONY : src/Scale.cpp.i
+
+src/Scale.s: src/Scale.cpp.s
+
+.PHONY : src/Scale.s
+
+# target to generate assembly for a file
+src/Scale.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.s
+.PHONY : src/Scale.cpp.s
 
 src/Scene.o: src/Scene.cpp.o
 
@@ -1061,8 +1169,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... RayData"
 	@echo "... edit_cache"
+	@echo "... RayData"
 	@echo "... RayData_autogen"
 	@echo "... RayData_autogen/mocs_compilation.o"
 	@echo "... RayData_autogen/mocs_compilation.i"
@@ -1094,6 +1202,9 @@ help:
 	@echo "... src/DataReader.o"
 	@echo "... src/DataReader.i"
 	@echo "... src/DataReader.s"
+	@echo "... src/FittedPlane.o"
+	@echo "... src/FittedPlane.i"
+	@echo "... src/FittedPlane.s"
 	@echo "... src/Hitable.o"
 	@echo "... src/Hitable.i"
 	@echo "... src/Hitable.s"
@@ -1109,6 +1220,9 @@ help:
 	@echo "... src/Material.o"
 	@echo "... src/Material.i"
 	@echo "... src/Material.s"
+	@echo "... src/MaterialTextura.o"
+	@echo "... src/MaterialTextura.i"
+	@echo "... src/MaterialTextura.s"
 	@echo "... src/Object.o"
 	@echo "... src/Object.i"
 	@echo "... src/Object.s"
@@ -1136,6 +1250,12 @@ help:
 	@echo "... src/RenderFactory.o"
 	@echo "... src/RenderFactory.i"
 	@echo "... src/RenderFactory.s"
+	@echo "... src/Rotate.o"
+	@echo "... src/Rotate.i"
+	@echo "... src/Rotate.s"
+	@echo "... src/Scale.o"
+	@echo "... src/Scale.i"
+	@echo "... src/Scale.s"
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"

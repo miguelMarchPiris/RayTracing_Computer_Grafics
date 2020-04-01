@@ -29,16 +29,16 @@ Scene *SceneFactoryVirtual::createScene() {
 void SceneFactoryVirtual::OneSphere(Scene *s) {
     Sphere * sphere0 = new Sphere(vec3(3, 1, -1), 0.5, 1.0);
     sphere0->setMaterial(new Lambertian(vec3(0.5, 0.5, 0.5)));
-    Sphere * sphere1 = new Sphere(vec3(0, -100., -1), 100, 1.0);
+    Sphere * sphere1 = new Sphere(vec3(0, -100.5, -1), 100, 1.0);
     sphere1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
     Sphere * sphere2 = new Sphere(vec3(2, 0, -1), 0.5, 1.0);
     sphere2->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
 
     //Cylinder
-    Cylinder *cil1 = new Cylinder(vec3(0, 0, 0), 1, 2, 1);
+    Cylinder *cil1 = new Cylinder(vec3(-2, 0, -4), 1, 2, 1);
     cil1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
 
-    Light *light = new Light(vec3(0, 15, -15));
+    Light *light = new Light(vec3(2, 8, 10));
 
     BoundaryObject * cube = new BoundaryObject("../resources/cube.obj", -1);
     cube->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
@@ -55,7 +55,7 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
     // sphere->addAnimation(anim);
 
     //s->objects.push_back(sphere0);
-    s->objects.push_back(sphere1);
+    //s->objects.push_back(sphere1);
     //s->objects.push_back(sphere2);
     //s->objects.push_back(cube);
 
@@ -67,10 +67,13 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
 
 Camera *SceneFactoryVirtual::createCamera() {
     // creacio de la camera
-    vec3 lookfrom(0, 15, 15);
-    vec3 lookat(0,2,0);
+    vec3 lookfrom(0, 7, -15);
+    vec3 lookat(0,0,0);
+    //vec3 lookfrom(13,10,-10);
+    //vec3 lookat(0,0,0);
     float dist_to_focus = length(lookfrom-lookat);
-    float aperture = 0.21;
+    float aperture = 0.1;
+    //float aperture = 30;
     int pixelsX = 600;
     int pixelsY = 400;
     return( new Camera(lookfrom, lookat, vec3(0,1,0), 20, pixelsX, pixelsY, aperture, dist_to_focus));
