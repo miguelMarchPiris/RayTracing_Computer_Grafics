@@ -18,13 +18,13 @@ bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, Intersect
     //ry=raig.dirVector().y;
     rz=raig.dirVector().z;
 
-    float t_arr[4]={HUGE_VALF,HUGE_VALF,HUGE_VALF,HUGE_VALF};
+    float t[4]={HUGE_VALF, HUGE_VALF, HUGE_VALF, HUGE_VALF};
 
 
     //Colision con la superficie curva.
     jx=raig.initialPoint().x - center.x;
     jz=raig.initialPoint().z - center.z;
-
+    //  t[]<t_min || t[]> t_max ||
     a = rx*rx + rz*rz;
     b = 2*(jx*raig.dirVector().x + jz*raig.dirVector().z);
     c = pow(jx, 2) + pow(jz, 2) - pow(radius,2);
@@ -33,43 +33,44 @@ bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, Intersect
     if(discriminante>=0){
         float aux;
         //Sacamos las dos soluciones reales y comprobamos que estén dentro de las alturas del cilindo
-        t_arr[0]=(-b+sqrtf(discriminante))/(2*a);
-        aux=raig.pointAtParameter(t_arr[0]).y;
-        if( (center.y + height) < aux || aux  < center.y){
-            t_arr[0]=HUGE_VALF;
+        t[0]= (-b + sqrtf(discriminante)) / (2 * a);
+        aux=raig.pointAtParameter(t[0]).y;
+        if( t[0]<t_min || t[0]> t_max || (center.y + height) < aux || aux  < center.y ){
+            t[0]=HUGE_VALF;
         }
-        t_arr[1]=(-b-sqrtf(discriminante))/(2*a);
-        aux=raig.pointAtParameter(t_arr[1]).y;
-        if( (center.y + height) < aux || aux < center.y){
-            t_arr[1]=HUGE_VALF;
+        t[1]= (-b - sqrtf(discriminante)) / (2 * a);
+        aux=raig.pointAtParameter(t[1]).y;
+        if( t[1]<t_min || t[1]> t_max || (center.y + height) < aux || aux < center.y){
+            t[1]=HUGE_VALF;
         }
 
+        if(t[0] == HUGE_VALF || t[1] == HUGE_VALF) {
+            t[2] = (center.y - raig.initialPoint().y) / raig.dirVector().y;//tapa inferior
+            t[3] = (center.y + height - raig.initialPoint().y) / raig.dirVector().y;//tapa superior
+
+            vec3 p = raig.pointAtParameter(t[2]);
+            if (t[2]<t_min || t[2]> t_max || (pow(p.x - center.x, 2) + pow(p.z - center.z, 2) - pow(radius, 2)) > 0) {
+                t[2] = HUGE_VALF;
+            }
+
+            p = raig.pointAtParameter(t[3]);
+            if (t[3]<t_min || t[3]> t_max || (pow(p.x - center.x, 2) + pow(p.z - center.z, 2) - pow(radius, 2)) > 0) {
+                t[3] = HUGE_VALF;
+            }
+        }
         //Si alguna de las intersecciones no es válida miramos también las tapas del cilindro.
-        if(t_arr[0]==HUGE_VALF || t_arr[1]==HUGE_VALF){
-            t_arr[2]=(center.y        - raig.initialPoint().y)/raig.dirVector().y;//tapa inferior
-            t_arr[3]=(center.y+height - raig.initialPoint().y)/raig.dirVector().y;//tapa superior
 
-            vec3 p = raig.pointAtParameter(t_arr[2]);
-            if((pow(p.x-center.x,2) + pow(p.z-center.z,2) - pow(radius,2)) > 0){
-                t_arr[2]=HUGE_VALF;
-            }
-
-            p = raig.pointAtParameter(t_arr[3]);
-            if((pow(p.x-center.x,2) + pow(p.z-center.z,2) - pow(radius,2)) > 0){
-                t_arr[3]=HUGE_VALF;
-            }
-        }
         //Cogemos el mínimo.
-        float min = t_arr[0];
+        float min = t[0];
         int index_min = 0;
 
         for( int i = 1; i < 4 ; i ++){
-            if(t_arr[i]<min){
+            if(t[i] < min){
                 index_min=i;
-                min=t_arr[i];
+                min=t[i];
             }
         }
-        if(min==HUGE_VALF){
+        if(min==HUGE_VALF || min<t_min || min>t_max){
             return false;
         }
         info.t = min;
