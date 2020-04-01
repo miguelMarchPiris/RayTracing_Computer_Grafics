@@ -40,6 +40,8 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             break;
     }
 
+    o->aplicaTG(new Translate(vec3(-x, -y, -z)));
+
     return o;
 }
 

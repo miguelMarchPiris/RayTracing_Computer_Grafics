@@ -9,7 +9,6 @@ DataReader::DataReader(Scene *s)
 {
     scene = s;
     numProp = 0;
-
 }
 
 void DataReader::readFile(QString fileName) {
@@ -55,8 +54,8 @@ void DataReader::baseFound(QStringList fields) {
     if (QString::compare("plane", fields[1], Qt::CaseInsensitive) == 0) {
         // TODO Fase 1: Cal fer un pla acotat i no un pla infinit. Les dimensions del pla acotat seran les dimensions de l'escena en x i z
         Object *o;
-        o = ObjectFactory::getInstance()->createObject(fields[1].toDouble(), fields[2].toDouble(), fields[3].toDouble(), fields[4].toDouble(),
-                1.0f,ObjectFactory::OBJECT_TYPES::PLANE);
+        o = ObjectFactory::getInstance()->createObject(fields[1].toFloat(), fields[2].toFloat(), fields[3].toFloat(), fields[4].toFloat(),
+                1.0f,ObjectFactory::OBJECT_TYPES::FITTED_PLANE);
         scene->objects.push_back(o);
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
     }
@@ -72,7 +71,7 @@ void DataReader::limitsFound(QStringList fields) {
     }
     // TODO Fase 1: Cal guardar el limits del mapa per saber on mapejar les posicions dels objectes
     //limites del plano o de la escena? O las dos cosas?
-    /*double x_min = fields[1].toDouble();
+    double x_min = fields[1].toDouble();
     double x_max = fields[2].toDouble();
     double z_min = fields[3].toDouble();
     double z_max = fields[4].toDouble();
@@ -81,7 +80,7 @@ void DataReader::limitsFound(QStringList fields) {
 
     Object *o;
     o = ObjectFactory::getInstance()->createObject(x_min, x_max, z_min,
-                                                   z_max, 1.0f,ObjectFactory::FITTED_PLANE);*/
+                                                   z_max, 1.0f,ObjectFactory::FITTED_PLANE);
 }
 //vec3 normal, vec3 pass_point, vec2 pass_min, vec2 pass_max, float d
 
@@ -98,6 +97,7 @@ void DataReader::propFound(QStringList fields) {
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
         std::cout << "Esfera" << std::endl;
         props.push_back(ObjectFactory::OBJECT_TYPES::SPHERE);
+        this->props_data[0] = (float) (fields[3].toInt() - fields[2].toInt());
     }
 
     // TODO Fase 2: Aquesta valors minim i maxim tambe serviran per mapejar el material des de la paleta
@@ -114,9 +114,14 @@ void DataReader::dataFound(QStringList fields) {
         // TODO Fase 1: Cal colocar els objectes al seu lloc del mon virtual, escalats segons el valor i
         //  amb el seu color corresponent segons el seu ColorMap
         Object *o;
-        o = ObjectFactory::getInstance()->createObject(fields[1].toDouble(), 0.0, fields[2].toDouble(),
-                                                       fields[3 + i].toDouble(), 1.0f,
+        vec3 point (fields[1].toFloat(), 0.0f, fields[2].toFloat());
+        vec2 uvpoint = scene->getUV(point);
+        o = ObjectFactory::getInstance()->createObject(uvpoint[0], 0.0, uvpoint[1],
+                                                       fields[3 + i].toFloat()/props_data[0], 0.0f,
                                                        props[i]);
+        //TG* tg = new TG();
+        //tg->matTG = glm::mat4();
+        //o->aplicaTG(tg);
         scene->objects.push_back(o);
     }
 }

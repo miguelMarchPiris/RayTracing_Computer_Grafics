@@ -35,9 +35,9 @@ Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, Render
     scene->setMaterials(colorMap); //Aqui me dice valgrind que hay fuga de memoria
 
     //TODO el ground de la escena debe ser de la dimension de la escena?
-    scene->ground = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(-10,-10), vec2(10,10), -1);
-    scene->ground->setMaterial(new MaterialTextura());
-    scene->objects.push_back(scene->ground);
+    //scene->ground = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(-10,-10), vec2(10,10), -1);
+    //scene->ground->setMaterial(new MaterialTextura());
+    //scene->objects.push_back(scene->ground);
 
     // TODO Fase 1: Cal posar les dimensions de l'escena virtual usant setDimensions de la classe Scene
     //Dimensiones de la escena
