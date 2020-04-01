@@ -2,6 +2,8 @@
 // Created by anna on 18/01/2020.
 //
 
+#include <include/Cylinder.h>
+#include <include/Metal.h>
 #include "SceneFactoryVirtual.h"
 
 
@@ -26,17 +28,19 @@ Scene *SceneFactoryVirtual::createScene() {
 }
 
 void SceneFactoryVirtual::OneSphere(Scene *s) {
-    Sphere * sphere0 = new Sphere(vec3(0, 0, -1), 0.5, 1.0);
-    sphere0->setMaterial(new Lambertian(vec3(0.5, 0.5, 0.5)));
+    Sphere * sphere0 = new Sphere(vec3(0, 1, -2), 1, 1.0);
+    sphere0->setMaterial(new Lambertian(vec3(0.2, 0.2, 0.2), vec3(0.5, 0.5, 0.5), vec3(1, 1, 1), 1, 1, 10));
     Sphere * sphere1 = new Sphere(vec3(0, -100.5, -1), 100, 1.0);
-    sphere1->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
-    Sphere * sphere2 = new Sphere(vec3(2, 0, -1), 0.5, 1.0);
-    sphere2->setMaterial(new Lambertian(vec3(0.8, 0.8, 0)));
-    Light *light = new Light(vec3(2, 8, 10));
+    sphere1->setMaterial(new Lambertian(vec3(0.2, 0.2, 0.2), vec3(0.8, 0.8, 0.0), vec3(1, 1, 1), 1, 1, 10));
+    Sphere * sphere2 = new Sphere(vec3(-3, 1, 1), 1, 1.0);
+    sphere2->setMaterial(new Metal(vec3(0.2, 0.2, 0.2), vec3(0.7, 0.7, 0.7), vec3(0.7, 0.7, 0.7), 1, 1, 10));
+    //Cylinder *cil0 = new Cylinder(vec3(0, 0.5f, 0), 1, 1, 1.0);
+    //cil0->setMaterial(new Lambertian(vec3(1, 1, 1)));
 
-    sphere0->getMaterial()->especular = vec3(1, 1, 1);
-    sphere1->getMaterial()->especular = vec3(1, 1, 1);
-    sphere2->getMaterial()->especular = vec3(1, 1, 1);
+
+    BoundaryObject *bro0 = new BoundaryObject("../resources/cube.obj", 1.0);
+    bro0->setMaterial(new Lambertian(vec3(0.2, 0.2, 0.2), vec3(0.5, 0.5, 0.5), vec3(1, 1, 1), 1, 1, 10));
+    Light *light = new Light(vec3(2, 8, 10));
 
     // Animation *anim = new Animation();
     // anim->transf = new Translate(vec3(0.2));
@@ -45,6 +49,8 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
     s->objects.push_back(sphere0);
     s->objects.push_back(sphere1);
     s->objects.push_back(sphere2);
+    //s->objects.push_back(cil0);
+    s->objects.push_back(bro0);
     s->lights.push_back(light);
 
 }

@@ -20,6 +20,7 @@ public:
     BoundaryObject(string s, float data);
     virtual bool intersection(const Ray& r, float t_min, float t_max, IntersectionInfo& info) const;
     virtual ~BoundaryObject();
+    void aplicaTG(TG *tg) override;
 
 private:
 

@@ -39,6 +39,8 @@ public:
     // Vector d'objectes continguts a l'escena
     std::vector<Object*> objects;
 
+    const int MAX_REFLECT = 10;
+
     // TODO FASE 2: Afegir llums a l'escena
     std::vector<Light*> lights;
 };

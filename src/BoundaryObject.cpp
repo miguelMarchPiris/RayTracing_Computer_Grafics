@@ -4,7 +4,7 @@ BoundaryObject::BoundaryObject(string s, float data) : Object(data)
 { 
 
   readObj(s);
-  // TO DO: Cal fer un recorregut de totes les cares per a posar-les com Triangles
+  // TODO: Cal fer un recorregut de totes les cares per a posar-les com Triangles
   // Cal recorrer l'estructura de l'objecte segons cara-vertexs que es carrega
 
 
@@ -144,4 +144,8 @@ void BoundaryObject::construeix_cara ( char **words, int nwords, BoundaryObject 
     }
     face.color = vec4(1.0, 0.0, 0.0, 1.0);
     objActual->cares.push_back(face);
+}
+
+void BoundaryObject::aplicaTG(TG *tg) {
+    return (void)0;
 }

@@ -850,6 +850,9 @@
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Material.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Metal.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Object.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -947,6 +950,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Material.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Metal.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Object.cpp">

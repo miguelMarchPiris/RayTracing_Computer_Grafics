@@ -9,8 +9,7 @@ Material::Material():
 Material::~Material()
 {}
 
-Material::Material(vec3 a, vec3 d, vec3 s, vec3 k, float beta){
-    diffuse = d;
+Material::Material(vec3 a, vec3 d, vec3 s, vec3 k, float beta, float shininess){
 }
 
 vec3 Material::RandomInSphere() const {

@@ -12,7 +12,7 @@ class Material
 public:
 
     Material();
-    Material(vec3 a, vec3 d, vec3 s, vec3 k, float beta);
+    Material(vec3 ambient, vec3 diffuse, vec3 specular, vec3 k, float beta, float shininess);
     ~Material();
 
     virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const = 0;
@@ -22,8 +22,9 @@ public:
     // Kd
     vec3 diffuse;
     // Ks
-    vec3 especular;
-    float alpha;
+    vec3 specular;
+    float k;
+    float beta;
     int shininess;
 
 protected:
