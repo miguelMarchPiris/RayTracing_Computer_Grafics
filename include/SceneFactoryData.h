@@ -12,6 +12,8 @@ public:
     virtual Scene    *createScene(QString nomFitxer);
     virtual ColorMap *createColorMap(ColorMapStatic::ColorMapType t);
     virtual Camera   *createCamera();
+
+    Scene *createScene();
 };
 
 #endif // SCENEFACTORYSTATIC_H

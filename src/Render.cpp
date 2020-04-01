@@ -25,10 +25,14 @@ void Render::rendering() {
             float v = float(y) / float(cam->viewportY);
 
             Ray r = cam->getRay(u, v);
+            // Antialiasing -> tiramos numSamples rayos por pixel
+            // y nos quedamos con la media del color
+            for(int i = 0; i < numSamples; i++){
+                col += scene->ComputeColorRay(r, 0);
+            }
 
-            col += scene->ComputeColorRay(r, 0);
+            col /= numSamples;
             setPixelColor(col, x, y);
-
          }
     }
 }

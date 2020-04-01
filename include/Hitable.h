@@ -18,12 +18,18 @@ public:
     float     t; // t del raig on s'ha intersecat
     vec3      p;  // punt del raig on hi ha la intersecció
     vec3      normal; // normal en el punt d'intersecció
+    //vec2      uv;
+    float u;
+    float v;
     const Material *mat_ptr; // material de l'objecte que s'ha intersectat
 
     IntersectionInfo():
         t(std::numeric_limits<float>::infinity()),
         p(0.0f),
         normal(0.0f),
+        u(0.0),
+        v(0.0),
+        //uv(0.0f),
         mat_ptr(NULL)
         {}
 
@@ -32,6 +38,9 @@ public:
       p = rhs.p;
       mat_ptr = rhs.mat_ptr;
       normal = rhs.normal;
+      //uv = rhs.uv;
+      u = rhs.u;
+      v = rhs.v;
       t = rhs.t;
       return *this;
     }

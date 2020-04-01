@@ -1,8 +1,12 @@
 #include "Plane.h"
-
+#include <iostream>
 Plane::Plane(vec3 normal, vec3 pass_point, float v) : Object(v){
     this->normal = normalize(normal);
     this->point = pass_point;
+}
+
+vec3 Plane::getPoint(){
+    return this->point;
 }
 
 Plane::Plane(vec3 normal, float d, float v) : Object(v) {

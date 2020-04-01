@@ -3,6 +3,10 @@
 Lambertian::Lambertian(const vec3& color): Material()
 {
     diffuse = color;
+    ambient = vec3(0.2f, 0.2f, 0.2f);
+    especular = vec3(1.f, 1.f, 1.f);
+    shininess = 10.0f;
+    alpha = 1.f;
 }
 
 Lambertian::~Lambertian()
