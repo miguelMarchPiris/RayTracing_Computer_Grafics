@@ -1054,6 +1054,33 @@ src/Translate.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Translate.cpp.s
 .PHONY : src/Translate.cpp.s
 
+src/Transparent.o: src/Transparent.cpp.o
+
+.PHONY : src/Transparent.o
+
+# target to build an object file
+src/Transparent.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.o
+.PHONY : src/Transparent.cpp.o
+
+src/Transparent.i: src/Transparent.cpp.i
+
+.PHONY : src/Transparent.i
+
+# target to preprocess a source file
+src/Transparent.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.i
+.PHONY : src/Transparent.cpp.i
+
+src/Transparent.s: src/Transparent.cpp.s
+
+.PHONY : src/Transparent.s
+
+# target to generate assembly for a file
+src/Transparent.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.s
+.PHONY : src/Transparent.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1166,6 +1193,9 @@ help:
 	@echo "... src/Translate.o"
 	@echo "... src/Translate.i"
 	@echo "... src/Translate.s"
+	@echo "... src/Transparent.o"
+	@echo "... src/Transparent.i"
+	@echo "... src/Transparent.s"
 .PHONY : help
 
 

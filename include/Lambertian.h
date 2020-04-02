@@ -7,7 +7,7 @@ class Lambertian : public Material
 {
 
 public:
-    Lambertian(vec3 ambient, vec3 diffuse, vec3 specular, float k, float beta, float shininess);
+    Lambertian(vec3 ambient, vec3 diffuse, vec3 specular, float beta, float shininess);
     virtual ~Lambertian();
     virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const;
 };

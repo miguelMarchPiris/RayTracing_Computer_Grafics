@@ -1,11 +1,12 @@
+#include <include/Transparent.h>
 #include "Scene.h"
 #include "glm/gtx/string_cast.hpp"
 
 Scene::Scene()
 {
-    pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
-    pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
-    globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
+    pmin.x = -5;  pmin.y = -5; pmin.z = -5;
+    pmax.x = 5;  pmax.y = 5; pmax.z = 5;
+    globalAmbientLighting = vec3(0.01f, 0.01f, 0.01f);
 }
 
 Scene::~Scene()
@@ -15,6 +16,8 @@ Scene::~Scene()
         if(objects[i]){
             if (dynamic_cast<Sphere*>(objects[i]))
                     delete (Sphere *)(objects[i]);
+            if (dynamic_cast<BoundaryObject*>(objects[i]))
+                delete (BoundaryObject *)(objects[i]);
         }
     }
 }
@@ -63,7 +66,7 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 **
 */
 vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
-    vec3 color = vec3(0, 0, 0), newColor, ray2;
+    vec3 color = vec3(0, 0, 0), k, ray2;
     Ray rL;
     vector<Ray> reflections;
 
@@ -77,12 +80,12 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
     // Vector H
     vec3 h;
 
-    float dist, factorOmbra, epsilon = 0.01f, k = 1;
+    float dist, factorOmbra, epsilon = 0.001f;
 
     // Per algun motiu no normalitza be (dona valors negatius), per aixo s'afegeix el segon vector
-    ray2 = normalize(ray.direction) + vec3(0, 0.5f, 0);
+    ray2 = normalize(ray.initialPoint());
     // TODO: A canviar el càlcul del color en les diferents fases
-    IntersectionInfo info;
+    IntersectionInfo info, infoTemp;
 
     // Blinn-Phong
     if (this->intersection(ray, 0, 100, info)) {
@@ -98,10 +101,10 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             h = (l + v) / (length(l + v));
 
             // Component difusa
-            color += info.mat_ptr->diffuse * light->difuse * glm::max(dot(l, n), 0.0f);
+            color += info.mat_ptr->diffuse * light->diffuse * glm::max(dot(l, n), 0.0f);
 
             // Component especular
-            color += info.mat_ptr->specular * light->especular *
+            color += info.mat_ptr->specular * light->specular *
                      pow(glm::max(dot(h, n), 0.0f), info.mat_ptr->beta * info.mat_ptr->shininess);
 
             // Dividim per la distància
@@ -112,7 +115,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             rL = Ray(ray.pointAtParameter(info.t) +
                      epsilon * glm::normalize(light->punt - info.p),
                      glm::normalize(light->punt - info.p));
-            if (this->intersection(rL, 0, 100, info)) {
+            if (this->intersection(rL, 0, 100, infoTemp)) {
                 factorOmbra = 0.0f;
             } else {
                 factorOmbra = 1.0f;
@@ -124,19 +127,19 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             color += light->ambient * info.mat_ptr->ambient;
 
             if(depth < MAX_REFLECT) {
-                info.mat_ptr->scatter(ray, info, newColor, reflections);
-                for (auto reflection:reflections) {
-                    color += newColor * ComputeColorRay(reflection, depth + 1);
+                info.mat_ptr->scatter(ray, info, k, reflections);
+                for(auto reflection: reflections) {
+                    color += k * ComputeColorRay(reflection, depth + 1);
                 }
             }
         }
     }else {
 
-        if(depth <= 0) {
+        /*if(depth <= 0) {*/
             color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);
-        }else{
+        /*}else{
             color = globalAmbientLighting;
-        }
+        }*/
     }
 
     return color;

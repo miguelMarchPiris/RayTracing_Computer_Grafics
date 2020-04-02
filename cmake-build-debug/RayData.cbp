@@ -910,6 +910,9 @@
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Translate.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/include/Transparent.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/resources.qrc">
 			<Option target="RayData"/>
 		</Unit>
@@ -1007,6 +1010,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Translate.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/src/Transparent.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/franc/Desktop/Uni/GiVD/GitHub Grafics/dataray-givd02/CMakeLists.txt">

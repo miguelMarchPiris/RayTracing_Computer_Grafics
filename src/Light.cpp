@@ -4,13 +4,12 @@
 #include "Light.h"
 #include <iostream>
 
-Light::Light(glm::vec3 punt) {
+Light::Light(glm::vec3 punt, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 attenuation) {
     this->punt = punt;
-
-    ambient = glm::vec3(0.4f, 0.4f, 0.4f);
-    difuse = glm::vec3(0.5f, 0.5f, 0.5f);
-    especular = glm::vec3(1.f, 1.f, 1.f);
-    attenuation = glm::vec3(0.01f, 0.0f, 0.5f);
+    this->ambient = ambient;
+    this->diffuse = diffuse;
+    this->specular = specular;
+    this->attenuation = attenuation;
 }
 
 Light::~Light() {

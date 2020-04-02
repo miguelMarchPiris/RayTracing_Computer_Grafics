@@ -9,7 +9,7 @@
 
 class Metal: public Material{
 public:
-    Metal(vec3 ambient, vec3 diffuse, vec3 specular, float k, float beta, float shininess);
+    Metal(vec3 ambient, vec3 diffuse, vec3 specular, float beta, float shininess);
     virtual ~Metal();
     virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const;
 };

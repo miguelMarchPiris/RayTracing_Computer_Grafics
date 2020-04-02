@@ -8,13 +8,13 @@
 
 class Light{
 public:
-    Light(glm::vec3 punt);
+    Light(glm::vec3 punt, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 attenuation);
     ~Light();
 
     glm::vec3 punt;
     glm::vec3 ambient;
-    glm::vec3 difuse;
-    glm::vec3 especular;
+    glm::vec3 diffuse;
+    glm::vec3 specular;
     glm::vec3 attenuation;
 };
 
