@@ -1,3 +1,4 @@
+#include <include/Cylinder.h>
 #include "ObjectFactory.h"
 
 ObjectFactory *ObjectFactory::instance = nullptr;
@@ -35,6 +36,9 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             //break;
         case FITTED_PLANE:
             o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), -1);
+            break;
+        case CYLINDER:
+            o = new Cylinder(vec3(x,y,z), 1.,aux,v);
             break;
         default:
             break;
