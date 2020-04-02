@@ -51,6 +51,7 @@ void DataReader::baseFound(QStringList fields) {
         std::cerr << "Wrong base format" << std::endl;
         return;
     }
+    fields[1] = fields[1].remove(0, 1);
     std::cout << fields[1].toStdString() << std::endl;
     if (QString::compare("plane", fields[1], Qt::CaseInsensitive) == 0) {
         // TODO Fase 1: Cal fer un pla acotat i no un pla infinit. Les dimensions del pla acotat seran les dimensions de l'escena en x i z
@@ -94,6 +95,7 @@ void DataReader::propFound(QStringList fields) {
     numProp++;
     // TODO Fase 1: Cal guardar els valors per a poder escalar els objectes i el tipus de
     //  gizmo de totes les propietats (SPHERE, BR_OBJ, CILINDRE...)
+
     cout<<fields[4].toStdString()<<endl;
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
         std::cout << "Esfera" << std::endl;
@@ -119,8 +121,9 @@ void DataReader::dataFound(QStringList fields) {
         vec3 point (fields[1].toFloat(), 0.0f, fields[2].toFloat());
         vec2 uvpoint = scene->getUV(point);
         cout << uvpoint[0] << " " << uvpoint[1] << endl;
+        float r = (fields[3 + i].toFloat()/(2 * (props_data[1] - props_data[0]))) / (scene->pmax[0] - scene->pmin[0]);
         o = ObjectFactory::getInstance()->createObject(uvpoint[0], 0.0, uvpoint[1],
-                                                       fields[3 + i].toFloat()/(2 * (props_data[1] - props_data[0])), 0.0f,
+                                                       r, 0.0f,
                                                        props[i]);
         //TG* tg = new TG();
         //tg->matTG = glm::mat4();
