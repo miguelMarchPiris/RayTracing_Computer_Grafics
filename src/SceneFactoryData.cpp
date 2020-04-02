@@ -7,7 +7,7 @@ SceneFactoryData::SceneFactoryData()
 
 Camera *SceneFactoryData::createCamera() {
     // creacio de la camera
-    vec3 lookfrom(2,2,1);
+    vec3 lookfrom(2,0,3);
     //vec3 lookfrom(13, 2, 3);
     vec3 lookat(0,0,0);
 
