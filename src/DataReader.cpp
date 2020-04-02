@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <include/ObjectFactory.h>
+#include <include/MaterialTextura.h>
 
 DataReader::DataReader(Scene *s)
 {
@@ -50,14 +51,17 @@ void DataReader::baseFound(QStringList fields) {
         std::cerr << "Wrong base format" << std::endl;
         return;
     }
-
+    std::cout << fields[1].toStdString() << std::endl;
     if (QString::compare("plane", fields[1], Qt::CaseInsensitive) == 0) {
         // TODO Fase 1: Cal fer un pla acotat i no un pla infinit. Les dimensions del pla acotat seran les dimensions de l'escena en x i z
         Object *o;
-        o = ObjectFactory::getInstance()->createObject(fields[1].toFloat(), fields[2].toFloat(), fields[3].toFloat(), fields[4].toFloat(),
-                1.0f,ObjectFactory::OBJECT_TYPES::FITTED_PLANE);
-        scene->objects.push_back(o);
+        o = ObjectFactory::getInstance()->createObject(scene->getUV(scene->pmin)[0], scene->getUV(scene->pmax)[0], scene->getUV(scene->pmin)[1],
+                                                       scene->getUV(scene->pmax)[1], fields[5].toFloat(),ObjectFactory::FITTED_PLANE);
+
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
+        scene->ground = dynamic_cast<FittedPlane *>(o);
+        scene->ground->setMaterial(new MaterialTextura(fields[6]));
+        scene->objects.push_back(o);
     }
     // TODO: Fase 3: Si cal instanciar una esfera com objecte base i no un pla, cal afegir aqui un else
 }
@@ -78,9 +82,6 @@ void DataReader::limitsFound(QStringList fields) {
 
     scene->setDimensions(vec3(x_min,0,z_min), vec3(x_max,0,z_max));
 
-    Object *o;
-    o = ObjectFactory::getInstance()->createObject(x_min, x_max, z_min,
-                                                   z_max, 1.0f,ObjectFactory::FITTED_PLANE);
 }
 //vec3 normal, vec3 pass_point, vec2 pass_min, vec2 pass_max, float d
 
@@ -97,7 +98,8 @@ void DataReader::propFound(QStringList fields) {
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
         std::cout << "Esfera" << std::endl;
         props.push_back(ObjectFactory::OBJECT_TYPES::SPHERE);
-        this->props_data[0] = (float) (fields[3].toInt() - fields[2].toInt());
+        this->props_data[0] = (float) fields[2].toInt();
+        this->props_data[1] = (float) fields[3].toInt();
     }
 
     // TODO Fase 2: Aquesta valors minim i maxim tambe serviran per mapejar el material des de la paleta
@@ -116,8 +118,9 @@ void DataReader::dataFound(QStringList fields) {
         Object *o;
         vec3 point (fields[1].toFloat(), 0.0f, fields[2].toFloat());
         vec2 uvpoint = scene->getUV(point);
+        cout << uvpoint[0] << " " << uvpoint[1] << endl;
         o = ObjectFactory::getInstance()->createObject(uvpoint[0], 0.0, uvpoint[1],
-                                                       fields[3 + i].toFloat()/props_data[0], 0.0f,
+                                                       fields[3 + i].toFloat()/(2 * (props_data[1] - props_data[0])), 0.0f,
                                                        props[i]);
         //TG* tg = new TG();
         //tg->matTG = glm::mat4();
