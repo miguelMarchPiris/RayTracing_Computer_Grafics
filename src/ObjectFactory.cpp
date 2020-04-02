@@ -34,13 +34,13 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             //  cout<< "Cilindro creado"<<endl;
             //break;
         case FITTED_PLANE:
-            o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), -1);
+            o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), v);
             break;
         default:
             break;
     }
 
-    o->aplicaTG(new Translate(vec3(-x, -y, -z)));
+    //o->aplicaTG(new Translate(vec3(-aux * x, -y, -z)));
 
     return o;
 }
