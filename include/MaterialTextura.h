@@ -12,6 +12,7 @@ class MaterialTextura : public Material{
 public:
     //Constructors i destructor
     MaterialTextura();
+    MaterialTextura(QString im);
     MaterialTextura(vec3 a, vec3 d, vec3 s, float o, int sh);
     virtual ~MaterialTextura();
 

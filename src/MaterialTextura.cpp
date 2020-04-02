@@ -1,5 +1,7 @@
 #include "MaterialTextura.h"
 
+#include <utility>
+
 MaterialTextura::MaterialTextura():Material(){
     this->diffuse = vec3(0.5,0.5,0.5);
     this->especular = vec3(0.0,0.0,0.0);
@@ -9,7 +11,7 @@ MaterialTextura::MaterialTextura():Material(){
 }
 
 MaterialTextura::~MaterialTextura()
-{}
+= default;
 
 bool MaterialTextura::scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const {
     /*
@@ -32,4 +34,9 @@ MaterialTextura::MaterialTextura(vec3 a, vec3 d, vec3 s, float o, int sh):Materi
 
 vec3 MaterialTextura::getDiffuse(vec2 point) const{
     return this->image->getColorPixel(point);
+}
+
+MaterialTextura::MaterialTextura(QString im)
+{
+    this->image = new Texture(std::move(im));
 }
