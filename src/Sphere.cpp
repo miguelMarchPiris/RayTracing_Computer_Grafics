@@ -4,6 +4,11 @@ Sphere::Sphere(vec3 cen, float r, float d) :Object(d) {
     center = cen;
     radius = r;
 }
+Sphere::Sphere( float d) :Object(d) {
+    center = vec3(0,0,0);
+    radius = 1;
+}
+
 
 bool Sphere::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const {
     vec3 oc = raig.initialPoint() - center;
