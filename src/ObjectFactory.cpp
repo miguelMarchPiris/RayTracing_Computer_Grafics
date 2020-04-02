@@ -30,9 +30,17 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             //o = new Triangle(vec3(x, y, z), aux, v);
             o = new Triangle(vec3(x,0,0),vec3(0,y,0),vec3(0,0,z), aux);
             break;
-            //case CYLINDER:
-            //  cout<< "Cilindro creado"<<endl;
-            //break;
+        case CYLINDER:
+            /* Por lo que dicene en el enunciado parece que nos piden hacer esto.
+             * La verdad es que no tiene ningún sentido.
+            o = new Cylinder(v);
+            TG* s = new Scale(vec3(1,aux,1));
+            o->aplicaTG(s);
+            delete(s);
+             */
+            o = new Cylinder(vec3(x,0,z),0.1,aux,v);
+
+            break;
         case FITTED_PLANE:
             o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), -1);
             break;

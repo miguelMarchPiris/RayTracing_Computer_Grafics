@@ -208,7 +208,7 @@ void Scene::setDimensions(vec3 p1, vec3 p2) {
 vec2 Scene::getUV(vec3 point){
     //Aplicar Operació (extreta de Parcial Transpas)
     //xUV = xDades * ( xmaxUV - xminUV) /(xmax - xmin) - xmin * ( xmaxUV - xminUV) /(xmax - xmin) + xminUV
-    float u = point.x /(pmax.x - pmin.x) - (pmin.x) / (pmax.x - pmin.x);
-    float v = point.z /(pmax.z - pmin.z) - (pmin.z) / (pmax.z - pmin.z);
+    float u = (point.x - pmin.x) / (pmax.x - pmin.x);
+    float v = (point.z - pmin.z) / (pmax.z - pmin.z);
     return vec2(u,v);
 }

@@ -13,6 +13,7 @@
 class Cylinder : public Object {
 public:
     Cylinder(vec3 c, float r, float h,float data);
+    Cylinder(float data);
     virtual ~Cylinder(){}
     virtual bool intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const;
 

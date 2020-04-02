@@ -15,6 +15,7 @@
 class Sphere: public Object  {
 public:
         Sphere(vec3 cen, float r, float data);
+        Sphere(float data);
         virtual ~Sphere() {}
         virtual bool intersection(const Ray& r, float t_min, float t_max, IntersectionInfo& info) const;
 

@@ -116,9 +116,12 @@ void DataReader::dataFound(QStringList fields) {
         Object *o;
         vec3 point (fields[1].toFloat(), 0.0f, fields[2].toFloat());
         vec2 uvpoint = scene->getUV(point);
-        o = ObjectFactory::getInstance()->createObject(uvpoint[0], 0.0, uvpoint[1],
-                                                       fields[3 + i].toFloat()/props_data[0], 0.0f,
-                                                       props[i]);
+
+        //o = ObjectFactory::getInstance()->createObject(uvpoint[0], 0.0, uvpoint[1],fields[3 + i].toFloat()/props_data[0], 0.0f,props[i]);
+
+        o = ObjectFactory::getInstance()->createObject(0.0, 0.0, 0.0,1, 0.0f,props[i]);
+        float value=fields[3 + i].toFloat()/props_data[i];
+        TG* scale = new Scale(vec3())
         //TG* tg = new TG();
         //tg->matTG = glm::mat4();
         //o->aplicaTG(tg);

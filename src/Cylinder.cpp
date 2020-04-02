@@ -3,11 +3,17 @@
 //
 
 #include <include/Translate.h>
+#include <include/Scale.h>
 #include "Cylinder.h"
 Cylinder::Cylinder(vec3 center, float radius,float h,float data): Object(data){
     this->center=center;
     this->radius=radius;
     this->height=h;
+}
+Cylinder::Cylinder(float data):Object(data){
+    center=vec3(0,0,0);
+    radius=1;
+    height=1;
 }
 
 bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const{
@@ -102,5 +108,11 @@ void Cylinder::aplicaTG(TG *t) {
         vec4 c(center, 1.0);
         c = t->getTG() * c;
         center.x = c.x; center.y = c.y; center.z = c.z;
+    }else if (dynamic_cast<Scale *>(t)) {
+        //Scale solo cambia el radio con la componente x, no cambia con el componente z.
+        vec4 c(radius, height, 1, 1);
+        c = t->getTG()*c;
+        height = c.y;
+        radius = c.x;
     }
 }
