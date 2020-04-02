@@ -127,10 +127,15 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             color += light->ambient * info.mat_ptr->ambient;
 
             if(depth < MAX_REFLECT) {
-                info.mat_ptr->scatter(ray, info, k, reflections);
-                for(auto reflection: reflections) {
-                    color += k * ComputeColorRay(reflection, depth + 1);
+                if(0){//instanceof<Transparent>(info.mat_ptr)){
+
+                }else{
+                    info.mat_ptr->scatter(ray, info, k, reflections);
+                    for(auto reflection: reflections) {
+                        color += k * ComputeColorRay(reflection, depth + 1);
+                    }
                 }
+
             }
         }
     }else {

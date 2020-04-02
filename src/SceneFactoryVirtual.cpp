@@ -52,7 +52,7 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
 
     s->objects.push_back(sphere0);
     s->objects.push_back(sphere1);
-    s->objects.push_back(sphere2);
+    //s->objects.push_back(sphere2);
     s->objects.push_back(sphere3);
     s->lights.push_back(light0);
     //s->lights.push_back(light1);
