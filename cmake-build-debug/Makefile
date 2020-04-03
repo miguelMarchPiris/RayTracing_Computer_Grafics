@@ -163,6 +163,60 @@ RayData_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.s
 .PHONY : RayData_autogen/mocs_compilation.cpp.s
 
+include/Metal.o: include/Metal.cpp.o
+
+.PHONY : include/Metal.o
+
+# target to build an object file
+include/Metal.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.o
+.PHONY : include/Metal.cpp.o
+
+include/Metal.i: include/Metal.cpp.i
+
+.PHONY : include/Metal.i
+
+# target to preprocess a source file
+include/Metal.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.i
+.PHONY : include/Metal.cpp.i
+
+include/Metal.s: include/Metal.cpp.s
+
+.PHONY : include/Metal.s
+
+# target to generate assembly for a file
+include/Metal.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.s
+.PHONY : include/Metal.cpp.s
+
+include/Transparent.o: include/Transparent.cpp.o
+
+.PHONY : include/Transparent.o
+
+# target to build an object file
+include/Transparent.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.o
+.PHONY : include/Transparent.cpp.o
+
+include/Transparent.i: include/Transparent.cpp.i
+
+.PHONY : include/Transparent.i
+
+# target to preprocess a source file
+include/Transparent.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.i
+.PHONY : include/Transparent.cpp.i
+
+include/Transparent.s: include/Transparent.cpp.s
+
+.PHONY : include/Transparent.s
+
+# target to generate assembly for a file
+include/Transparent.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.s
+.PHONY : include/Transparent.cpp.s
+
 qrc_resources.o: qrc_resources.cpp.o
 
 .PHONY : qrc_resources.o
@@ -406,6 +460,33 @@ src/DataReader.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/DataReader.cpp.s
 .PHONY : src/DataReader.cpp.s
 
+src/FittedPlane.o: src/FittedPlane.cpp.o
+
+.PHONY : src/FittedPlane.o
+
+# target to build an object file
+src/FittedPlane.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/FittedPlane.cpp.o
+.PHONY : src/FittedPlane.cpp.o
+
+src/FittedPlane.i: src/FittedPlane.cpp.i
+
+.PHONY : src/FittedPlane.i
+
+# target to preprocess a source file
+src/FittedPlane.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/FittedPlane.cpp.i
+.PHONY : src/FittedPlane.cpp.i
+
+src/FittedPlane.s: src/FittedPlane.cpp.s
+
+.PHONY : src/FittedPlane.s
+
+# target to generate assembly for a file
+src/FittedPlane.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/FittedPlane.cpp.s
+.PHONY : src/FittedPlane.cpp.s
+
 src/Hitable.o: src/Hitable.cpp.o
 
 .PHONY : src/Hitable.o
@@ -540,6 +621,33 @@ src/Material.s: src/Material.cpp.s
 src/Material.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Material.cpp.s
 .PHONY : src/Material.cpp.s
+
+src/MaterialTextura.o: src/MaterialTextura.cpp.o
+
+.PHONY : src/MaterialTextura.o
+
+# target to build an object file
+src/MaterialTextura.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.o
+.PHONY : src/MaterialTextura.cpp.o
+
+src/MaterialTextura.i: src/MaterialTextura.cpp.i
+
+.PHONY : src/MaterialTextura.i
+
+# target to preprocess a source file
+src/MaterialTextura.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.i
+.PHONY : src/MaterialTextura.cpp.i
+
+src/MaterialTextura.s: src/MaterialTextura.cpp.s
+
+.PHONY : src/MaterialTextura.s
+
+# target to generate assembly for a file
+src/MaterialTextura.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.s
+.PHONY : src/MaterialTextura.cpp.s
 
 src/Metal.o: src/Metal.cpp.o
 
@@ -811,6 +919,60 @@ src/RenderFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/RenderFactory.cpp.s
 .PHONY : src/RenderFactory.cpp.s
 
+src/Rotate.o: src/Rotate.cpp.o
+
+.PHONY : src/Rotate.o
+
+# target to build an object file
+src/Rotate.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.o
+.PHONY : src/Rotate.cpp.o
+
+src/Rotate.i: src/Rotate.cpp.i
+
+.PHONY : src/Rotate.i
+
+# target to preprocess a source file
+src/Rotate.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.i
+.PHONY : src/Rotate.cpp.i
+
+src/Rotate.s: src/Rotate.cpp.s
+
+.PHONY : src/Rotate.s
+
+# target to generate assembly for a file
+src/Rotate.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Rotate.cpp.s
+.PHONY : src/Rotate.cpp.s
+
+src/Scale.o: src/Scale.cpp.o
+
+.PHONY : src/Scale.o
+
+# target to build an object file
+src/Scale.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.o
+.PHONY : src/Scale.cpp.o
+
+src/Scale.i: src/Scale.cpp.i
+
+.PHONY : src/Scale.i
+
+# target to preprocess a source file
+src/Scale.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.i
+.PHONY : src/Scale.cpp.i
+
+src/Scale.s: src/Scale.cpp.s
+
+.PHONY : src/Scale.s
+
+# target to generate assembly for a file
+src/Scale.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Scale.cpp.s
+.PHONY : src/Scale.cpp.s
+
 src/Scene.o: src/Scene.cpp.o
 
 .PHONY : src/Scene.o
@@ -1054,6 +1216,33 @@ src/Translate.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Translate.cpp.s
 .PHONY : src/Translate.cpp.s
 
+src/Triangle.o: src/Triangle.cpp.o
+
+.PHONY : src/Triangle.o
+
+# target to build an object file
+src/Triangle.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.o
+.PHONY : src/Triangle.cpp.o
+
+src/Triangle.i: src/Triangle.cpp.i
+
+.PHONY : src/Triangle.i
+
+# target to preprocess a source file
+src/Triangle.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.i
+.PHONY : src/Triangle.cpp.i
+
+src/Triangle.s: src/Triangle.cpp.s
+
+.PHONY : src/Triangle.s
+
+# target to generate assembly for a file
+src/Triangle.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Triangle.cpp.s
+.PHONY : src/Triangle.cpp.s
+
 src/Transparent.o: src/Transparent.cpp.o
 
 .PHONY : src/Transparent.o
@@ -1094,6 +1283,12 @@ help:
 	@echo "... RayData_autogen/mocs_compilation.o"
 	@echo "... RayData_autogen/mocs_compilation.i"
 	@echo "... RayData_autogen/mocs_compilation.s"
+	@echo "... include/Metal.o"
+	@echo "... include/Metal.i"
+	@echo "... include/Metal.s"
+	@echo "... include/Transparent.o"
+	@echo "... include/Transparent.i"
+	@echo "... include/Transparent.s"
 	@echo "... qrc_resources.o"
 	@echo "... qrc_resources.i"
 	@echo "... qrc_resources.s"
@@ -1121,6 +1316,9 @@ help:
 	@echo "... src/DataReader.o"
 	@echo "... src/DataReader.i"
 	@echo "... src/DataReader.s"
+	@echo "... src/FittedPlane.o"
+	@echo "... src/FittedPlane.i"
+	@echo "... src/FittedPlane.s"
 	@echo "... src/Hitable.o"
 	@echo "... src/Hitable.i"
 	@echo "... src/Hitable.s"
@@ -1139,6 +1337,9 @@ help:
 	@echo "... src/Metal.o"
 	@echo "... src/Metal.i"
 	@echo "... src/Metal.s"
+	@echo "... src/MaterialTextura.o"
+	@echo "... src/MaterialTextura.i"
+	@echo "... src/MaterialTextura.s"
 	@echo "... src/Object.o"
 	@echo "... src/Object.i"
 	@echo "... src/Object.s"
@@ -1166,6 +1367,12 @@ help:
 	@echo "... src/RenderFactory.o"
 	@echo "... src/RenderFactory.i"
 	@echo "... src/RenderFactory.s"
+	@echo "... src/Rotate.o"
+	@echo "... src/Rotate.i"
+	@echo "... src/Rotate.s"
+	@echo "... src/Scale.o"
+	@echo "... src/Scale.i"
+	@echo "... src/Scale.s"
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
@@ -1196,6 +1403,9 @@ help:
 	@echo "... src/Transparent.o"
 	@echo "... src/Transparent.i"
 	@echo "... src/Transparent.s"
+	@echo "... src/Triangle.o"
+	@echo "... src/Triangle.i"
+	@echo "... src/Triangle.s"
 .PHONY : help
 
 

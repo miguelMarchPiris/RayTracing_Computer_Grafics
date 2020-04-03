@@ -12,7 +12,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 # Add a compiler flag
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Ofast")
 
 # Make this a GUI application on Windows
 if(WIN32)
@@ -309,7 +309,6 @@ add_executable(RayData
         include/ColorMap.h
         include/ColorMapStatic.h
         include/Controller.h
-        include/Cylinder.h
         include/DataReader.h
         include/Hitable.h
         include/Lambertian.h
@@ -340,7 +339,6 @@ add_executable(RayData
         src/Cara.cpp
         src/ColorMapStatic.cpp
         src/Controller.cpp
-        src/Cylinder.cpp
         src/DataReader.cpp
         src/Hitable.cpp
         src/Lambertian.cpp
@@ -364,7 +362,31 @@ add_executable(RayData
         src/TG.cpp
         src/Texture.cpp
         src/Translate.cpp
-        ${Res_SRC} include/Light.h src/Light.cpp src/Cylinder.cpp include/Cylinder.h include/Metal.h src/Metal.cpp include/Transparent.h src/Transparent.cpp)
+        ${Res_SRC}
+        include/Light.h
+        src/Light.cpp
+        src/Scale.cpp
+        include/Scale.h
+        src/Rotate.cpp
+        include/Rotate.h
+        src/Triangle.cpp
+        include/Triangle.h
+        src/MaterialTextura.cpp
+        include/MaterialTextura.h
+        src/FittedPlane.cpp
+        include/FittedPlane.h
+        src/Cylinder.cpp
+        include/Cylinder.h
+        include/Metal.cpp
+        include/Metal.h
+        include/Transparent.cpp
+        include/Transparent.h
+        src/Cylinder.cpp
+        include/Cylinder.h
+        include/Metal.h
+        src/Metal.cpp
+        include/Transparent.h
+        src/Transparent.cpp)
 
 
 # Set the GL and GLUT libraries

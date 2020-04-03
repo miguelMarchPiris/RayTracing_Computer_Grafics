@@ -8,7 +8,7 @@
 
 class Controller
 {
-    Render *render;
+    Render *render; //Sencarrega de pintar l'escena
 
 public:
     Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, RenderFactory::RENDER_TYPES  rt);

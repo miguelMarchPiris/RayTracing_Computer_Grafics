@@ -1,28 +1,48 @@
 #include <include/Transparent.h>
 #include "Scene.h"
 #include "glm/gtx/string_cast.hpp"
+#include "MaterialTextura.h"
+#include "Metal.h"
 
 Scene::Scene()
 {
     pmin.x = -5;  pmin.y = -5; pmin.z = -5;
     pmax.x = 5;  pmax.y = 5; pmax.z = 5;
+    // llum d'ambient global
     globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
 }
 
+// TODO cal modificar aquest metode en el moment que afegim mes materials (a part del Lambertian)
+//  o be quan afegim mes figures en el cas de que calgues
 Scene::~Scene()
 {
 // TODO Fase 1: Quan s'incloguin nous objectes, cal retocar aquest destructor
-    for(unsigned int i = 0; i < objects.size(); ++i){
-        if(objects[i]){
-            if (dynamic_cast<Sphere*>(objects[i]))
-                    delete (Sphere *)(objects[i]);
-            if (dynamic_cast<BoundaryObject*>(objects[i]))
-                delete (BoundaryObject *)(objects[i]);
+
+    //Cal alliberar memoria reservada pels objectes. Aquests eliminaran la instancia de material que tinguin
+    for(unsigned int i = 0; i < objects.size(); ++i)
+        if (objects[i]) {
+            if (dynamic_cast<Sphere *>(objects[i]))
+                delete (Sphere *) (objects[i]);
+
+            if (dynamic_cast<Plane *>(objects[i]))
+                delete (Plane *) (objects[i]);
+
+            if (dynamic_cast<Triangle *>(objects[i]))
+                delete (Triangle *) (objects[i]);
+
+            if (dynamic_cast<BoundaryObject *>(objects[i]))
+                delete (BoundaryObject *) (objects[i]);
+
+            if (dynamic_cast<FittedPlane *>(objects[i]))
+                delete (FittedPlane *) (objects[i]);
+
+            if (dynamic_cast<Cylinder *>(objects[i]))
+                delete (Cylinder *) (objects[i]);
         }
-    }
+
+    //per les llums
+    for(unsigned int i = 0; i < lights.size(); i++) delete lights[i];
 }
-
-
 
 /*
 ** TODO: FASE 1: Metode que testeja la interseccio contra tots els objectes de l'escena
@@ -34,29 +54,21 @@ Scene::~Scene()
 */
 bool Scene::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const
 {
-    /* IntersectionInfo temporal per a cada objecte */
+    // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig,
+    // pero no en aquesta funcio.
+    // Considerem que no hem trobat col*lisionat amb ningun objecte
+    // Hem de crear un nou Hitinfo per poder actualitzar si hem trobat un objecte més próxim.
     IntersectionInfo info_temp;
     info.t = t_max;
 
     for(auto object : objects)
-    {
         if (object->intersection(raig, t_min, t_max, info_temp))
-        {
             if (info_temp.t < info.t)
-            {
                 /* Si arribem a un minim, ho copiem al intersection info del raig */
                 info = info_temp;
-            }
-        }
-    }
-    return info.t < t_max;
-    // TODO FASE 0 i FASE 1: Heu de codificar la vostra solucio per aquest metode substituint el 'return true'
-    // Una possible solucio es cridar el mètode intersection per a tots els objectes i quedar-se amb la interseccio
-    // mes propera a l'observador, en el cas que n'hi hagi més d'una.
-    // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el IntersectionInfo del raig,
-    // pero no en aquesta funcio.
-}
 
+    return info.t < t_max;
+}
 
 /*
 ** TODO: Funcio ComputeColorRay es la funcio recursiva del RayTracing.
@@ -66,8 +78,7 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 **
 */
 vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
-    vec3 color = vec3(0, 0, 0), ray2;
-
+    vec3 color = vec3(0, 0, 0), k, ray2;
     Ray rL;
     vector<vec3> colors;
     vector<Ray> reflections;
@@ -96,17 +107,21 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
         n = glm::normalize(info.normal);
 
         // Component ambient global
-        color += globalAmbientLighting * info.mat_ptr->ambient;
+        color += globalAmbientLighting * info.mat_ptr->Kambient;
         for (auto light:lights) {
 
             l = glm::normalize(light->punt - info.p);
             h = (l + v) / (length(l + v));
 
+            /////////// FASE 3 /////////////
             // Component difusa
-            color += info.mat_ptr->diffuse * light->diffuse * glm::max(dot(l, n), 0.0f);
+            info.uv = get_uvCoords(info.p); //debemos obtener el punto (u,v) a traves del punto con el que se intersecta
+            //en el caso de que el material sea MaterialTextura obtendremos los textels a traves de las coordenadas uv
+            color += info.mat_ptr->getDiffuse(info.uv) * light->diffuse * glm::max(dot(l, n), 0.0f);
+            ////////////////////////////////
 
             // Component especular
-            color += info.mat_ptr->specular * light->specular *
+            color += info.mat_ptr->Kspecular * light->Kspecular *
                      pow(glm::max(dot(h, n), 0.0f), (float) info.mat_ptr->shininess);//info.mat_ptr->beta * );
 
             // Dividim per la distància
@@ -161,7 +176,8 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
     return color;
 }
 
-
+    return sqrt(color);
+}
 
 void Scene::update(int nframe) {
     for (unsigned int i = 0; i< objects.size(); i++) {
@@ -169,6 +185,7 @@ void Scene::update(int nframe) {
     }
 }
 
+// TODO no s'entén gaire
 void Scene::setMaterials(ColorMap *cm) {
     /*Material *m;
     // TODO: Fase 0
@@ -197,4 +214,11 @@ void Scene::setMaterials(ColorMap *cm) {
 void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmin = p1;
     pmax = p2;
+}
+
+vec2 Scene::get_uvCoords(vec3 point){
+    //Posem 1 al davant per donar la volta a la imatge de la textura
+    float u = 1 - (point.x /(pmax.x - pmin.x) - (pmin.x) / (pmax.x - pmin.x));
+    float v = 1 - (point.z /(pmax.z - pmin.z) - (pmin.z) / (pmax.z - pmin.z));
+    return vec2(u,v);
 }

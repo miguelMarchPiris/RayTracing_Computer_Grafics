@@ -1,0 +1,4 @@
+#void Base, fitted, -10.0, -10.0, 10.0, 10.0, 0.0
+brObject,../resources/cube.obj,0.0,0.0,0.0,2.0
+brObject,../resources/cube.obj,-3.0,1.0,7,1.0
+brObject,../resources/cube.obj,6.0,2.5.0,-2.0,4.0

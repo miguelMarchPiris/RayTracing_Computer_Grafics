@@ -1,14 +1,17 @@
 //
 // Created by desgarrador on 9/3/20.
 //
-
 #include <include/Translate.h>
+#include <include/Scale.h>
+#include <include/Rotate.h>
 #include "Cylinder.h"
+
 Cylinder::Cylinder(vec3 center, float radius,float h,float data): Object(data){
     this->center=center;
     this->radius=radius;
     this->height=h;
 }
+
 
 bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const{
     float a,b,c;
@@ -98,5 +101,12 @@ void Cylinder::aplicaTG(TG *t) {
         vec4 c(center, 1.0);
         c = t->getTG() * c;
         center.x = c.x; center.y = c.y; center.z = c.z;
+    }else if (dynamic_cast<Scale *>(t)) {
+        /*
+         * Scale solo cambia el radio con la componente x, no cambia con el componente z.
+         */
+        vec4 v(1,1,1,1);
+        height = height * v.y;
+        radius = radius * v.x;
     }
 }

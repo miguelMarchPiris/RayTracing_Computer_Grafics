@@ -51,7 +51,9 @@ protected:
 
     void baseFound(QStringList list);
 
-    void BrObjectFound(QStringList fields);
+    void brObjectFound(QStringList fields);
+
+    void cylinderFound(QStringList fields);
 };
 
 #endif // SCENEREADER_H

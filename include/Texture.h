@@ -24,6 +24,7 @@ public:
     Texture(QString nomfitxer);
     virtual ~Texture();
 
+    //Funcio de correspondencia
     vec3 getColorPixel(vec2 uv);
 
 };

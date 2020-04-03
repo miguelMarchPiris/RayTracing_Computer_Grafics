@@ -14,6 +14,8 @@ Texture::Texture(QString nomfitxer)
 Texture::~Texture() {
 
 }
+
+//Amb aixo obtenim el pixel corresponent a la coordenada (u,v) amb u i v pertanyents a l'interval [0,1]
 vec3 Texture::getColorPixel(vec2 uv) {
     QColor c(image.pixel((uv.x)*image.width(), (uv.y)*image.height() ));
     return(vec3(c.redF(), c.greenF(), c.blueF()));

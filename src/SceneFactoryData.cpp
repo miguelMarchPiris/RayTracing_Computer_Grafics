@@ -22,7 +22,6 @@ Camera *SceneFactoryData::createCamera() {
 }
 
 Scene *SceneFactoryData::createScene(QString filename) {
-
     Scene *s = new Scene();
     DataReader *sc = new DataReader(s);
     // TODO: Fase 1: construccio de l'escena dins de dataReader
