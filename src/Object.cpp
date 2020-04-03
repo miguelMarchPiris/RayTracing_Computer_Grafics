@@ -15,10 +15,17 @@ Object::Object(float d)
 
 Object::~Object()
 {
-    // TO DO Fase 2: Quan s'incloguin nous materials, cal retocar aquest destructor
-    if (material!=nullptr)
+    // TODO Fase 2: Quan s'incloguin nous materials, cal retocar aquest destructor
+    if (material!=nullptr){
         if (dynamic_cast<Lambertian *>(material))
             delete (Lambertian *)material;
+        if (dynamic_cast<MaterialTextura *>(material))
+            delete (MaterialTextura *)material;
+        if (dynamic_cast<Metal *>(material))
+            delete (Metal *)material;
+        if (dynamic_cast<Transparent *>(material))
+            delete (Transparent *)material;
+    }
 }
 
 float Object::getData() {

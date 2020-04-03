@@ -1,6 +1,5 @@
 #include <include/Scale.h>
 #include "BoundaryObject.h"
-#include "Triangle.h"
 
 BoundaryObject::BoundaryObject(string s, float data) : Object(data) {
     readObj(s);
@@ -8,7 +7,7 @@ BoundaryObject::BoundaryObject(string s, float data) : Object(data) {
     // TO DO: Cal fer un recorregut de totes les cares per a posar-les com Triangles
     // Cal recorrer l'estructura de l'objecte segons cara-vertexs que es carrega
 
-    //Per a guardar els vertex reals de la figura en questio
+    //Per a guardar els vertex externs de la figura en questio
     float minX, maxX = vertexs[cares[0].idxVertices[0]].x;
     float minY, maxY = vertexs[cares[0].idxVertices[0]].y;
     float minZ, maxZ = vertexs[cares[0].idxVertices[0]].z;
@@ -16,7 +15,6 @@ BoundaryObject::BoundaryObject(string s, float data) : Object(data) {
 
     //recoregut de les cares i creacio de triangles
     for (unsigned int i = 0; i < cares.size(); i++) {
-        //vev4
         Cara temp = cares[i];
 
         vec4 v1 = vertexs[temp.idxVertices[0]];
@@ -24,7 +22,6 @@ BoundaryObject::BoundaryObject(string s, float data) : Object(data) {
         vec4 v3 = vertexs[temp.idxVertices[2]];
 
         Triangle *tri = new Triangle(vec3(v1.x, v1.y, v1.z), vec3(v2.x, v2.y, v2.z), vec3(v3.x, v3.y, v3.z), data);
-
         this->triangles.push_back(tri);
     }
 
@@ -36,8 +33,6 @@ BoundaryObject::BoundaryObject(string s, float data) : Object(data) {
         maxY = std::max(vertexs[i].y, maxY);
         minY = std::min(vertexs[i].y, minY);
     }
-
-    this->centre = vec3(((maxX + minX) / 2), ((maxY + minY) / 2), ((maxZ + minZ) / 2));
     vertexs.clear();
     cares.clear();
 }
@@ -50,41 +45,25 @@ BoundaryObject::~BoundaryObject() {
             }
         }
     }
-
 }
 
 void BoundaryObject::aplicaTG(TG *t) {
-    if (dynamic_cast<Translate *>(t)) {
-        for (unsigned int i = 0; i < triangles.size(); i++) {
-            triangles[i]->aplicaTG(t);
-        }
-    }
-    if (dynamic_cast<Scale *>(t)) {
-        for (unsigned int i = 0; i < triangles.size(); i++) {
-            triangles[i]->aplicaTG(t);
-        }
-    }
-    if (dynamic_cast<Rotate *>(t)) {
-        for (unsigned int i = 0; i < triangles.size(); i++) {
-            triangles[i]->aplicaTG(t);
-        }
-    }
+    if (dynamic_cast<Translate *>(t)) for (unsigned int i = 0; i < triangles.size(); i++) triangles[i]->aplicaTG(t);
+    if (dynamic_cast<Scale *>(t)) for (unsigned int i = 0; i < triangles.size(); i++) triangles[i]->aplicaTG(t);
 }
 
 bool BoundaryObject::intersection(const Ray &r, float t_min, float t_max, IntersectionInfo &info) const {
     float t_menor(std::numeric_limits<float>::infinity());
     bool intersection = false;
 
-    for (Triangle* t : triangles) {
-        if(t->intersection(r,t_min,t_max,info)) {
-            if(info.t < t_menor) {
+    for (Triangle* t : triangles)
+        if(t->intersection(r,t_min,t_max,info)){
+            if(info.t < t_menor)
                 t_menor = info.t;
-            }
             intersection = true;
         }
-    }
 
-    // actualitzem info
+    // aqui cal actualitzar IntersectionInfo
     info.t = t_menor;
     info.p = r.pointAtParameter(info.t);
     info.normal = vec3(info.p.x,0,info.p.z);
@@ -95,8 +74,8 @@ bool BoundaryObject::intersection(const Ray &r, float t_min, float t_max, Inters
 
 
 // Llegeix un fitxer .obj
-//  Si el fitxer referencia fitxers de materials (.mtl), encara no es llegeixen
-//  Tots els elements del fitxer es llegeixen com a un unic objecte.
+// Si el fitxer referencia fitxers de materials (.mtl), encara no es llegeixen
+// Tots els elements del fitxer es llegeixen com a un unic objecte.
 void BoundaryObject::readObj(string filename) {
     FILE *fp = fopen(filename.c_str(), "rb");
     if (!fp) {

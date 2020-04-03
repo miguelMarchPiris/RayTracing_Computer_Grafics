@@ -12,6 +12,11 @@ Scale::Scale(float f)
 {
     this->scale1 = f;
 }
+
+void Scale::setFloat(float factor) {
+    this->scale1 = factor;
+}
+
 float Scale::getFloat(){
     return this->scale1;
 }

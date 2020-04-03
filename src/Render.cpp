@@ -19,19 +19,27 @@ void Render::rendering() {
 #pragma omp parallel for
     for (int y = cam->viewportY-1; y >= 0; y--) {
          for (int x = 0; x < cam->viewportX; x++) {
-
             vec3 col(0, 0, 0);
             float u = float(x) / float(cam->viewportX);
             float v = float(y) / float(cam->viewportY);
 
             Ray r = cam->getRay(u, v);
+
+            //Definimos aqui el numero de samples
+            this->numSamples = 16;
+
             // Antialiasing -> tiramos numSamples rayos por pixel
             // y nos quedamos con la media del color
             for(int i = 0; i < numSamples; i++){
-                col += scene->ComputeColorRay(r, 0);
+                float u = float(x + drand48()) / float(cam->viewportX);//16 mostres dels subpixels mes propers
+                float v = float(y + drand48()) / float(cam->viewportY);
+                Ray r = cam->getRay(u, v);
+                vec3 subPixelColor = scene->ComputeColorRay(r,0);
+                col += subPixelColor;
             }
 
-            col /= numSamples;
+            col /= vec3(numSamples);
+
             setPixelColor(col, x, y);
          }
     }

@@ -23,18 +23,20 @@ public:
     virtual bool intersection(const Ray& r, float t_min, float t_max, IntersectionInfo& info) const;
 
     //Para mover el objeto dentro de las coords de la escena
+    //De momento solo consideramos trasladar y reescalar triangulos
     virtual void aplicaTG(TG *t);
-    void aplicaTGObjecte(TG *t, vec3);
 
 private:
     //Esta tolerancia nos va a servir para determinar si la normal del triangulo contenido en el plano
     //forma un angulo muy proximo a 90 (triangulo y rayo paralelos) con el rayo
     float const EPSILON = 0.001;
 
-    //Elementos basicos del traingulo
     vector<vec3> vertexs;
     vec3 v1, v2, v3; //cordenadas de los tres vertices
     vec3 normal; //vector normal del triangulo
+
+    //Tamaño del triangulo
+    float size;
 };
 
 

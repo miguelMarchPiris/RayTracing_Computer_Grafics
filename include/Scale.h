@@ -14,6 +14,7 @@ public:
     Scale(glm::vec3 scal);
     Scale(float f);
     float getFloat();
+    void setFloat(float);
     ~Scale();
 };
 

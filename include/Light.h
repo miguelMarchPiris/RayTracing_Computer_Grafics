@@ -15,11 +15,16 @@ public:
 
     ~Light();
 
-    glm::vec3 punt;
+    glm::vec3 punt; //Posicio de la llum puntual
     glm::vec3 ambient; //Ka
     glm::vec3 difuse; //kd
     glm::vec3 especular; //Ks
     glm::vec3 attenuation; //beta?
+
+    //Coeficient d'atenuacio
+    float coef_aten;
+
+    void setCoefAten(float ca);
 };
 
 #endif //RAYDATA_LIGHT_H
