@@ -8,17 +8,21 @@ MaterialTextura::MaterialTextura():Material(){
     this->Kambient = vec3(0.1, 0.1, 0.1);
     this->alpha = 1.0;
     this->shininess = 1.0;
+    this->image = new Texture("://resources/map.png");
 }
 
 MaterialTextura::~MaterialTextura()
 = default;
 
-bool MaterialTextura::scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const {
+bool MaterialTextura::scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>&r_out) const
+{
     /*
     float r = this->getDiffuse(vec2(rec.p.x,rec.p.z)).x;
     float g = this->getDiffuse(vec2(rec.p.x,rec.p.z)).y;
     float b = this->getDiffuse(vec2(rec.p.x,rec.p.z)).z;*/
     return false;
+}
+
 MaterialTextura::MaterialTextura(QString im)
 {
     this->Kdiffuse = vec3(1.0, 1.0, 1.0);

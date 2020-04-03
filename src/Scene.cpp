@@ -176,7 +176,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
     //return color;
 //}
 
-    return sqrt(color);
+    return color;
 }
 
 void Scene::update(int nframe) {
@@ -193,14 +193,16 @@ void Scene::setMaterials(ColorMap *cm) {
     srand (static_cast <unsigned> (time(0)));
     for (auto object: this->objects)
     {
-        vec3 ambient = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
-        vec3 diffuse = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
-        vec3 specular = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
-        float alpha = 1.f;
-        float shininess= 300;
+        if (object->getMaterial() == NULL) {
+            vec3 ambient = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+            vec3 diffuse = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+            vec3 specular = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+            float alpha = 1.f;
+            float shininess= 30;
 
-        // Per cada objecte afegim un material de manera random
-        object->setMaterial(new Lambertian(ambient,diffuse,specular,alpha,shininess));
+            // Per cada objecte afegim un material de manera random
+            object->setMaterial(new Metal(vec3(0.2, 0.2, 0.2), vec3(0.7, 0.7, 0.7), vec3(0.7, 0.7, 0.7), 1, 10));
+        }
     }
     // TODO: Fase 2
     // Cal canviar el tipus de material Lambertian, Specular, Transparent, Tipus Textura
@@ -221,7 +223,7 @@ void Scene::setDimensions(vec3 p1, vec3 p2) {
 }
 
 
-vec2 Scene::getUV(vec3 point){
+vec2 Scene::get_uvCoords(vec3 point){
     //Aplicar Operació (extreta de Parcial Transpas)
     //xUV = xDades * ( xmaxUV - xminUV) /(xmax - xmin) - xmin * ( xmaxUV - xminUV) /(xmax - xmin) + xminUV
     float u = (point.x - pmin.x) / (pmax.x - pmin.x);

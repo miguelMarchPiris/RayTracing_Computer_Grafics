@@ -79,19 +79,19 @@ void SceneFactoryVirtual::OneSphere(Scene *s) {
     // anim->transf = new Translate(vec3(0.2));
     // sphere->addAnimation(anim);
 
-    s->objects.push_back(esfera_burbuja_exterior);
-    s->objects.push_back(esfera_burbuja_interior);
+    //s->objects.push_back(esfera_burbuja_exterior);
+    //s->objects.push_back(esfera_burbuja_interior);
 
-    s->objects.push_back(esfera_blanca);
+    //s->objects.push_back(esfera_blanca);
     s->objects.push_back(sphere_base);
-    //s->objects.push_back(esfera_metalica);
+    s->objects.push_back(esfera_metalica);
     //s->objects.push_back(esfera_transparente);
     s->objects.push_back(esfera_verde);
-    s->objects.push_back(esfera_fucsia);
-    //s->objects.push_back(cilindro_transparente);
+    //s->objects.push_back(esfera_fucsia);
+    s->objects.push_back(cilindro_transparente);
 
 
-    s->lights.push_back(light0);
+    //s->lights.push_back(light0);
     //s->lights.push_back(light1);
 
 }

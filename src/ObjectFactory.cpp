@@ -37,7 +37,7 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), v);
             break;
         case CYLINDER:
-            o = new Cylinder(vec3(x,y,z), 1.,aux,v);
+            o = new Cylinder(vec3(x,y,z), 0.5,aux,v);
             break;
         default:
             cerr<<"Nothing to create"<<endl;

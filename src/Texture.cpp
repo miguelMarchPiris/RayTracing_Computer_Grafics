@@ -8,7 +8,7 @@ Texture::Texture(QString nomfitxer)
 {
     if(nomfitxer.toStdString()[0] == ' ')
         nomfitxer = nomfitxer.remove(0, 1);
-    cout << nomfitxer.toStdString() << endl;
+    //cout << nomfitxer.toStdString() << endl;
     bool success = image.load(nomfitxer);
 
     if (!success) std::cout << "Imatge no trobada" << endl;

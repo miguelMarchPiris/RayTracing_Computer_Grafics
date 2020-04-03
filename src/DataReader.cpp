@@ -66,8 +66,8 @@ void DataReader::baseFound(QStringList fields) {
         //o->aplicaTG(scale1);
 
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
-        scene->ground = dynamic_cast<FittedPlane *>(o);
-        scene->ground->setMaterial(new MaterialTextura(fields[6]));
+        scene->floor = dynamic_cast<FittedPlane *>(o);
+        scene->floor->setMaterial(new MaterialTextura(fields[6]));
         //scene->setMaterials(scene->ground->getMaterial());
         //scene->objects.push_back(scene->ground);
     }
@@ -135,7 +135,7 @@ void DataReader::dataFound(QStringList fields) {
         //  amb el seu color corresponent segons el seu ColorMap
         Object *o;
         vec3 point (fields[1].toFloat(), 0.0f, fields[2].toFloat());
-        vec2 uvpoint = scene->getUV(point);
+        vec2 uvpoint = scene->get_uvCoords(point);
         cout << uvpoint[0] << " " << uvpoint[1] << endl;
         float r = (fields[3 + i].toFloat()/(2 * (props_data[2*i+1] - props_data[2*i])));
         cout << fields[3 + i].toFloat() << " " << r << endl;

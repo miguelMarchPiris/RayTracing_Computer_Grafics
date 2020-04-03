@@ -69,3 +69,4 @@ ha suavitzat molt els contorns de cada figura i ha millorat molt la qualitat de 
 
 ####Additional Information
 *(NOTA: Horas de dedicación y problemas principales que hayáis tenido durante la realización de las prácticas)*
+
