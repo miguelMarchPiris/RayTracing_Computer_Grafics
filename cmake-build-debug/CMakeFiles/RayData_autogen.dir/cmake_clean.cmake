@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RayData_autogen"
   "RayData_autogen/mocs_compilation.cpp"
-  "qrc_resources.cpp"
 )
 
 # Per-language clean rules from dependency scanning.

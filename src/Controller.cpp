@@ -37,7 +37,7 @@ Controller::Controller(QString fileName, SceneFactory::SCENE_FACTORIES s, Render
     vec3 _pmin (-10,-10,-10);
     vec3 _pmax (10,10,10);
 
-    //scene->setDimensions(_pmin, _pmax);
+    scene->setDimensions(_pmin, _pmax);
 
     // ETAPA 2: Inicialitzacio del Rendering
     // usa un Factory Template per a construir el tipus de render

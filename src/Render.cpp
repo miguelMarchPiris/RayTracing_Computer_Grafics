@@ -33,12 +33,13 @@ void Render::rendering() {
             for(int i = 0; i < numSamples; i++){
                 float u = float(x + drand48()) / float(cam->viewportX);//16 mostres dels subpixels mes propers
                 float v = float(y + drand48()) / float(cam->viewportY);
-                Ray r = cam->getRay(u, v);
+                r = cam->getRay(u, v);
                 vec3 subPixelColor = scene->ComputeColorRay(r,0);
                 col += subPixelColor;
             }
 
             col /= vec3(numSamples);
+
 
             setPixelColor(col, x, y);
          }

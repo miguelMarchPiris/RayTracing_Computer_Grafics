@@ -362,29 +362,7 @@ add_executable(RayData
         src/TG.cpp
         src/Texture.cpp
         src/Translate.cpp
-        ${Res_SRC}
-        include/Light.h
-        src/Light.cpp
-        src/Scale.cpp
-        include/Scale.h
-        src/Rotate.cpp
-        include/Rotate.h
-        src/Triangle.cpp
-        include/Triangle.h
-        src/MaterialTextura.cpp
-        include/MaterialTextura.h
-        src/FittedPlane.cpp
-        include/FittedPlane.h
-        src/Cylinder.cpp
-        include/Cylinder.h
-        include/Metal.h
-        include/Transparent.h
-        src/Cylinder.cpp
-        include/Cylinder.h
-        include/Metal.h
-        src/Metal.cpp
-        include/Transparent.h
-        src/Transparent.cpp)
+        ${Res_SRC} include/Light.h src/Light.cpp src/Scale.cpp include/Scale.h src/Rotate.cpp include/Rotate.h src/Triangle.cpp include/Triangle.h src/MaterialTextura.cpp include/MaterialTextura.h src/FittedPlane.cpp include/FittedPlane.h src/Cylinder.cpp include/Cylinder.h src/Metal.cpp include/Metal.h src/Transparent.cpp src/Transparent.cpp include/Transparent.h)
 
 
 # Set the GL and GLUT libraries
@@ -404,4 +382,3 @@ endif()
 
 # Add the Qt5 Widgets, GL and GLUT  for linking
 target_link_libraries(RayData Qt5::Widgets ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
-

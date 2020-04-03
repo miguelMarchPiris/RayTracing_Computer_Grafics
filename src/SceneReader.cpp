@@ -3,7 +3,6 @@
 #include <QTextStream>
 #include <iostream>
 #include <include/ObjectFactory.h>
-#include "MaterialTextura.h"
 
 SceneReader::SceneReader(Scene *s) {
     scene = s;

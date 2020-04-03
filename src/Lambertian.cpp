@@ -1,6 +1,11 @@
 #include <iostream>
 #include "Lambertian.h"
 
+Lambertian::Lambertian(const vec3& color): Material()
+{
+    Kdiffuse = color;
+}
+
 Lambertian::Lambertian(vec3 ambient, vec3 diffuse, vec3 specular, float alpha, float shininess) : Material()
 {
     this->Kambient = ambient;

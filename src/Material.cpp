@@ -12,7 +12,6 @@ Material::Material(){
 Material::~Material()
 {}
 
-//Material::Material(vec3 a, vec3 d, vec3 s, vec3 k, float beta){
 Material::Material(vec3 a, vec3 d, vec3 s, float o, int sh){
     this->Kdiffuse = d;
     this->Kspecular = s;
@@ -23,13 +22,8 @@ Material::Material(vec3 a, vec3 d, vec3 s, float o, int sh){
     this->shininess = sh;
 }
 
-vec3 Material::multScalar(float f, vec3 vec) const{
-    return vec3(vec.x*f,vec.y*f,vec.z*f);
-}
-
 vec3 Material::getDiffuse(vec2 point) const {
     return this->Kdiffuse;
-//Material::Material(vec3 a, vec3 d, vec3 s, float beta, float shininess){
 }
 
 vec3 Material::RandomInSphere() const {

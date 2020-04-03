@@ -11,7 +11,7 @@ class Transparent: public Material{
 public:
     Transparent(vec3 kt, float refractionIndex);
     virtual ~Transparent();
-    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>& r_out) const;
+    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>& r_out) const override;
 
     float refractionIndex;
 };
