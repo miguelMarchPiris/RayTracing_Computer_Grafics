@@ -15,7 +15,7 @@ public:
     Material(vec3 ambient, vec3 diffuse, vec3 specular, float beta, float shininess);
     ~Material();
 
-    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const = 0;
+    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>& r_out) const = 0;
 
     // Ka
     vec3 ambient;

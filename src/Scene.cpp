@@ -6,7 +6,7 @@ Scene::Scene()
 {
     pmin.x = -5;  pmin.y = -5; pmin.z = -5;
     pmax.x = 5;  pmax.y = 5; pmax.z = 5;
-    globalAmbientLighting = vec3(0.01f, 0.01f, 0.01f);
+    globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
 }
 
 Scene::~Scene()
@@ -66,8 +66,10 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 **
 */
 vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
-    vec3 color = vec3(0, 0, 0), k, ray2;
+    vec3 color = vec3(0, 0, 0), ray2;
+
     Ray rL;
+    vector<vec3> colors;
     vector<Ray> reflections;
 
     // Vectors pel model de Phong:
@@ -105,7 +107,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
 
             // Component especular
             color += info.mat_ptr->specular * light->specular *
-                     pow(glm::max(dot(h, n), 0.0f), info.mat_ptr->beta * info.mat_ptr->shininess);
+                     pow(glm::max(dot(h, n), 0.0f), (float) info.mat_ptr->shininess);//info.mat_ptr->beta * );
 
             // Dividim per la distància
             dist = glm::length(light->punt - info.p);
@@ -126,25 +128,34 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             // Component ambient
             color += light->ambient * info.mat_ptr->ambient;
 
-            if(depth < MAX_REFLECT) {
-                if(0){//instanceof<Transparent>(info.mat_ptr)){
-
-                }else{
-                    info.mat_ptr->scatter(ray, info, k, reflections);
-                    for(auto reflection: reflections) {
-                        color += k * ComputeColorRay(reflection, depth + 1);
+            if (depth < MAX_REFLECT) {
+                // si el material es transparente
+                if (dynamic_cast<const Transparent *>(info.mat_ptr)) {
+                    //Transparent* trans = (Transparent*) info.mat_ptr;
+                    vec3 coloraux = vec3(0, 0, 0);
+                    info.mat_ptr->scatter(ray, info, colors, reflections);
+                    for (int i = 0; i < reflections.size(); i++) {
+                        coloraux += colors[i] * ComputeColorRay(reflections[i], depth + 1);
                     }
-                }
+                    color = coloraux;
+                    //color+=colors[i] * ComputeColorRay(reflections[i],depth + 1);
+                } else {
+                    info.mat_ptr->scatter(ray, info, colors, reflections);
+                    for (int i = 0; i < reflections.size(); i++) {
+                        color += colors[i] * ComputeColorRay(reflections[i], depth + 1);
+                    }
 
+
+                }
             }
         }
     }else {
 
-        /*if(depth <= 0) {*/
+        if(depth <= 5) {
             color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);
-        /*}else{
+        }else{
             color = globalAmbientLighting;
-        }*/
+        }
     }
 
     return color;

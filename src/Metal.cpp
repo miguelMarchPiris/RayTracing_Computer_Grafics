@@ -15,10 +15,10 @@ Metal::Metal(vec3 ambient, vec3 diffuse, vec3 specular, float beta, float shinin
 Metal::~Metal(){
 }
 
-bool Metal::scatter(const Ray &r_in, const IntersectionInfo &rec, vec3 &color, std::vector<Ray> &r_out) const {
+bool Metal::scatter(const Ray &r_in, const IntersectionInfo &rec, std::vector<vec3>& colors, std::vector<Ray> &r_out) const {
     vec3 resultant = reflect(r_in.dirVector(), rec.normal);
     Ray reflection = Ray(rec.p + 0.001f*resultant, resultant);
     r_out.push_back(reflection);
-    color = specular;
+    colors.push_back(specular);
     return true;
 }
