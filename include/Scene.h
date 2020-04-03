@@ -13,6 +13,7 @@
 #include "Light.h"
 #include "Cylinder.h"
 #include "FittedPlane.h"
+#include "Camera.h"
 
 class Scene: public Hitable
 {
@@ -41,13 +42,20 @@ public:
     // Vector d'objectes continguts a l'escena
     std::vector<Object*> objects;
 
+    const int MAX_REFLECT = 10;
+
     // TODO FASE 2: Afegir llums a l'escena
     std::vector<Light*> lights;
 
     //Terra de l'escena
-    FittedPlane *ground;
+    FittedPlane *floor;
 
-    vec2 getUV(vec3);
+    //Metode per extreure les coordenades uv
+    vec2 get_uvCoords(vec3);
+
+    //Constants
+    double const EPSILON = 0.01;
+    int const MAX_DEPTH = 10;
 };
 
 #endif // SCENE_H

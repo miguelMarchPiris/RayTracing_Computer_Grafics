@@ -1,10 +1,11 @@
 //
 // Created by desgarrador on 9/3/20.
 //
-
 #include <include/Translate.h>
 #include <include/Scale.h>
+#include <include/Rotate.h>
 #include "Cylinder.h"
+
 Cylinder::Cylinder(vec3 center, float radius,float h,float data): Object(data){
     this->center=center;
     this->radius=radius;
@@ -18,19 +19,15 @@ Cylinder::Cylinder(float data):Object(data){
 
 bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, IntersectionInfo& info) const{
     float a,b,c;
-    float rx,rz,ry;
+    float rx,rz;
     float jx, jz;
     rx=raig.dirVector().x;
-    //ry=raig.dirVector().y;
     rz=raig.dirVector().z;
-
     float t[4]={HUGE_VALF, HUGE_VALF, HUGE_VALF, HUGE_VALF};
-
 
     //Colision con la superficie curva.
     jx=raig.initialPoint().x - center.x;
     jz=raig.initialPoint().z - center.z;
-    //  t[]<t_min || t[]> t_max ||
     a = rx*rx + rz*rz;
     b = 2*(jx*raig.dirVector().x + jz*raig.dirVector().z);
     c = pow(jx, 2) + pow(jz, 2) - pow(radius,2);
@@ -49,7 +46,7 @@ bool Cylinder::intersection(const Ray& raig, float t_min, float t_max, Intersect
         if( t[1]<t_min || t[1]> t_max || (center.y + height) < aux || aux < center.y){
             t[1]=HUGE_VALF;
         }
-
+        //Solo en caso de que no interseccione dos veces con la superficie curva miramos las tapas
         if(t[0] == HUGE_VALF || t[1] == HUGE_VALF) {
             t[2] = (center.y - raig.initialPoint().y) / raig.dirVector().y;//tapa inferior
             t[3] = (center.y + height - raig.initialPoint().y) / raig.dirVector().y;//tapa superior
@@ -109,10 +106,11 @@ void Cylinder::aplicaTG(TG *t) {
         c = t->getTG() * c;
         center.x = c.x; center.y = c.y; center.z = c.z;
     }else if (dynamic_cast<Scale *>(t)) {
-        //Scale solo cambia el radio con la componente x, no cambia con el componente z.
-        vec4 c(radius, height, 1, 1);
-        c = t->getTG()*c;
-        height = c.y;
-        radius = c.x;
+        /*
+         * Scale solo cambia el radio con la componente x, no cambia con el componente z.
+         */
+        vec4 v(1,1,1,1);
+        height = height * v.y;
+        radius = radius * v.x;
     }
 }

@@ -75,6 +75,8 @@ void DataReader::baseFound(QStringList fields) {
 }
 
 
+
+
 void DataReader::limitsFound(QStringList fields) {
     // limits xmin xmax zmin zmax
     if (fields.size() != 5) {
@@ -105,7 +107,6 @@ void DataReader::propFound(QStringList fields) {
 
     cout<<fields[4].toStdString()<<endl;
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
-        std::cout << "Esfera" << std::endl;
         props.push_back(ObjectFactory::OBJECT_TYPES::SPHERE);
         this->props_data[2*numProp] = (float) fields[2].toInt();
         this->props_data[2*numProp + 1] = (float) fields[3].toInt();
@@ -141,12 +142,6 @@ void DataReader::dataFound(QStringList fields) {
         o = ObjectFactory::getInstance()->createObject(2 * proporcio * uvpoint[0] - proporcio + i, 0.0, 2 * proporcio * uvpoint[1] - proporcio,
                                                        r, 0.0f,
                                                        props[i]);
-
-        //auto *translate1 = new Translate(vec3((-1) * scene->pmin[0], 0.0f, (-1) * scene->pmin[2]));
-        //auto *scale1 = new Scale(1 / (scene->pmax[0] - scene->pmin[0]));
-        //cout << scale1->scale1 << endl;
-        //o->aplicaTG(translate1);
-        //o->aplicaTG(scale1);
         scene->objects.push_back(o);
     }
 }

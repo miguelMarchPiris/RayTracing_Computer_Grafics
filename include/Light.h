@@ -8,18 +8,14 @@
 
 class Light{
 public:
-    Light(glm::vec3 punt);
-
-    //Constructor amb parametres
-    Light(glm::vec3 punt, glm::vec3 ambient, glm::vec3 difuse, glm::vec3 especular, glm::vec3 attenuation);
-
+    Light(glm::vec3 punt, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 attenuation);
     ~Light();
 
     glm::vec3 punt;
-    glm::vec3 ambient; //Ka
-    glm::vec3 difuse; //kd
-    glm::vec3 especular; //Ks
-    glm::vec3 attenuation; //beta?
+    glm::vec3 Kambient;
+    glm::vec3 Kdiffuse;
+    glm::vec3 Kspecular;
+    glm::vec3 attenuation;
 };
 
 #endif //RAYDATA_LIGHT_H

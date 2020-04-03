@@ -5,6 +5,7 @@
         <file>resources/teapot2.obj</file>
         <file>resources/europa.png</file>
         <file>resources/map.png</file>
+        <file>resources/mondrian.png</file>
         <file>resources/mapZoom.png</file>
         <file>resources/spheres.txt</file>
         <file>resources/data0.txt</file>
@@ -13,5 +14,6 @@
         <file>resources/dadesEuropa.txt</file>
         <file>resources/spheres2.txt</file>
         <file>resources/fitted.txt</file>
+        <file>resources/fitted_plane_2.txt</file>
     </qresource>
 </RCC>

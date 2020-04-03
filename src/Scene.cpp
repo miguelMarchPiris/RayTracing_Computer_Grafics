@@ -1,11 +1,14 @@
+#include <include/Transparent.h>
 #include "Scene.h"
 #include "glm/gtx/string_cast.hpp"
 #include "MaterialTextura.h"
+#include "Metal.h"
 
 Scene::Scene()
 {
-    pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
-    pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    pmin.x = -5;  pmin.y = -5; pmin.z = -5;
+    pmax.x = 5;  pmax.y = 5; pmax.z = 5;
+    // llum d'ambient global
     globalAmbientLighting = vec3(0.1f, 0.1f, 0.1f);
 }
 
@@ -15,54 +18,31 @@ Scene::~Scene()
 {
 // TODO Fase 1: Quan s'incloguin nous objectes, cal retocar aquest destructor
 
-    //Cal alliberar memoria reservada pels objectes, els seus respectius materials i...
-    for(unsigned int i = 0; i < objects.size(); ++i){
-        if(objects[i]){
-            if (dynamic_cast<Sphere*>(objects[i])){
-                if (objects[i]->getMaterial())
-                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
-                        delete (Lambertian *)(objects[i]->getMaterial());
-                delete (Sphere *)(objects[i]);
-            }
-            if (dynamic_cast<Plane*>(objects[i])){
-                if (objects[i]->getMaterial())
-                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
-                        delete (Lambertian *)(objects[i]->getMaterial());
-                delete (Plane *)(objects[i]);
-            }
-            if (dynamic_cast<Triangle*>(objects[i])){
-                if (objects[i]->getMaterial())
-                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
-                        delete (Lambertian *)(objects[i]->getMaterial());
-                delete (Triangle *)(objects[i]);
-            }
-            if (dynamic_cast<BoundaryObject*>(objects[i])){
-                if (objects[i]->getMaterial())
-                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
-                        delete (Lambertian *)(objects[i]->getMaterial());
-                delete (BoundaryObject *)(objects[i]);
-            }
-            if (dynamic_cast<FittedPlane*>(objects[i])){
-                if (objects[i]->getMaterial())
-                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
-                        delete (Lambertian *)(objects[i]->getMaterial());
-                delete (FittedPlane *)(objects[i]);
-            }
-            /* descomentar cuando esten los cilindros listos
-            if (dynamic_cast<Cylinder*>(objects[i])){
-                if (objects[i]->getMaterial())
-                    if (dynamic_cast<Lambertian*>(objects[i]->getMaterial()))
-                        delete (Lambertian *)(objects[i]->getMaterial());
-                delete (Cylinder *)(objects[i]);
-            }*/
+    //Cal alliberar memoria reservada pels objectes. Aquests eliminaran la instancia de material que tinguin
+    for(unsigned int i = 0; i < objects.size(); ++i)
+        if (objects[i]) {
+            if (dynamic_cast<Sphere *>(objects[i]))
+                delete (Sphere *) (objects[i]);
+
+            if (dynamic_cast<Plane *>(objects[i]))
+                delete (Plane *) (objects[i]);
+
+            if (dynamic_cast<Triangle *>(objects[i]))
+                delete (Triangle *) (objects[i]);
+
+            if (dynamic_cast<BoundaryObject *>(objects[i]))
+                delete (BoundaryObject *) (objects[i]);
+
+            if (dynamic_cast<FittedPlane *>(objects[i]))
+                delete (FittedPlane *) (objects[i]);
+
+            if (dynamic_cast<Cylinder *>(objects[i]))
+                delete (Cylinder *) (objects[i]);
         }
-    }
 
     //per les llums
     for(unsigned int i = 0; i < lights.size(); i++) delete lights[i];
 }
-
-
 
 /*
 ** TODO: FASE 1: Metode que testeja la interseccio contra tots els objectes de l'escena
@@ -76,8 +56,8 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 {
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig,
     // pero no en aquesta funcio.
-    //Considerem que no hem trobat col*lisionat amb ningun objecte
-    //Hem de crear un nou Hitinfo per poder actualitzar si hem trobat un objecte més próxim.
+    // Considerem que no hem trobat col*lisionat amb ningun objecte
+    // Hem de crear un nou Hitinfo per poder actualitzar si hem trobat un objecte més próxim.
     IntersectionInfo info_temp;
     info.t = t_max;
 
@@ -90,7 +70,6 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
     return info.t < t_max;
 }
 
-
 /*
 ** TODO: Funcio ComputeColorRay es la funcio recursiva del RayTracing.
  * TODO: FASE 1 per a cridar a la intersecció amb l'escena i posar el color de l'objecte
@@ -99,8 +78,10 @@ bool Scene::intersection(const Ray& raig, float t_min, float t_max, Intersection
 **
 */
 vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
-    vec3 color = vec3(0, 0, 0), ray2;
+    vec3 color = vec3(0, 0, 0), k, ray2;
     Ray rL;
+    vector<vec3> colors;
+    vector<Ray> reflections;
 
     // Vectors pel model de Phong:
     // Del punt a la superficie de la llum - L
@@ -112,61 +93,91 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
     // Vector H
     vec3 h;
 
-    float dist, factorOmbra, epsilon = 0.01f;
+    float dist, factorOmbra, epsilon = 0.001f;
 
     // Per algun motiu no normalitza be (dona valors negatius), per aixo s'afegeix el segon vector
-    ray2 = normalize(ray.direction) + vec3(0, 0.5f, 0);
-
+    ray2 = normalize(ray.initialPoint());
     // TODO: A canviar el càlcul del color en les diferents fases
-    IntersectionInfo info;
+    IntersectionInfo info, infoTemp;
 
     // Blinn-Phong
     if (this->intersection(ray, 0, 100, info)) {
-        v = glm::normalize(ray.initialPoint() - (ray.initialPoint() + ray.dirVector()*info.t));
+
+        v = ray.initialPoint() - info.p;
         n = glm::normalize(info.normal);
 
         // Component ambient global
-        color += globalAmbientLighting * info.mat_ptr->ambient;
-        for(auto light:lights){
+        color += globalAmbientLighting * info.mat_ptr->Kambient;
+        for (auto light:lights) {
 
-            l = glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t));
-            h = (l + v)/(length(l + v));
+            l = glm::normalize(light->punt - info.p);
+            h = (l + v) / (length(l + v));
 
-            // Component difusa
             /////////// FASE 3 /////////////
-            vec2 uv = getUV(info.p); //debemos obtener el punto (u,v) a traves del punto con el que se intersecta
-
-            //en el caso de que el material sea MaterialTextura obtendremos los textels
-            color += info.mat_ptr->getDiffuse(uv) * light->difuse * glm::max(dot(l, n), 0.0f);
+            // Component difusa
+            info.uv = get_uvCoords(info.p); //debemos obtener el punto (u,v) a traves del punto con el que se intersecta
+            //en el caso de que el material sea MaterialTextura obtendremos los textels a traves de las coordenadas uv
+            color += info.mat_ptr->getDiffuse(info.uv) * light->Kdiffuse * glm::max(dot(l, n), 0.0f);
             ////////////////////////////////
 
             // Component especular
-            color += info.mat_ptr->especular * light->especular *  pow(glm::max(dot(h, n), 0.0f), info.mat_ptr->alpha*info.mat_ptr->shininess);
+            color += info.mat_ptr->Kspecular * light->Kspecular *
+                     pow(glm::max(dot(h, n), 0.0f), (float) info.mat_ptr->shininess);//info.mat_ptr->beta * );
 
             // Dividim per la distància
-            dist = glm::length(light->punt - (ray.initialPoint() + ray.dirVector()*info.t));
-            color /= (dist*dist*light->attenuation[0] + dist*light->attenuation[1] + light->attenuation[2]);
-
-            // Component ambient
-            color += light->ambient * info.mat_ptr->ambient;
+            dist = glm::length(light->punt - info.p);
+            color /= (dist * dist * light->attenuation[0] + dist * light->attenuation[1] + light->attenuation[2]);
 
             // Càlcul de l'ombra
-            rL = Ray(ray.initialPoint() + ray.dirVector()*info.t + epsilon*glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)), glm::normalize(light->punt - (ray.initialPoint() + ray.dirVector()*info.t)));
-            if(this->intersection(rL, 0, 100, info)){
+            rL = Ray(ray.pointAtParameter(info.t) +
+                     epsilon * glm::normalize(light->punt - info.p),
+                     glm::normalize(light->punt - info.p));
+            if (this->intersection(rL, 0, 100, infoTemp)) {
                 factorOmbra = 0.0f;
-            }else{
+            } else {
                 factorOmbra = 1.0f;
             }
+
             color *= factorOmbra;
+
+            // Component ambient
+            color += light->Kambient * info.mat_ptr->Kambient;
+
+            if (depth < MAX_REFLECT) {
+                // si el material es transparente
+                if (dynamic_cast<const Transparent *>(info.mat_ptr)) {
+                    //Transparent* trans = (Transparent*) info.mat_ptr;
+                    vec3 coloraux = vec3(0, 0, 0);
+                    info.mat_ptr->scatter(ray, info, colors, reflections);
+                    for (int i = 0; i < reflections.size(); i++) {
+                        coloraux += colors[i] * ComputeColorRay(reflections[i], depth + 1);
+                    }
+                    color = coloraux;
+                    //color+=colors[i] * ComputeColorRay(reflections[i],depth + 1);
+                } else {
+                    info.mat_ptr->scatter(ray, info, colors, reflections);
+                    for (int i = 0; i < reflections.size(); i++) {
+                        color += colors[i] * ComputeColorRay(reflections[i], depth + 1);
+                    }
+
+
+                }
+            }
         }
     }else {
-        color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);
+
+        if(depth <= 5) {
+            color = (1 - ray2.y) * vec3(1, 1, 1) + ray2.y * vec3(0, 0, 1);
+        }else{
+            color = globalAmbientLighting;
+        }
     }
 
-    return color;
+    //return color;
+//}
+
+    return sqrt(color);
 }
-
-
 
 void Scene::update(int nframe) {
     for (unsigned int i = 0; i< objects.size(); i++) {
@@ -174,6 +185,7 @@ void Scene::update(int nframe) {
     }
 }
 
+// TODO no s'entén gaire
 void Scene::setMaterials(ColorMap *cm) {
     Material *m;
     // TODO: Fase 0
@@ -181,19 +193,23 @@ void Scene::setMaterials(ColorMap *cm) {
     srand (static_cast <unsigned> (time(0)));
     for (auto object: this->objects)
     {
+        vec3 ambient = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+        vec3 diffuse = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+        vec3 specular = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+        float alpha = 1.f;
+        float shininess= 300;
+
         // Per cada objecte afegim un material de manera random
-        object->setMaterial(new Lambertian(
-                vec3((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX))
-                );
+        object->setMaterial(new Lambertian(ambient,diffuse,specular,alpha,shininess));
     }
     // TODO: Fase 2
     // Cal canviar el tipus de material Lambertian, Specular, Transparent, Tipus Textura
     if (cm == nullptr)
-        m = new Lambertian(vec3(0.5, 0.2, 0.7));
+        m = new Lambertian(vec3(0.1,0.1,0.1),vec3(0.5, 0.2, 0.7),vec3(1.,1.,1.),1,400);
     else {
         // TODO: Fase 2:
         //  Crear els materials segons la paleta de cada propietat a cada objecte de l'escena
-        m = new Lambertian(cm->getColor(0));
+        m = new Lambertian(vec3(0.1,0.1,0.1),cm->getColor(0),vec3(1.,1.,1.),1,400);
     }
     for (auto o:objects)
         if (o->getMaterial() == nullptr) o->setMaterial(m);

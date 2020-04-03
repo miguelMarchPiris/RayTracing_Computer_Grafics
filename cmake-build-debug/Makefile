@@ -595,6 +595,33 @@ src/MaterialTextura.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.s
 .PHONY : src/MaterialTextura.cpp.s
 
+src/Metal.o: src/Metal.cpp.o
+
+.PHONY : src/Metal.o
+
+# target to build an object file
+src/Metal.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Metal.cpp.o
+.PHONY : src/Metal.cpp.o
+
+src/Metal.i: src/Metal.cpp.i
+
+.PHONY : src/Metal.i
+
+# target to preprocess a source file
+src/Metal.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Metal.cpp.i
+.PHONY : src/Metal.cpp.i
+
+src/Metal.s: src/Metal.cpp.s
+
+.PHONY : src/Metal.s
+
+# target to generate assembly for a file
+src/Metal.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Metal.cpp.s
+.PHONY : src/Metal.cpp.s
+
 src/Object.o: src/Object.cpp.o
 
 .PHONY : src/Object.o
@@ -1135,6 +1162,33 @@ src/Translate.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Translate.cpp.s
 .PHONY : src/Translate.cpp.s
 
+src/Transparent.o: src/Transparent.cpp.o
+
+.PHONY : src/Transparent.o
+
+# target to build an object file
+src/Transparent.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.o
+.PHONY : src/Transparent.cpp.o
+
+src/Transparent.i: src/Transparent.cpp.i
+
+.PHONY : src/Transparent.i
+
+# target to preprocess a source file
+src/Transparent.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.i
+.PHONY : src/Transparent.cpp.i
+
+src/Transparent.s: src/Transparent.cpp.s
+
+.PHONY : src/Transparent.s
+
+# target to generate assembly for a file
+src/Transparent.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.s
+.PHONY : src/Transparent.cpp.s
+
 src/Triangle.o: src/Triangle.cpp.o
 
 .PHONY : src/Triangle.o
@@ -1223,6 +1277,9 @@ help:
 	@echo "... src/MaterialTextura.o"
 	@echo "... src/MaterialTextura.i"
 	@echo "... src/MaterialTextura.s"
+	@echo "... src/Metal.o"
+	@echo "... src/Metal.i"
+	@echo "... src/Metal.s"
 	@echo "... src/Object.o"
 	@echo "... src/Object.i"
 	@echo "... src/Object.s"
@@ -1283,6 +1340,9 @@ help:
 	@echo "... src/Translate.o"
 	@echo "... src/Translate.i"
 	@echo "... src/Translate.s"
+	@echo "... src/Transparent.o"
+	@echo "... src/Transparent.i"
+	@echo "... src/Transparent.s"
 	@echo "... src/Triangle.o"
 	@echo "... src/Triangle.i"
 	@echo "... src/Triangle.s"

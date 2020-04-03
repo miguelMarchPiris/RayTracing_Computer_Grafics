@@ -1,3 +1,4 @@
+#include <include/Cylinder.h>
 #include "ObjectFactory.h"
 
 ObjectFactory *ObjectFactory::instance = nullptr;
@@ -27,35 +28,28 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             o = new Plane(vec3(x, y, z), aux, v);
             break;
         case TRIANGLE:
-            //o = new Triangle(vec3(x, y, z), aux, v);
-            o = new Triangle(vec3(x,0,0),vec3(0,y,0),vec3(0,0,z), aux);
+            o = new Triangle(vec3(0,0,0),v,aux);
             break;
-        case CYLINDER:
-            /* Por lo que dicene en el enunciado parece que nos piden hacer esto.
-             * La verdad es que no tiene ningún sentido.
-            o = new Cylinder(v);
-            TG* s = new Scale(vec3(1,aux,1));
-            o->aplicaTG(s);
-            delete(s);
-             */
-            o = new Cylinder(vec3(x,0,z),0.1,aux,v);
-
-            break;
+            //case CYLINDER:
+            //  cout<< "Cilindro creado"<<endl;
+            //break;
         case FITTED_PLANE:
             o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), v);
             break;
+        case CYLINDER:
+            o = new Cylinder(vec3(x,y,z), 1.,aux,v);
+            break;
         default:
+            cerr<<"Nothing to create"<<endl;
             break;
     }
-
-    //o->aplicaTG(new Translate(vec3(-aux * x, -y, -z)));
-
     return o;
 }
 
+//Metode per a crear boundaries
 Object *ObjectFactory::createBrObject(float x, float y, float z, float v, string file_name) {
     Object *o;
     o = new BoundaryObject(file_name, v);
-    o->aplicaTG(new Translate(vec3(-x,-y,-z)));
+    o->aplicaTG(new Translate(vec3(x,y,z)));
     return o;
 }

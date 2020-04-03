@@ -856,6 +856,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/MaterialTextura.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Metal.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Object.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -919,6 +922,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Translate.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Transparent.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Triangle.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -969,6 +975,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/MaterialTextura.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Metal.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Object.cpp">
@@ -1029,6 +1038,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Translate.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Transparent.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Triangle.cpp">

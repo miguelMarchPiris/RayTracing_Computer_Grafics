@@ -62,6 +62,7 @@ qrc_resources.cpp: ../resources/cube.obj
 qrc_resources.cpp: ../resources/teapot2.obj
 qrc_resources.cpp: ../resources/europa.png
 qrc_resources.cpp: ../resources/map.png
+qrc_resources.cpp: ../resources/mondrian.png
 qrc_resources.cpp: ../resources/mapZoom.png
 qrc_resources.cpp: ../resources/spheres.txt
 qrc_resources.cpp: ../resources/data0.txt
@@ -70,6 +71,7 @@ qrc_resources.cpp: ../resources/dataBCNZoom.txt
 qrc_resources.cpp: ../resources/dadesEuropa.txt
 qrc_resources.cpp: ../resources/spheres2.txt
 qrc_resources.cpp: ../resources/fitted.txt
+qrc_resources.cpp: ../resources/fitted_plane_2.txt
 qrc_resources.cpp: ../resources.qrc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating qrc_resources.cpp"
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc --name resources --output /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/qrc_resources.cpp /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/resources.qrc

@@ -12,23 +12,32 @@ class Material
 public:
 
     Material();
-    //Material(vec3 a, vec3 d, vec3 s, vec3 k, float beta);
+    //Material(vec3 ambient, vec3 kdiffuse, vec3 specular, float beta, float shininess);
     Material(vec3 a, vec3 d, vec3 s, float o, int sh);
     ~Material();
 
-    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const = 0;
+    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>&r_out) const = 0;
     virtual vec3 getDiffuse(vec2 point)const;
-    vec3 multVec(float f,vec3 vec)const;
+    vec3 multScalar(float f,vec3 vec)const;
 
-    // Ka
-    vec3 ambient;
-    // Kd
-    vec3 diffuse;
-    // Ks
-    vec3 especular;
+    /*
 
-    //Iluminacio global
-    //vec3 Kt = vec3(0);
+     *
+    this->specular=vec3(1,1,1)-this->kt;
+    this->diffuse=vec3(0,0,0);
+    this->ambient
+
+     this->kdiffuse = vec3(0.5,0.5,0.5);
+    this->Kspecular = vec3(1.0,1.0,1.0);
+    this->Kambient = vec3(0.2,0.2,0.2);
+    this->alpha = 1.0;
+    this->shininess = 50.0;
+
+     */
+    vec3 Kdiffuse= vec3(0);
+    vec3 Kspecular= vec3(0);
+    vec3 Kambient= vec3(0);
+    vec3 Kt = vec3(0);
 
     //Controlar la opacitat i brillantor del objecte
     float alpha;

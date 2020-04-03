@@ -18,6 +18,8 @@ public:
 
     void readFile (QString fileName);
 
+    float xmin, zmin, xmax, zmax;
+
 protected:
     virtual void fileLineRead (QString lineReaded);
 

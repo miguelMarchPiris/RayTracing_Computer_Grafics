@@ -4,6 +4,9 @@
 #include "Hitable.h"
 #include "Material.h"
 #include "Lambertian.h"
+#include "MaterialTextura.h"
+#include "Metal.h"
+#include "Transparent.h"
 #include "Animation.h"
 
 // Es la classe pare de tots els objectes que s'han de visualitzar.

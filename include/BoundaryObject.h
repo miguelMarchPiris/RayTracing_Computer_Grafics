@@ -24,10 +24,8 @@ public:
     virtual bool intersection(const Ray& r, float t_min, float t_max, IntersectionInfo& info) const;
     virtual ~BoundaryObject();
     virtual void aplicaTG(TG *t);
-    glm::vec3 centre;
 
 private:
-    string nom;
     vector<Cara> cares; // cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
 
