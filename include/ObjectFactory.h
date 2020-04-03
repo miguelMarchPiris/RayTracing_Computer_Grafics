@@ -7,6 +7,7 @@
 #include "Triangle.h"
 #include "BoundaryObject.h"
 #include "FittedPlane.h"
+#include "Cylinder.h"
 
 class ObjectFactory
 {

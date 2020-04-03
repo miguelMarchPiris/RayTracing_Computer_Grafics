@@ -1,9 +1,9 @@
 //
 // Created by desgarrador on 9/3/20.
 //
-
 #include <include/Translate.h>
 #include "Cylinder.h"
+
 Cylinder::Cylinder(vec3 center, float radius,float h,float data): Object(data){
     this->center=center;
     this->radius=radius;

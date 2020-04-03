@@ -72,18 +72,7 @@ void DataReader::limitsFound(QStringList fields) {
     }
     // TODO Fase 1: Cal guardar el limits del mapa per saber on mapejar les posicions dels objectes
     //limites del plano o de la escena? O las dos cosas?
-    /*double x_min = fields[1].toDouble();
-    double x_max = fields[2].toDouble();
-    double z_min = fields[3].toDouble();
-    double z_max = fields[4].toDouble();
-
-    scene->setDimensions(vec3(x_min,0,z_min), vec3(x_max,0,z_max));
-
-    Object *o;
-    o = ObjectFactory::getInstance()->createObject(x_min, x_max, z_min,
-                                                   z_max, 1.0f,ObjectFactory::FITTED_PLANE);*/
 }
-//vec3 normal, vec3 pass_point, vec2 pass_min, vec2 pass_max, float d
 
 void DataReader::propFound(QStringList fields) {
     //prop numProp vmin vmax tipusGizmo

@@ -858,6 +858,12 @@
 		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/MaterialTextura.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Metal.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Metal.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Object.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -919,6 +925,12 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Translate.h">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Transparent.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Transparent.h">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/Users/marcos/CLionProjects/dataray-givd02/include/Triangle.h">

@@ -5,6 +5,8 @@
 #include "Triangle.h"
 
 Triangle::Triangle(vec3 v1, vec3 v2, vec3 v3, float data): Plane(cross(v2 - v1, v3 - v1), v1, data){
+    this->size = data;
+
     this->v1 = v1;
     this->v2 = v2;
     this->v3 = v3;
@@ -14,17 +16,30 @@ Triangle::Triangle(vec3 v1, vec3 v2, vec3 v3, float data): Plane(cross(v2 - v1, 
     this->vertexs.push_back(v2);
     this->vertexs.push_back(v3);
 
+    // Transformamos el triangulo al tamaño especificado por el parametro data
+    vertexs[0] *= size;
+    vertexs[1] *= size;
+    vertexs[2] *= size;
+
     this->normal = normalize(cross(v2 - v1,v3 - v1));
 }
 
 Triangle::Triangle(vec3 cord, float r, float d):Plane(cross(vec3(0,1,0) - vec3(1,0,0),vec3(0,0,1) - vec3(1,0,0)), vec3(1,0,0), d){
+    this->size = r;
+
     this->v1 = vec3(1,0,0);
     this->v2 = vec3(0,1,0);
     this->v3 = vec3(0,0,1);
+
     vertexs = std::vector<vec3>();
     vertexs.push_back(v1);
     vertexs.push_back(v2);
     vertexs.push_back(v3);
+
+    vertexs[0] *= size;
+    vertexs[1] *= size;
+    vertexs[2] *= size;
+
     normal = normalize(cross(v2 - v1, v3 - v1));
     this->aplicaTG(new Translate(cord));
 }
@@ -82,44 +97,23 @@ bool Triangle::intersection(const Ray& r, float t_min, float t_max, Intersection
 
 //Per aplicar TG's
 void Triangle::aplicaTG(TG *t) {
-    vec4 _v1(v1, 1.0);
-    vec4 _v2(v2, 1.0);
-    vec4 _v3(v3, 1.0);
-
-    _v1 = t->getTG() * _v1;
-    _v2 = t->getTG() * _v2;
-    _v3 = t->getTG() * _v3;
+    vec4 v1(vertexs[0], 1.0);
+    vec4 v2(vertexs[1], 1.0);
+    vec4 v3(vertexs[2], 1.0);
 
     if (dynamic_cast<Translate *>(t)) {
-        v1.x = _v1.x; v1.y = _v1.y; v1.z = _v1.z;
-        v2.x = _v2.x; v2.y = _v2.y; v2.z = _v2.z;
-        v3.x = _v3.x; v3.y = _v3.y; v3.z = _v3.z;
+        v1 = t->getTG() * v1;
+        v2 = t->getTG() * v2;
+        v3 = t->getTG() * v3;
+
+        vertexs[0].x = v1.x; vertexs[0].y = v1.y; vertexs[0].z = v1.z;
+        vertexs[1].x = v2.x; vertexs[1].y = v2.y; vertexs[1].z = v2.z;
+        vertexs[2].x = v3.x; vertexs[2].y = v3.y; vertexs[2].z = v3.z;
     }
 
-    if (dynamic_cast<Scale *>(t)) {
-        //coordenadas baricentricas
-        vec3 centroid(((v1.x + v2.x + v3.x)/3), ((v1.y + v2.y + v3.y)/3), ((v1.z + v2.z + v3.z)/3));
-        Translate *centre = new Translate(-centroid);
-
-        this->aplicaTG(centre);
-
-        v1.x = _v1.x; v1.y = _v1.y; v1.z = _v1.z;
-        v2.x = _v1.x; v2.y = _v1.y; v2.z = _v1.z;
-        v3.x = _v1.x; v3.y = _v1.y; v3.z = _v1.z;
-
-        this->aplicaTG(new Translate(centroid));
-    }
-
-    if (dynamic_cast<Rotate *>(t)) {
-        vec3 centroid(((v1.x + v2.x + v3.x)/3), ((v1.y + v2.y + v3.y)/3), ((v1.z + v2.z + v3.z)/3));
-        Translate *centre = new Translate(-centroid);
-
-        this->aplicaTG(centre);
-
-        v1.x = _v1.x; v1.y = _v1.y; v1.z = _v1.z;
-        v2.x = _v1.x; v2.y = _v1.y; v2.z = _v1.z;
-        v3.x = _v1.x; v3.y = _v1.y; v3.z = _v1.z;
-
-        this->aplicaTG(new Translate(centroid));
+    if(dynamic_cast<Scale *>(t)){
+        vertexs[0].x *= size;
+        vertexs[1].y *= size;
+        vertexs[2].z *= size;
     }
 }

@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/RayData_autogen/mocs_compilation.cpp" "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.o"
+  "/Users/marcos/CLionProjects/dataray-givd02/include/Metal.cpp" "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir/include/Metal.cpp.o"
+  "/Users/marcos/CLionProjects/dataray-givd02/include/Transparent.cpp" "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir/include/Transparent.cpp.o"
   "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/qrc_resources.cpp" "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir/qrc_resources.cpp.o"
   "/Users/marcos/CLionProjects/dataray-givd02/src/Animation.cpp" "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir/src/Animation.cpp.o"
   "/Users/marcos/CLionProjects/dataray-givd02/src/BoundaryObject.cpp" "/Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/RayData.dir/src/BoundaryObject.cpp.o"

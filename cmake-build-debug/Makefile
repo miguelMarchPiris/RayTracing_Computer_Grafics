@@ -163,6 +163,60 @@ RayData_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.s
 .PHONY : RayData_autogen/mocs_compilation.cpp.s
 
+include/Metal.o: include/Metal.cpp.o
+
+.PHONY : include/Metal.o
+
+# target to build an object file
+include/Metal.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.o
+.PHONY : include/Metal.cpp.o
+
+include/Metal.i: include/Metal.cpp.i
+
+.PHONY : include/Metal.i
+
+# target to preprocess a source file
+include/Metal.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.i
+.PHONY : include/Metal.cpp.i
+
+include/Metal.s: include/Metal.cpp.s
+
+.PHONY : include/Metal.s
+
+# target to generate assembly for a file
+include/Metal.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.s
+.PHONY : include/Metal.cpp.s
+
+include/Transparent.o: include/Transparent.cpp.o
+
+.PHONY : include/Transparent.o
+
+# target to build an object file
+include/Transparent.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.o
+.PHONY : include/Transparent.cpp.o
+
+include/Transparent.i: include/Transparent.cpp.i
+
+.PHONY : include/Transparent.i
+
+# target to preprocess a source file
+include/Transparent.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.i
+.PHONY : include/Transparent.cpp.i
+
+include/Transparent.s: include/Transparent.cpp.s
+
+.PHONY : include/Transparent.s
+
+# target to generate assembly for a file
+include/Transparent.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.s
+.PHONY : include/Transparent.cpp.s
+
 qrc_resources.o: qrc_resources.cpp.o
 
 .PHONY : qrc_resources.o
@@ -1175,6 +1229,12 @@ help:
 	@echo "... RayData_autogen/mocs_compilation.o"
 	@echo "... RayData_autogen/mocs_compilation.i"
 	@echo "... RayData_autogen/mocs_compilation.s"
+	@echo "... include/Metal.o"
+	@echo "... include/Metal.i"
+	@echo "... include/Metal.s"
+	@echo "... include/Transparent.o"
+	@echo "... include/Transparent.i"
+	@echo "... include/Transparent.s"
 	@echo "... qrc_resources.o"
 	@echo "... qrc_resources.i"
 	@echo "... qrc_resources.s"

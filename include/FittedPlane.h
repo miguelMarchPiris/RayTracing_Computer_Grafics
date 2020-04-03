@@ -18,8 +18,6 @@ public:
 private:
     vec2 minpoint;
     vec2 maxpoint;
-
-    double const EPSILON = 0.0000000000001;
 };
 
 #endif // FITTEDPLANE_H

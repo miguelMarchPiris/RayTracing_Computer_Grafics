@@ -27,25 +27,25 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
             o = new Plane(vec3(x, y, z), aux, v);
             break;
         case TRIANGLE:
-            //o = new Triangle(vec3(x, y, z), aux, v);
-            o = new Triangle(vec3(x,0,0),vec3(0,y,0),vec3(0,0,z), aux);
+            o = new Triangle(vec3(0,0,0),v,aux);
             break;
-            //case CYLINDER:
-            //  cout<< "Cilindro creado"<<endl;
-            //break;
+        case CYLINDER:
+            o = new Cylinder(vec3(x,y,z),aux,v,-1);
+            break;
         case FITTED_PLANE:
             o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), -1);
             break;
         default:
+            cerr<<"Nothing to create"<<endl;
             break;
     }
-
     return o;
 }
 
+//Metode per a crear boundaries
 Object *ObjectFactory::createBrObject(float x, float y, float z, float v, string file_name) {
     Object *o;
     o = new BoundaryObject(file_name, v);
-    o->aplicaTG(new Translate(vec3(-x,-y,-z)));
+    o->aplicaTG(new Translate(vec3(x,y,z)));
     return o;
 }

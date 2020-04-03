@@ -12,15 +12,16 @@ class MaterialTextura : public Material{
 public:
     //Constructors i destructor
     MaterialTextura();
+    MaterialTextura(QString);
     MaterialTextura(vec3 a, vec3 d, vec3 s, float o, int sh);
     virtual ~MaterialTextura();
 
     //metode scatter
-    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const;
+    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray> &r_out) const;
     vec3 getDiffuse(vec2 point)const override;
 
     //Carreguem la textura/imatge que volem
-    Texture *image = new Texture("://resources/europa.png");
+    Texture *image;//= new Texture("://resources/mondrian.png");
     double const EPSILON = 0.001;
 };
 

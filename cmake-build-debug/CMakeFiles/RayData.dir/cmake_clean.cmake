@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/RayData_autogen.dir/ParseCache.txt"
   "RayData_autogen"
   "CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/RayData.dir/include/Metal.cpp.o"
+  "CMakeFiles/RayData.dir/include/Transparent.cpp.o"
   "CMakeFiles/RayData.dir/qrc_resources.cpp.o"
   "CMakeFiles/RayData.dir/src/Animation.cpp.o"
   "CMakeFiles/RayData.dir/src/BoundaryObject.cpp.o"
