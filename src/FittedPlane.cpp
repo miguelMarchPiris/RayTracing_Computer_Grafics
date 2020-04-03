@@ -1,3 +1,4 @@
+#include <iostream>
 #include "FittedPlane.h"
 
 FittedPlane::FittedPlane(vec3 normal, vec3 pass_point, vec2 pass_min, vec2 pass_max, float d) : Plane(normal, pass_point, d){
@@ -25,6 +26,8 @@ void FittedPlane::aplicaTG(TG *t){
         vec4 c(point, 1.0);
         c = t->getTG() * c;
         point.x = c.x; point.y = c.y; point.z = c.z;
+        std::cout << point.x << " " << point.y << " " << point.z << std::endl;
+        std::cout << maxpoint.x << " " << maxpoint.y << " " << minpoint.x << " " << minpoint.y << std::endl;
     }
     if (dynamic_cast<Scale *>(t)){
         //consideramos la y del minpoint y maxpoint como la componente z, usamos un vec2 para definir la xmin/max y zmin/max.
@@ -32,7 +35,8 @@ void FittedPlane::aplicaTG(TG *t){
         vec4 cmax(maxpoint.x, 1.0, maxpoint.y, 1.0);
         cmin = t->getTG() * cmin;
         cmax = t->getTG() * cmax;
-        minpoint.x *= cmin.x; minpoint.y *= cmin.z;
-        maxpoint.x *= cmax.x; maxpoint.y *= cmax.z;
+        minpoint.x = cmin.x; minpoint.y = cmin.z;
+        maxpoint.x = cmax.x; maxpoint.y = cmax.z;
+        std::cout << maxpoint.x << " " << maxpoint.y << " " << minpoint.x << " " << minpoint.y << std::endl;
     }
 }

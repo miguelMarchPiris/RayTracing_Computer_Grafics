@@ -38,5 +38,5 @@ vec3 MaterialTextura::getDiffuse(vec2 point) const{
 
 MaterialTextura::MaterialTextura(QString im)
 {
-    this->image = new Texture(std::move(im));
+    this->image = new Texture(im);
 }

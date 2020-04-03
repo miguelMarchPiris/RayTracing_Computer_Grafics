@@ -10,6 +10,7 @@ DataReader::DataReader(Scene *s)
 {
     scene = s;
     numProp = 0;
+    proporcio = 10.0f;
 }
 
 void DataReader::readFile(QString fileName) {
@@ -51,18 +52,24 @@ void DataReader::baseFound(QStringList fields) {
         std::cerr << "Wrong base format" << std::endl;
         return;
     }
-    fields[1] = fields[1].remove(0, 1);
+    if(fields[1].toStdString()[0] == ' ')
+        fields[1] = fields[1].remove(0, 1);
     std::cout << fields[1].toStdString() << std::endl;
     if (QString::compare("plane", fields[1], Qt::CaseInsensitive) == 0) {
         // TODO Fase 1: Cal fer un pla acotat i no un pla infinit. Les dimensions del pla acotat seran les dimensions de l'escena en x i z
         Object *o;
-        o = ObjectFactory::getInstance()->createObject(scene->getUV(scene->pmin)[0], scene->getUV(scene->pmax)[0], scene->getUV(scene->pmin)[1],
-                                                       scene->getUV(scene->pmax)[1], fields[5].toFloat(),ObjectFactory::FITTED_PLANE);
+        o = ObjectFactory::getInstance()->createObject(-1 * proporcio, proporcio, -1 * proporcio,
+                                                       proporcio, fields[5].toFloat(),ObjectFactory::FITTED_PLANE);
+        //auto *translate1 = new Translate(vec3((-1) * scene->pmin[0], 0.0f, (-1) * scene->pmin[2]));
+        //o->aplicaTG(translate1);
+        //auto *scale1 = new Scale(10);
+        //o->aplicaTG(scale1);
 
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
         scene->ground = dynamic_cast<FittedPlane *>(o);
         scene->ground->setMaterial(new MaterialTextura(fields[6]));
-        scene->objects.push_back(o);
+        //scene->setMaterials(scene->ground->getMaterial());
+        //scene->objects.push_back(scene->ground);
     }
     // TODO: Fase 3: Si cal instanciar una esfera com objecte base i no un pla, cal afegir aqui un else
 }
@@ -88,11 +95,11 @@ void DataReader::limitsFound(QStringList fields) {
 
 void DataReader::propFound(QStringList fields) {
     //prop numProp vmin vmax tipusGizmo
-    if (fields.size() != 5) {
+    if (fields.size() != 5)
+    {
         std::cerr << "Wrong propietat format" << std::endl;
         return;
     }
-    numProp++;
     // TODO Fase 1: Cal guardar els valors per a poder escalar els objectes i el tipus de
     //  gizmo de totes les propietats (SPHERE, BR_OBJ, CILINDRE...)
 
@@ -100,9 +107,17 @@ void DataReader::propFound(QStringList fields) {
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
         std::cout << "Esfera" << std::endl;
         props.push_back(ObjectFactory::OBJECT_TYPES::SPHERE);
-        this->props_data[0] = (float) fields[2].toInt();
-        this->props_data[1] = (float) fields[3].toInt();
+        this->props_data[2*numProp] = (float) fields[2].toInt();
+        this->props_data[2*numProp + 1] = (float) fields[3].toInt();
     }
+    else if (QString::compare("cylinder", fields[4], Qt::CaseInsensitive) == 0) {
+        std::cout << "Cilindre" << std::endl;
+        props.push_back(ObjectFactory::OBJECT_TYPES::CYLINDER);
+        this->props_data[2*numProp] = (float) fields[2].toInt();
+        this->props_data[2*numProp + 1] = (float) fields[3].toInt();
+    }
+
+    numProp++;
 
     // TODO Fase 2: Aquesta valors minim i maxim tambe serviran per mapejar el material des de la paleta
 }
@@ -121,13 +136,17 @@ void DataReader::dataFound(QStringList fields) {
         vec3 point (fields[1].toFloat(), 0.0f, fields[2].toFloat());
         vec2 uvpoint = scene->getUV(point);
         cout << uvpoint[0] << " " << uvpoint[1] << endl;
-        float r = (fields[3 + i].toFloat()/(2 * (props_data[1] - props_data[0]))) / (scene->pmax[0] - scene->pmin[0]);
-        o = ObjectFactory::getInstance()->createObject(uvpoint[0], 0.0, uvpoint[1],
+        float r = (fields[3 + i].toFloat()/(2 * (props_data[2*i+1] - props_data[2*i])));
+        cout << fields[3 + i].toFloat() << " " << r << endl;
+        o = ObjectFactory::getInstance()->createObject(2 * proporcio * uvpoint[0] - proporcio + i, 0.0, 2 * proporcio * uvpoint[1] - proporcio,
                                                        r, 0.0f,
                                                        props[i]);
-        //TG* tg = new TG();
-        //tg->matTG = glm::mat4();
-        //o->aplicaTG(tg);
+
+        //auto *translate1 = new Translate(vec3((-1) * scene->pmin[0], 0.0f, (-1) * scene->pmin[2]));
+        //auto *scale1 = new Scale(1 / (scene->pmax[0] - scene->pmin[0]));
+        //cout << scale1->scale1 << endl;
+        //o->aplicaTG(translate1);
+        //o->aplicaTG(scale1);
         scene->objects.push_back(o);
     }
 }

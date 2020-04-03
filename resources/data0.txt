@@ -1,5 +1,6 @@
 limits, -10, 10, -10, 10
 base,plane, 0.0, 1.0, 0.0, -0.5,://resources/map.png
-prop, 1, 0, 1,sphere
-data, 0, -1, 0.5
-data, 1, 0, 0.25
+prop, 1, 0, 1,cylinder
+prop, 1, 0, 5,sphere
+data, 0, -1, 0.5, 3
+data, 5, 5, 0.25, 5

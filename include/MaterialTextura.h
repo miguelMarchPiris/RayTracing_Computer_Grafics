@@ -21,7 +21,7 @@ public:
     vec3 getDiffuse(vec2 point)const override;
 
     //Carreguem la textura/imatge que volem
-    Texture *image = new Texture("://resources/europa.png");
+    Texture *image = new Texture("://resources/map.png");
     double const EPSILON = 0.001;
 };
 

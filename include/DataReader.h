@@ -35,6 +35,7 @@ private:
     int numProp;
     vector<ObjectFactory::OBJECT_TYPES> props;
     float props_data[10];
+    float proporcio;
 };
 
 #endif // DataReader_H

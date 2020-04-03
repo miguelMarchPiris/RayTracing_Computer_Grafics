@@ -1,3 +1,5 @@
+#include <include/Scale.h>
+#include <iostream>
 #include "Sphere.h"
 
 Sphere::Sphere(vec3 cen, float r, float d) :Object(d) {
@@ -43,6 +45,13 @@ void Sphere::aplicaTG(TG *t) {
         vec4 c(center, 1.0);
         c = t->getTG() * c;
         center.x = c.x; center.y = c.y; center.z = c.z;
+    }
+    else if (dynamic_cast<Scale *>(t))
+    {
+        vec4 c(1.0,1.0,1.0,1.0);
+        c = t->getTG() * c;
+        this->radius = c.x*radius;
+        std::cout << this->radius << std::endl;
     }
 }
 
