@@ -14,5 +14,6 @@
         <file>resources/dadesEuropa.txt</file>
         <file>resources/spheres2.txt</file>
         <file>resources/fitted.txt</file>
+        <file>resources/fitted_plane_2.txt</file>
     </qresource>
 </RCC>

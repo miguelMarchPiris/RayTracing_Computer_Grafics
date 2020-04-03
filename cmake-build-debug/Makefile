@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/marcos/CLionProjects/dataray-givd02
+CMAKE_SOURCE_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug
+CMAKE_BINARY_DIR = /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/desgarrador/clion-2019.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcos/CLionProjects/dataray-givd02/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -162,60 +162,6 @@ RayData_autogen/mocs_compilation.s: RayData_autogen/mocs_compilation.cpp.s
 RayData_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.s
 .PHONY : RayData_autogen/mocs_compilation.cpp.s
-
-include/Metal.o: include/Metal.cpp.o
-
-.PHONY : include/Metal.o
-
-# target to build an object file
-include/Metal.cpp.o:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.o
-.PHONY : include/Metal.cpp.o
-
-include/Metal.i: include/Metal.cpp.i
-
-.PHONY : include/Metal.i
-
-# target to preprocess a source file
-include/Metal.cpp.i:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.i
-.PHONY : include/Metal.cpp.i
-
-include/Metal.s: include/Metal.cpp.s
-
-.PHONY : include/Metal.s
-
-# target to generate assembly for a file
-include/Metal.cpp.s:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Metal.cpp.s
-.PHONY : include/Metal.cpp.s
-
-include/Transparent.o: include/Transparent.cpp.o
-
-.PHONY : include/Transparent.o
-
-# target to build an object file
-include/Transparent.cpp.o:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.o
-.PHONY : include/Transparent.cpp.o
-
-include/Transparent.i: include/Transparent.cpp.i
-
-.PHONY : include/Transparent.i
-
-# target to preprocess a source file
-include/Transparent.cpp.i:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.i
-.PHONY : include/Transparent.cpp.i
-
-include/Transparent.s: include/Transparent.cpp.s
-
-.PHONY : include/Transparent.s
-
-# target to generate assembly for a file
-include/Transparent.cpp.s:
-	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/include/Transparent.cpp.s
-.PHONY : include/Transparent.cpp.s
 
 qrc_resources.o: qrc_resources.cpp.o
 
@@ -648,6 +594,33 @@ src/MaterialTextura.s: src/MaterialTextura.cpp.s
 src/MaterialTextura.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/MaterialTextura.cpp.s
 .PHONY : src/MaterialTextura.cpp.s
+
+src/Metal.o: src/Metal.cpp.o
+
+.PHONY : src/Metal.o
+
+# target to build an object file
+src/Metal.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Metal.cpp.o
+.PHONY : src/Metal.cpp.o
+
+src/Metal.i: src/Metal.cpp.i
+
+.PHONY : src/Metal.i
+
+# target to preprocess a source file
+src/Metal.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Metal.cpp.i
+.PHONY : src/Metal.cpp.i
+
+src/Metal.s: src/Metal.cpp.s
+
+.PHONY : src/Metal.s
+
+# target to generate assembly for a file
+src/Metal.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Metal.cpp.s
+.PHONY : src/Metal.cpp.s
 
 src/Object.o: src/Object.cpp.o
 
@@ -1189,6 +1162,33 @@ src/Translate.cpp.s:
 	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Translate.cpp.s
 .PHONY : src/Translate.cpp.s
 
+src/Transparent.o: src/Transparent.cpp.o
+
+.PHONY : src/Transparent.o
+
+# target to build an object file
+src/Transparent.cpp.o:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.o
+.PHONY : src/Transparent.cpp.o
+
+src/Transparent.i: src/Transparent.cpp.i
+
+.PHONY : src/Transparent.i
+
+# target to preprocess a source file
+src/Transparent.cpp.i:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.i
+.PHONY : src/Transparent.cpp.i
+
+src/Transparent.s: src/Transparent.cpp.s
+
+.PHONY : src/Transparent.s
+
+# target to generate assembly for a file
+src/Transparent.cpp.s:
+	$(MAKE) -f CMakeFiles/RayData.dir/build.make CMakeFiles/RayData.dir/src/Transparent.cpp.s
+.PHONY : src/Transparent.cpp.s
+
 src/Triangle.o: src/Triangle.cpp.o
 
 .PHONY : src/Triangle.o
@@ -1223,18 +1223,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... RayData"
+	@echo "... edit_cache"
 	@echo "... RayData_autogen"
 	@echo "... RayData_autogen/mocs_compilation.o"
 	@echo "... RayData_autogen/mocs_compilation.i"
 	@echo "... RayData_autogen/mocs_compilation.s"
-	@echo "... include/Metal.o"
-	@echo "... include/Metal.i"
-	@echo "... include/Metal.s"
-	@echo "... include/Transparent.o"
-	@echo "... include/Transparent.i"
-	@echo "... include/Transparent.s"
 	@echo "... qrc_resources.o"
 	@echo "... qrc_resources.i"
 	@echo "... qrc_resources.s"
@@ -1283,6 +1277,9 @@ help:
 	@echo "... src/MaterialTextura.o"
 	@echo "... src/MaterialTextura.i"
 	@echo "... src/MaterialTextura.s"
+	@echo "... src/Metal.o"
+	@echo "... src/Metal.i"
+	@echo "... src/Metal.s"
 	@echo "... src/Object.o"
 	@echo "... src/Object.i"
 	@echo "... src/Object.s"
@@ -1343,6 +1340,9 @@ help:
 	@echo "... src/Translate.o"
 	@echo "... src/Translate.i"
 	@echo "... src/Translate.s"
+	@echo "... src/Transparent.o"
+	@echo "... src/Transparent.i"
+	@echo "... src/Transparent.s"
 	@echo "... src/Triangle.o"
 	@echo "... src/Triangle.i"
 	@echo "... src/Triangle.s"

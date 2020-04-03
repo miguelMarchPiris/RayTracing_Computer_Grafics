@@ -1,5 +1,5 @@
 //
-// Created by Marcos Plaza Gonzalez on 2/4/20.
+// Created by franc on 01/04/2020.
 //
 
 #ifndef RAYDATA_METAL_H
@@ -11,8 +11,7 @@ class Metal: public Material{
 public:
     Metal(vec3 ambient, vec3 diffuse, vec3 specular, float beta, float shininess);
     virtual ~Metal();
-    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, vec3& color, std::vector<Ray>& r_out) const;
+    virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>& r_out) const;
 };
-
 
 #endif //RAYDATA_METAL_H

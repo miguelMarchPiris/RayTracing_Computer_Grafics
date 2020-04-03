@@ -15,9 +15,9 @@ void SceneReader::readFile(QString fileName) {
     std::cout << fileName.toStdString() << std::endl;
 
     QFile file(fileName);
-
     if (!file.open(QIODevice::ReadOnly)) {
         std::cerr << "Error opening the file" << std::endl;
+
         return;
     }
 

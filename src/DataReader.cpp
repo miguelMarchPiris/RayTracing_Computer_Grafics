@@ -59,8 +59,10 @@ void DataReader::baseFound(QStringList fields) {
                 1.0f,ObjectFactory::OBJECT_TYPES::PLANE);
         scene->objects.push_back(o);
         // TODO Fase 4: llegir textura i afegir-la a l'objecte. Veure la classe Texture
+    } else if(QString::compare("sphere", fields[1], Qt::CaseInsensitive) == 0){
+        // TODO: Fase 3: Si cal instanciar una esfera com objecte base i no un pla, cal afegir aqui un else
     }
-    // TODO: Fase 3: Si cal instanciar una esfera com objecte base i no un pla, cal afegir aqui un else
+
 }
 
 
@@ -69,6 +71,11 @@ void DataReader::limitsFound(QStringList fields) {
     if (fields.size() != 5) {
         std::cerr << "Wrong limits format" << std::endl;
         return;
+    }else{
+        xmin = fields[1].toFloat();
+        zmin = fields[2].toFloat();
+        xmax = fields[3].toFloat();
+        zmax = fields[4].toFloat();
     }
     // TODO Fase 1: Cal guardar el limits del mapa per saber on mapejar les posicions dels objectes
     //limites del plano o de la escena? O las dos cosas?
@@ -83,11 +90,16 @@ void DataReader::propFound(QStringList fields) {
     numProp++;
     // TODO Fase 1: Cal guardar els valors per a poder escalar els objectes i el tipus de
     //  gizmo de totes les propietats (SPHERE, BR_OBJ, CILINDRE...)
+
+
+
     cout<<fields[4].toStdString()<<endl;
     if (QString::compare("sphere", fields[4], Qt::CaseInsensitive) == 0) {
         props.push_back(ObjectFactory::OBJECT_TYPES::SPHERE);
     }
-
+    else if(QString::compare("cylinder", fields[4], Qt::CaseInsensitive) == 0) {
+        props.push_back(ObjectFactory::OBJECT_TYPES::CYLINDER);
+    }
     // TODO Fase 2: Aquesta valors minim i maxim tambe serviran per mapejar el material des de la paleta
 }
 
@@ -102,8 +114,8 @@ void DataReader::dataFound(QStringList fields) {
         // TODO Fase 1: Cal colocar els objectes al seu lloc del mon virtual, escalats segons el valor i
         //  amb el seu color corresponent segons el seu ColorMap
         Object *o;
-        o = ObjectFactory::getInstance()->createObject(fields[1].toDouble(), 0.0, fields[2].toDouble(),
-                                                       fields[3 + i].toDouble(), 1.0f,
+        o = ObjectFactory::getInstance()->createObject(fields[1].toFloat(), 0.0, fields[2].toFloat(),
+                                                       fields[3 + i].toFloat(), 1.0f,
                                                        props[i]);
         scene->objects.push_back(o);
     }

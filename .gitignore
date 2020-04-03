@@ -1,6 +1,6 @@
 *.o
 *.exe
-/cmake-build-debug/
+/cmake-build-debug/**
 /cmake-build-debug/CMakeFiles/
 /cmake-build-debug/RayData_autogen/
 /cmake-build-debug/cmake_install.cmake
