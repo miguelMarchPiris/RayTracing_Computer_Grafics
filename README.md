@@ -21,6 +21,27 @@ els quals es comporten de diferent manera envers la llum.
 En aquesta última fase, hem aplicat la técnica del mapejat UV per a poder posar una "textura o imatge" a sobre d'un pla afitat. Al mateix temps que calculavem 
 la iluminació a l'escena (en cas d'haver interseccio amb algun objecte agafem i si es tracta de MaterialTextura agafarem els téxels corresponents).
 
+######Preguntes
+
+Fase 1:
+
+Q: Com calcularàs el centre del teu objecte en l'escena virtual?\
+A: El centre serà traslladant en tantes unitats com el punt minim dels seus limits
+
+Q: Com calcularàs la seva escala?\
+A: L'escalarem multiplicantlo per la relació entre el punt minim i maxim dels limits i la dimensió de l'escena.
+
+Fase 2:
+
+Q: En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, quina component de la fórmula de Blinn-Phong s'haurà de tenir en compte?\
+A: Només s'haurà de tenir en compte la il·luminació ambient en aquest cas.
+
+Q: Implementa Blinn-Phong per fases, raonant a cada resultat per què et donen les visualitzacions corresponents, tenint en compte que les esferes tenen com a Kd el color definit abans i una Ka = (0.2,0.2, 0.2), una Ks = (1.0, 1.0, 1.0) i una shineness de 10.0. Com hauries de modificar la teva paleta per a poder tenir Materials i no colors difusos? Comenta com has solucionat aquest problema a la pràctica.\
+A: Hem triat una opció intermitja, hem fet que els rajos primaris (i els secundaris de menys de 5 rebots) prenen el color del background, i la resta prenen la intensitat ambient global.
+
+Q: En afegir materials transparents, pots calcular les ombres segons el color del material transparent que traspassa la llum? Què has de modificar en la teva pràctica?\
+A: El que hem d'afegir seria, al calcul del raig d'ombra, fer que retorni que no intersecta només si el material de l'objecte amb el que intersecta el raig és transparent.
+
 ####Features
 
 - Figures
@@ -70,3 +91,5 @@ ha suavitzat molt els contorns de cada figura i ha millorat molt la qualitat de 
 ####Additional Information
 *(NOTA: Horas de dedicación y problemas principales que hayáis tenido durante la realización de las prácticas)*
 
+- [x] De la part de llegir dades no s'ha assolit tots els objectius (no s'ha arribat a llegir materials
+a través del fitxer de dades), degut a falta de temps.
