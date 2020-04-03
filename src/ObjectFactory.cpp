@@ -30,9 +30,6 @@ Object *ObjectFactory::createObject(float x, float y, float z, float aux, float 
         case TRIANGLE:
             o = new Triangle(vec3(0,0,0),v,aux);
             break;
-        case CYLINDER:
-            o = new Cylinder(vec3(x,y,z),aux,v,-1);
-            break;
         case FITTED_PLANE:
             o = new FittedPlane(vec3(0,1,0), vec3(0,-1,0), vec2(x,z), vec2(y,aux), -1);
             break;

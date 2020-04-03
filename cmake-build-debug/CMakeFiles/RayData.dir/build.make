@@ -62,6 +62,7 @@ qrc_resources.cpp: ../resources/cube.obj
 qrc_resources.cpp: ../resources/teapot2.obj
 qrc_resources.cpp: ../resources/europa.png
 qrc_resources.cpp: ../resources/map.png
+qrc_resources.cpp: ../resources/mondrian.png
 qrc_resources.cpp: ../resources/mapZoom.png
 qrc_resources.cpp: ../resources/spheres.txt
 qrc_resources.cpp: ../resources/data0.txt
@@ -568,6 +569,32 @@ CMakeFiles/RayData.dir/src/Cylinder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayData.dir/src/Cylinder.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Cylinder.cpp -o CMakeFiles/RayData.dir/src/Cylinder.cpp.s
 
+CMakeFiles/RayData.dir/include/Metal.cpp.o: CMakeFiles/RayData.dir/flags.make
+CMakeFiles/RayData.dir/include/Metal.cpp.o: ../include/Metal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/RayData.dir/include/Metal.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RayData.dir/include/Metal.cpp.o -c /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Metal.cpp
+
+CMakeFiles/RayData.dir/include/Metal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayData.dir/include/Metal.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Metal.cpp > CMakeFiles/RayData.dir/include/Metal.cpp.i
+
+CMakeFiles/RayData.dir/include/Metal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayData.dir/include/Metal.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Metal.cpp -o CMakeFiles/RayData.dir/include/Metal.cpp.s
+
+CMakeFiles/RayData.dir/include/Transparent.cpp.o: CMakeFiles/RayData.dir/flags.make
+CMakeFiles/RayData.dir/include/Transparent.cpp.o: ../include/Transparent.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/RayData.dir/include/Transparent.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RayData.dir/include/Transparent.cpp.o -c /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Transparent.cpp
+
+CMakeFiles/RayData.dir/include/Transparent.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayData.dir/include/Transparent.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Transparent.cpp > CMakeFiles/RayData.dir/include/Transparent.cpp.i
+
+CMakeFiles/RayData.dir/include/Transparent.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayData.dir/include/Transparent.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Transparent.cpp -o CMakeFiles/RayData.dir/include/Transparent.cpp.s
+
 # Object files for target RayData
 RayData_OBJECTS = \
 "CMakeFiles/RayData.dir/RayData_autogen/mocs_compilation.cpp.o" \
@@ -607,7 +634,9 @@ RayData_OBJECTS = \
 "CMakeFiles/RayData.dir/src/Triangle.cpp.o" \
 "CMakeFiles/RayData.dir/src/MaterialTextura.cpp.o" \
 "CMakeFiles/RayData.dir/src/FittedPlane.cpp.o" \
-"CMakeFiles/RayData.dir/src/Cylinder.cpp.o"
+"CMakeFiles/RayData.dir/src/Cylinder.cpp.o" \
+"CMakeFiles/RayData.dir/include/Metal.cpp.o" \
+"CMakeFiles/RayData.dir/include/Transparent.cpp.o"
 
 # External object files for target RayData
 RayData_EXTERNAL_OBJECTS =
@@ -650,6 +679,8 @@ RayData: CMakeFiles/RayData.dir/src/Triangle.cpp.o
 RayData: CMakeFiles/RayData.dir/src/MaterialTextura.cpp.o
 RayData: CMakeFiles/RayData.dir/src/FittedPlane.cpp.o
 RayData: CMakeFiles/RayData.dir/src/Cylinder.cpp.o
+RayData: CMakeFiles/RayData.dir/include/Metal.cpp.o
+RayData: CMakeFiles/RayData.dir/include/Transparent.cpp.o
 RayData: CMakeFiles/RayData.dir/build.make
 RayData: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.5.1
 RayData: /usr/lib/x86_64-linux-gnu/libGL.so
@@ -657,7 +688,7 @@ RayData: /usr/lib/x86_64-linux-gnu/libglut.so
 RayData: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.5.1
 RayData: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.5.1
 RayData: CMakeFiles/RayData.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Linking CXX executable RayData"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking CXX executable RayData"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RayData.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
