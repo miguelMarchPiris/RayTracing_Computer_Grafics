@@ -14,6 +14,5 @@ public:
     virtual bool scatter(const Ray& r_in, const IntersectionInfo& rec, std::vector<vec3>& colors, std::vector<Ray>& r_out) const;
 
     float refractionIndex;
-    vec3 kt;
 };
 #endif //RAYDATA_TRANSPARENT_H

@@ -4,11 +4,11 @@
 
 #include <include/Metal.h>
 
-Metal::Metal(vec3 ambient, vec3 diffuse, vec3 specular, float beta, float shininess) {
-    this->ambient = ambient;
-    this->diffuse = diffuse;
-    this->specular = specular;
-    this->beta = beta;
+Metal::Metal(vec3 ambient, vec3 diffuse, vec3 specular, float alpha, float shininess) {
+    this->Kambient = ambient;
+    this->Kdiffuse = diffuse;
+    this->Kspecular = specular;
+    this->alpha = alpha;
     this->shininess = shininess;
 }
 
@@ -19,6 +19,6 @@ bool Metal::scatter(const Ray &r_in, const IntersectionInfo &rec, std::vector<ve
     vec3 resultant = reflect(r_in.dirVector(), rec.normal);
     Ray reflection = Ray(rec.p + 0.001f*resultant, resultant);
     r_out.push_back(reflection);
-    colors.push_back(specular);
+    colors.push_back(Kspecular);
     return true;
 }

@@ -7,10 +7,10 @@
 
 Transparent::Transparent(vec3 kt, float refractionIndex) : Material()
 {
-    this->kt=kt;
-    this->specular=vec3(1,1,1)-this->kt;
-    this->diffuse=vec3(0,0,0);
-    this->ambient=vec3(0,0,0);
+    this->Kt=kt;
+    this->Kspecular= vec3(1, 1, 1) - this->Kt;
+    this->Kdiffuse=vec3(0, 0, 0);
+    this->Kambient=vec3(0, 0, 0);
 
     this->refractionIndex = refractionIndex;
     this->shininess=500;
@@ -45,7 +45,7 @@ bool Transparent::scatter(const Ray& r_in, const IntersectionInfo& rec, std::vec
         vec3 transmissionVector = (in * nit) + normal*(nit * in_cos - sqrt(dentro_raiz));
         Ray transmissionRay = Ray(rec.p + 0.001f*transmissionVector, transmissionVector);
         r_out.push_back(transmissionRay);
-        colors.push_back(this->kt);
+        colors.push_back(this->Kt);
 
         refraccion_total=false;
     }
@@ -56,7 +56,7 @@ bool Transparent::scatter(const Ray& r_in, const IntersectionInfo& rec, std::vec
         //En caso de refracción total el valor del color es máximo
         colors.push_back(vec3(1,1,1));
     }else{
-        colors.push_back(this->specular);
+        colors.push_back(this->Kspecular);
     }
     return true;
 }

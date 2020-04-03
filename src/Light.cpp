@@ -6,9 +6,9 @@
 
 Light::Light(glm::vec3 punt, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 attenuation) {
     this->punt = punt;
-    this->ambient = ambient;
-    this->diffuse = diffuse;
-    this->specular = specular;
+    this->Kambient = ambient;
+    this->Kdiffuse = diffuse;
+    this->Kspecular = specular;
     this->attenuation = attenuation;
 }
 

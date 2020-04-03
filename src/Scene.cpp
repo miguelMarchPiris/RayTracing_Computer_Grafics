@@ -117,7 +117,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             // Component difusa
             info.uv = get_uvCoords(info.p); //debemos obtener el punto (u,v) a traves del punto con el que se intersecta
             //en el caso de que el material sea MaterialTextura obtendremos los textels a traves de las coordenadas uv
-            color += info.mat_ptr->getDiffuse(info.uv) * light->diffuse * glm::max(dot(l, n), 0.0f);
+            color += info.mat_ptr->getDiffuse(info.uv) * light->Kdiffuse * glm::max(dot(l, n), 0.0f);
             ////////////////////////////////
 
             // Component especular
@@ -141,7 +141,7 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
             color *= factorOmbra;
 
             // Component ambient
-            color += light->ambient * info.mat_ptr->ambient;
+            color += light->Kambient * info.mat_ptr->Kambient;
 
             if (depth < MAX_REFLECT) {
                 // si el material es transparente
@@ -173,8 +173,8 @@ vec3 Scene::ComputeColorRay (Ray &ray, int depth) {
         }
     }
 
-    return color;
-}
+    //return color;
+//}
 
     return sqrt(color);
 }
@@ -187,28 +187,32 @@ void Scene::update(int nframe) {
 
 // TODO no s'entén gaire
 void Scene::setMaterials(ColorMap *cm) {
-    /*Material *m;
+    Material *m;
     // TODO: Fase 0
     // Cal canviar el codi per a afegir més materials.
     srand (static_cast <unsigned> (time(0)));
     for (auto object: this->objects)
     {
+        vec3 ambient = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+        vec3 diffuse = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+        vec3 specular = vec3(((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX));
+        float alpha = 1.f;
+        float shininess= 300;
+
         // Per cada objecte afegim un material de manera random
-        object->setMaterial(new Lambertian(
-                vec3((float) rand()/RAND_MAX, (float) rand()/RAND_MAX, (float) rand()/RAND_MAX))
-                );
+        object->setMaterial(new Lambertian(ambient,diffuse,specular,alpha,shininess));
     }
     // TODO: Fase 2
     // Cal canviar el tipus de material Lambertian, Specular, Transparent, Tipus Textura
     if (cm == nullptr)
-        m = new Lambertian(vec3(0.5, 0.2, 0.7));
+        m = new Lambertian(vec3(0.1,0.1,0.1),vec3(0.5, 0.2, 0.7),vec3(1.,1.,1.),1,400);
     else {
         // TODO: Fase 2:
         //  Crear els materials segons la paleta de cada propietat a cada objecte de l'escena
-        m = new Lambertian(cm->getColor(0));
+        m = new Lambertian(vec3(0.1,0.1,0.1),cm->getColor(0),vec3(1.,1.,1.),1,400);
     }
     for (auto o:objects)
-        if (o->getMaterial() == nullptr) o->setMaterial(m);*/
+        if (o->getMaterial() == nullptr) o->setMaterial(m);
 }
 
 void Scene::setDimensions(vec3 p1, vec3 p2) {

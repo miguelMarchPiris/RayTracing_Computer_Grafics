@@ -12,9 +12,9 @@ public:
     ~Light();
 
     glm::vec3 punt;
-    glm::vec3 ambient;
-    glm::vec3 diffuse;
-    glm::vec3 specular;
+    glm::vec3 Kambient;
+    glm::vec3 Kdiffuse;
+    glm::vec3 Kspecular;
     glm::vec3 attenuation;
 };
 

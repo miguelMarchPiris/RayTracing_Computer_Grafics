@@ -835,6 +835,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/DataReader.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/FittedPlane.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Hitable.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -848,6 +851,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Material.h">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/MaterialTextura.h">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Metal.h">
@@ -883,6 +889,12 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/RenderFactory.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Rotate.h">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Scale.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Scene.h">
 			<Option target="RayData"/>
 		</Unit>
@@ -913,6 +925,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Transparent.h">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/include/Triangle.h">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/resources.qrc">
 			<Option target="RayData"/>
 			<Option target="RayData_autogen"/>
@@ -941,6 +956,9 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/DataReader.cpp">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/FittedPlane.cpp">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Hitable.cpp">
 			<Option target="RayData"/>
 		</Unit>
@@ -954,6 +972,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Material.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/MaterialTextura.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Metal.cpp">
@@ -986,6 +1007,12 @@
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/RenderFactory.cpp">
 			<Option target="RayData"/>
 		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Rotate.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Scale.cpp">
+			<Option target="RayData"/>
+		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Scene.cpp">
 			<Option target="RayData"/>
 		</Unit>
@@ -1014,6 +1041,9 @@
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Transparent.cpp">
+			<Option target="RayData"/>
+		</Unit>
+		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/src/Triangle.cpp">
 			<Option target="RayData"/>
 		</Unit>
 		<Unit filename="/home/desgarrador/Escritorio/3o/2n_semestre/Grafics/Proyectos/P1/dataray-givd02/CMakeLists.txt">

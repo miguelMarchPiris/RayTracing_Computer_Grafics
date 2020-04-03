@@ -1,7 +1,8 @@
 #include "Material.h"
 
 Material::Material(){
-    this->Kdiffuse = vec3(0.5,0.5,0.5);
+
+    this->Kdiffuse = vec3(0.5, 0.5, 0.5);
     this->Kspecular = vec3(1.0,1.0,1.0);
     this->Kambient = vec3(0.2,0.2,0.2);
     this->alpha = 1.0;
@@ -28,7 +29,7 @@ vec3 Material::multScalar(float f, vec3 vec) const{
 
 vec3 Material::getDiffuse(vec2 point) const {
     return this->Kdiffuse;
-Material::Material(vec3 a, vec3 d, vec3 s, float beta, float shininess){
+//Material::Material(vec3 a, vec3 d, vec3 s, float beta, float shininess){
 }
 
 vec3 Material::RandomInSphere() const {

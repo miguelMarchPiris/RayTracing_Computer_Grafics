@@ -377,9 +377,7 @@ add_executable(RayData
         include/FittedPlane.h
         src/Cylinder.cpp
         include/Cylinder.h
-        include/Metal.cpp
         include/Metal.h
-        include/Transparent.cpp
         include/Transparent.h
         src/Cylinder.cpp
         include/Cylinder.h

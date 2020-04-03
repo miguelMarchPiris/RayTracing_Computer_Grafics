@@ -1,18 +1,18 @@
 #include "MaterialTextura.h"
 
 MaterialTextura::MaterialTextura():Material(){
-    this->Kdiffuse = vec3(0.5,0.5,0.5);
-    this->Kspecular = vec3(0.0,0.0,0.0);
-    this->Kambient = vec3(0.1,0.1,0.1);
+    this->Kdiffuse = vec3(0.5, 0.5, 0.5);
+    this->Kspecular = vec3(0.0, 0.0, 0.0);
+    this->Kambient = vec3(0.1, 0.1, 0.1);
     this->alpha = 1.0;
     this->shininess = 1.0;
 }
 
 MaterialTextura::MaterialTextura(QString im)
 {
-    this->Kdiffuse = vec3(1.0,1.0,1.0);
-    this->Kspecular = vec3(0.0,0.0,0.0);
-    this->Kambient = vec3(0.0,0.0,0.0);
+    this->Kdiffuse = vec3(1.0, 1.0, 1.0);
+    this->Kspecular = vec3(0.0, 0.0, 0.0);
+    this->Kambient = vec3(0.0, 0.0, 0.0);
     this->alpha = 1.0;
     this->shininess = 1.0;
     this->image = new Texture(im);
