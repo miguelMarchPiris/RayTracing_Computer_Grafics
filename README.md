@@ -4,24 +4,24 @@ Francisco Barrio, Miguel March, Joan Travé i Marcos Plaza.
 
 GiVD - P1
 ----------  
-####Abstract
+#### Abstract
 Durant aquesta pràctica hem desenvolupat els conceptes de Ray Tracing estudiats a l'assignatura, dividits en tres fases.
 
-######Fase 1
+###### Fase 1
 En aquesta fase hem situat els diferents objectes (dels tipus que s'especifiquen més avall) a l'escena, tot establint
 els límits d'aquesta. A més hem implementat la càrrega d'una escena a partir de dades proporcionades en un fitxer de text pla,
 reescalant la mida dels objectes aixi com situant-los en la posició llegida.
 
-######Fase 2
+###### Fase 2
 Un cop tenim els objectes ben plantejats, passem a donar un efecte d'iluminació empleant Blinn-Phong i mesurant la projecció 
 de les ombres i reflexions respecte els objectes cap a l'escena (a l'hora de veure quin valor RGB donavem a cada píxel). A més hem afegit nous materials 
 els quals es comporten de diferent manera envers la llum.
 
-######Fase 3
+###### Fase 3
 En aquesta última fase, hem aplicat la técnica del mapejat UV per a poder posar una "textura o imatge" a sobre d'un pla afitat. Al mateix temps que calculavem 
 la iluminació a l'escena (en cas d'haver interseccio amb algun objecte agafem i si es tracta de MaterialTextura agafarem els téxels corresponents).
 
-######Preguntes
+###### Preguntes
 
 Fase 1:
 
@@ -42,7 +42,7 @@ A: Hem triat una opció intermitja, hem fet que els rajos primaris (i els secund
 Q: En afegir materials transparents, pots calcular les ombres segons el color del material transparent que traspassa la llum? Què has de modificar en la teva pràctica?\
 A: El que hem d'afegir seria, al calcul del raig d'ombra, fer que retorni que no intersecta només si el material de l'objecte amb el que intersecta el raig és transparent.
 
-####Features
+#### Features
 
 - Figures
     - [x] Triangle 
@@ -75,21 +75,16 @@ A: El que hem d'afegir seria, al calcul del raig d'ombra, fer que retorni que no
     - [x] nuevas escenas
         - Joan 
 
-####Extensions
-*(NOTA: Las extensiones de la práctica que hayáis implementado y que no estén listadas en el apartado anterior)*
+#### Extensions
 
 - [x] Hem fet servir el métode conegut com Multisample anti-aliasing per tal de millorar la qualitat de la imatge, agafant valors
 de píxels molt propers al valor del píxel que s'esta calculant en cada iteració i sumant-los per acabar
 fent la mitjana entre el número de mostres. Tot i que és un métode de supersampling, amb tot el que aixó comporta (és més car computacionalment), hem trobat que 
 ha suavitzat molt els contorns de cada figura i ha millorat molt la qualitat de la imatge.
 
-[AFEGIR EXTENSIONS AQUI]
+#### Screenshots
+Disponibles a https://padlet.com/twopuig/7vtov872b3ul
 
-####Screenshots
-*(NOTA: Capturas de pantalla de las pruebas que hayáis realizado)*
-
-####Additional Information
-*(NOTA: Horas de dedicación y problemas principales que hayáis tenido durante la realización de las prácticas)*
-
-- [x] De la part de llegir dades no s'ha assolit tots els objectius (no s'ha arribat a llegir materials
+#### Additional Information
+De la part de llegir dades no s'ha assolit tots els objectius (no s'ha arribat a llegir materials
 a través del fitxer de dades), degut a falta de temps.
